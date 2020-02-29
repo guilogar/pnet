@@ -1,0 +1,24 @@
+.header {
+    text-align: center;
+}
+
+.subheader {
+    margin-top: -2%;
+}
+
+.nav_header > a {
+    color: white;
+    margin: 2%;
+    padding: 1% 2% 1% 2%;
+}
+
+.logotipo {
+    width: 10%;
+    height: 10%;
+}
+
+/* .nav_header > button {
+    color: white;
+    margin: 2%;
+    padding: 1% 2% 1% 2%;
+} */
