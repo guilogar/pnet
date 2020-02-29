@@ -26,7 +26,7 @@
     </head>
     <body>
         <header class="header">
-            <img src="../files/img/logo.png" alt="" class="logotipo">
+            <img src="../files/img/logo.png" alt="CCCS logo" title="CCCS" class="logo">
             <div class="subheader">
                 <h1>CCCS 2020</h1>
                 <h2>Congreso de Informática de Cádiz</h2>
@@ -52,28 +52,63 @@
                         });
                     });
                 </script> -->
-                <a src="./inscripcion.html" type="button" class="btn btn-danger btn-lg">
+                <a src="./inscripcion.html" type="button" class="btn btn-danger btn-lg buttonNav">
                     Inscripción
                 </a>
-                <a src="./programa.html" type="button" class="btn btn-danger btn-lg">
+                <a src="./programa.html" type="button" class="btn btn-danger btn-lg buttonNav">
                     Programa
                 </a>
-                <a src="./localizacion.html" type="button" class="btn btn-danger btn-lg">
+                <a src="./localizacion.html" type="button" class="btn btn-danger btn-lg buttonNav">
                     Localización
                 </a>
+
+                <script>
+                    $(document).ready(() => {
+                        $('.buttonNav').each(function (index) {
+                            $(this).click(function () {
+                                // TODO: make appear the submenus when click in buttons
+                                // and change the color of the button
+                            });
+                        });
+                    });
+                </script>
             </nav>
         </header>
 
-        <section>
-            <aside>
-                <article>
-
+        <section class="body">
+            <aside class="news_body">
+                <article class="alert alert-secondary" role="alert">
+                    <span class="header_news_body">
+                        Noticia 1
+                    </span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </article>
+                <article class="alert alert-secondary" role="alert">
+                    <span class="header_news_body">
+                        Noticia 1
+                    </span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </article>
+                <article class="alert alert-secondary" role="alert">
+                    <span class="header_news_body">
+                        Noticia 1
+                    </span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </article>
             </aside>
         </section>
         
-        <footer>
-
+        <footer class="footer">
+            <nav class="nav_footer">
+                <h5>Contacto</h5>
+                <h6>Info de contacto</h6>
+            </nav>
         </footer>
     </body>
 </html>
