@@ -2,3 +2,4 @@
 /config/development/
 /reports
 /vendor
+*.log
