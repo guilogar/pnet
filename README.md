@@ -5,16 +5,25 @@ Repositorio para la asignatura Programación en Internet
 Wee use https://github.com/marketplace/actions/html5-validator for make 
 automatic validation with commit on master
 
-#### action.yml
+#### .github/workflows/main.yml
 ```
-- name: Test Files
+name: Integration
+
+on:
+  push:
+    branches:
+      - master
+      - test-github-actions
+  schedule:
+    - cron: '0 0 * * 0' # Weekly on Sundays at 02:00
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: HTML5 Validator
       uses: Cyb3r-Jak3/html5validator-action@v0.4
-      with:
-        root: src/
-- uses: actions/upload-artifact@v1
-      with:
-        name: log
-        path: log.log
 ```
 
 # For check with w3c validator NodeJS
