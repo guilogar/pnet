@@ -19,7 +19,7 @@ jobs:
     #     root: src/
     - uses: actions/checkout@master
     - run: npm install
-    - run: ls -R
+    - run: node . &> log.log
     - uses: pCYSl5EDgo/cat@master
       id: log
       with:
