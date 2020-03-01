@@ -2,9 +2,13 @@
 Repositorio para la asignatura Programación en Internet
 
 # For check with w3c validator NodeJS
+Install NodeJS (https://nodejs.org/es/download/)
+
+```
 npm i -g node-w3c-validator
 
 node-w3c-validator -i ./src/*.html -f html -o ./reports/result.html -s
+```
 
 For more information, visit https://www.npmjs.com/package/node-w3c-validator
 
