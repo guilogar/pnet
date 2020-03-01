@@ -1,9 +1,9 @@
 name: Integration
 
-on:
-  push:
-  schedule:
-    - cron: '0 0 * * 0' # Weekly on Sundays at 02:00
+# on:
+#   push:
+#   schedule:
+#     - cron: '0 0 * * 0' # Weekly on Sundays at 02:00
 
 
 jobs:
