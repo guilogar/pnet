@@ -3,3 +3,4 @@
 /reports
 /vendor
 *.log
+/node_modules

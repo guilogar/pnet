@@ -17,19 +17,13 @@ jobs:
     #   uses: Cyb3r-Jak3/html5validator-action@v0.4
     #   with:
     #     root: src/
-    - run: sudo python -m pip install html5validator
-    - run: sudo apt-get install openjdk-8-jdk
-    - name: Tests Integration with Github Actions.
-      uses: Cyb3r-Jak3/html5validator-action@v0.4
-      with:
-        root: ./src/
-        log_level: INFO
+    - run: npm install
+    - run: node .
     - uses: pCYSl5EDgo/cat@master
       id: log
       with:
         path: log.log
         working-directory: ./
-    - run: echo $TEXT
       env:
         TEXT: ${{ steps.log.outputs.text }}
     - uses: actions/upload-artifact@v1
