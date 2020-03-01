@@ -19,9 +19,9 @@ jobs:
     #     root: src/
     - run: sudo python -m pip install html5validator
     - run: sudo apt-get install openjdk-8-jdk
-    - run: ls
-    - run: html5validator --root src/ &> log.log
-    - run: echo -n -e "HELLO\n !\n World!" &> log.log
+    - run: ls &> log.log
+    # - run: html5validator --root src/ &> log.log
+    # - run: echo -n -e "HELLO\n !\n World!" &> log.log
     - uses: pCYSl5EDgo/cat@master
       id: log
       with:
