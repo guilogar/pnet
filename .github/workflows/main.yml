@@ -15,6 +15,11 @@ jobs:
       uses: Cyb3r-Jak3/html5validator-action@v0.4
       with:
         root: src/
+        format: json
+        log_level: DEBUG
+        extra: -lll
+        css: true
+        action_debug: true
     - uses: actions/upload-artifact@v1
       with:
         name: log
