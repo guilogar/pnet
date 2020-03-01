@@ -1,6 +1,22 @@
 # pnet
 Repositorio para la asignatura Programación en Internet
 
+# Automatic validation on branch master with GitHub actions
+Wee use https://github.com/marketplace/actions/html5-validator for make 
+automatic validation with commit on master
+
+#### action.yml
+```
+- name: Test Files
+      uses: Cyb3r-Jak3/html5validator-action@v0.4
+      with:
+        root: src/
+- uses: actions/upload-artifact@v1
+      with:
+        name: log
+        path: log.log
+```
+
 # For check with w3c validator NodeJS
 Install NodeJS (https://nodejs.org/es/download/)
 
