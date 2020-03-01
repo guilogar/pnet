@@ -12,14 +12,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./
     steps:
     # - name: HTML5 Validator
     #   uses: Cyb3r-Jak3/html5validator-action@v0.4
     #   with:
     #     root: src/
-    - run: sudo python -m pip install html5validator
-    - run: sudo apt-get install openjdk-8-jdk
-    - run: ls &> log.log
+    # - run: sudo python -m pip install html5validator
+    # - run: sudo apt-get install openjdk-8-jdk
+    - run: ls -R
+      working-directory: ${{env.working-directory}}
     # - run: html5validator --root src/ &> log.log
     # - run: echo -n -e "HELLO\n !\n World!" &> log.log
     - uses: pCYSl5EDgo/cat@master
