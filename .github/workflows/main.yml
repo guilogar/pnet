@@ -16,7 +16,14 @@ jobs:
     - name: HTML5 Validator
       uses: Cyb3r-Jak3/html5validator-action@v0.4
       with:
-        root: ../../src/
+        root: src/
+    - uses: pCYSl5EDgo/cat@master
+      id: log
+      with:
+        path: log.log
+    - run: echo $TEXT
+      env:
+        TEXT: ${{ steps.hello.outputs.text }}
     # - uses: actions/checkout@master
     # - name: Tests Integration with Github Actions.
     #   uses: Cyb3r-Jak3/html5validator-action@v0.4
