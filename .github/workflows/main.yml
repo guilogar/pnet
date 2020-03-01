@@ -13,10 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # - name: HTML5 Validator
-    #   uses: Cyb3r-Jak3/html5validator-action@v0.4
-    #   with:
-    #     root: src/
     - uses: actions/checkout@master
     - run: npm install
     - run: node . &> log.log
@@ -30,9 +26,3 @@ jobs:
       with:
         name: log
         path: log.log
-    # - uses: actions/checkout@master
-    # - name: Tests Integration with Github Actions.
-    #   uses: Cyb3r-Jak3/html5validator-action@v0.4
-    #   with:
-    #     root: ./src/
-    #     log_level: INFO
