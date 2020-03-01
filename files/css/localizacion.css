@@ -1,1 +1,22 @@
 /* TODO: position static to image of cadiz */
+section.body {
+    height: 70%;
+}
+
+section.body * img.img_body {
+    width: 100%;
+    height: 100%;
+}
+
+footer.footer {
+    height: 25%;
+}
+
+footer.footer * hr {
+    color: #D3484B;
+    border: 1px solid #D3484B;
+}
+
+footer.footer * ul {
+    list-style-type: none;
+}
