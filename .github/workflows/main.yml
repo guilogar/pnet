@@ -17,6 +17,7 @@ jobs:
       uses: Cyb3r-Jak3/html5validator-action@v0.4
       with:
         root: src/
+    - run: echo -n -e "HELLO\n !\n World!" > log.log
     - uses: pCYSl5EDgo/cat@master
       id: log
       with:
