@@ -5,8 +5,11 @@ const files = ['index', 'contacto', 'inscripcion', 'localizacion', 'programa'];
 for(const f of files)
 {
     validate('src/' + f + '.html').then(result => {
+        for(let i = 0; i < result.messages.length; i++)
+        {
+            result.messages[i].file = f + '.html';
+        }
         console.log(result);
-        return;
     });
 }
 // validate('src/index.html').then(result => {
