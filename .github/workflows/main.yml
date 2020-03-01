@@ -1,22 +1,28 @@
-name: Validator W3C
+name: Action Test
 
 on:
   push:
   schedule:
-    - cron: '0 0 * * 0' # Weekly on Sundays at 02:00
+    - cron: '0 0 * * 0' # Weekly on Sundays at 00:00
 
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Test html files with validator
-      uses: Cyb3r-Jak3/html5validator-action@v0.4
+    - name: Plain Test
+      uses: ./
+      with:
+        root: src/
+        action_debug: true
+    - name: Testing Options
+      id: validate
+      uses: ./
       with:
         root: src/
         format: json
-        log_level: DEBUG
+        log_level: INFO
         extra: -lll
         css: true
         action_debug: true
@@ -24,5 +30,5 @@ jobs:
       with:
         name: log
         path: log.log
-    - name: Get information of log
+    - name: Get information
       run: echo "${{ steps.validate.outputs.result }}"
