@@ -18,12 +18,11 @@ jobs:
     #   with:
     #     root: src/
     - run: npm install
-    - run: node .
+    - run: ls -R
     - uses: pCYSl5EDgo/cat@master
       id: log
       with:
         path: log.log
-        working-directory: ./
       env:
         TEXT: ${{ steps.log.outputs.text }}
     - uses: actions/upload-artifact@v1
