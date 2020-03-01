@@ -2,8 +2,7 @@
 Repositorio para la asignatura Programación en Internet
 
 # Automatic validation on branch master with GitHub actions
-Wee use https://github.com/marketplace/actions/html5-validator for make 
-automatic validation with commit on master
+Wee use https://www.npmjs.com/package/html5-validator for make automatic validation of html5
 
 #### .github/workflows/main.yml
 ```
@@ -22,47 +21,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: HTML5 Validator
-      uses: Cyb3r-Jak3/html5validator-action@v0.4
+    - uses: actions/checkout@master
+    - run: npm install
+    - run: node . &> log.log
+    - uses: pCYSl5EDgo/cat@master
+      id: log
+      with:
+        path: log.log
+      env:
+        TEXT: ${{ steps.log.outputs.text }}
+    - uses: actions/upload-artifact@v1
+      with:
+        name: log
+        path: log.log
 ```
 
-# For check with w3c validator NodeJS
-Install NodeJS (https://nodejs.org/es/download/)
-
+# For check with W3C validator with NodeJS
+For check in local, execute the command:
 ```
-npm i -g node-w3c-validator
+node .
 
-node-w3c-validator -i ./src/*.html -f html -o ./reports/result.html -s
-```
+or 
 
-For more information, visit https://www.npmjs.com/package/node-w3c-validator
-
-# For check with w3c validator PHP
-Install PHP (https://www.php.net/downloads)
-
-Install Composer (https://getcomposer.org/download/)
-
-```
-composer require 'eldadfux/w3c-validator:1.0.0'
+node testhtml.js
 ```
 
-Create a script with next code:
-
+Previously, execute:
 ```
-include_once '../src/W3CValidator.php';
-
-// Create a new validator object
-$validate = new W3CValidator('http://www.walla.co.il');
-
-var_dump($validate->isValid()); /* output: bool(false) */
-var_dump($validate->getErrorsCount()); /* output: int(463) */
-var_dump($validate->getWarningsCount()); /* output: int(372) */
+npm install
 ```
-
-Execute the script with the command:
-
-```
-php script.php
-```
-
-For more information, see https://github.com/eldadfux/w3c-validator
