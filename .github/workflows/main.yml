@@ -10,13 +10,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Tests Integration with Github Actions.
+    - name: HTML5 Validator
       uses: Cyb3r-Jak3/html5validator-action@v0.4
       with:
-        root: ./src/
-        log_level: INFO
-    - uses: actions/upload-artifact@v1
-      with:
-        name: log
-        path: log.log
+        root: src/
+    # - uses: actions/checkout@master
+    # - name: Tests Integration with Github Actions.
+    #   uses: Cyb3r-Jak3/html5validator-action@v0.4
+    #   with:
+    #     root: ./src/
+    #     log_level: INFO
+    # - uses: actions/upload-artifact@v1
+    #   with:
+    #     name: log
+    #     path: log.log
