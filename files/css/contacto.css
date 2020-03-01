@@ -1,0 +1,16 @@
+section.body {
+    height: 70%;
+}
+
+footer.footer {
+    height: 25%;
+}
+
+footer.footer * hr {
+    color: #D3484B;
+    border: 1px solid #D3484B;
+}
+
+footer.footer * ul {
+    list-style-type: none;
+}

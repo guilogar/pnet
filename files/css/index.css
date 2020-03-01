@@ -37,18 +37,14 @@ section.body > aside.news_body * span.header_news_body {
     font-weight: bold;
 }
 
-footer.footer {
-    background-color: #6E1729;
-    opacity: 0.5;
-    width: 100%;
-    height: 15%;
-    text-align: center;
-    padding: 2%;
+footer.footer * a {
+    color: white;
+    text-decoration: none;
 }
 
-.nav_footer {
-    color: white;
-    height: 100%;
+footer.footer * a:hover {
+    color: blue;
+    text-decoration: underline;
 }
 
 /* .nav_header > button {

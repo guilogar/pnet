@@ -11,3 +11,17 @@ body
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+footer.footer {
+    background-color: #6E1729;
+    opacity: 0.5;
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    padding: 2%;
+}
+
+.nav_footer {
+    color: white;
+    height: 100%;
+}
