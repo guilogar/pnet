@@ -20,7 +20,7 @@ jobs:
         path: log.log
     - run: echo $TEXT
       env:
-        TEXT: ${{ steps.hello.outputs.text }}
+        TEXT: ${{ steps.log.outputs.text }}
     # - uses: actions/checkout@master
     # - name: Tests Integration with Github Actions.
     #   uses: Cyb3r-Jak3/html5validator-action@v0.4
