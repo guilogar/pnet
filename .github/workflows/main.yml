@@ -5,17 +5,11 @@ on:
   schedule:
     - cron: '0 0 * * 0' # Weekly on Sundays at 00:00
 
-
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Plain Test
-      uses: ./
-      with:
-        root: src/
-        action_debug: true
     - name: Testing Options
       id: validate
       uses: ./
@@ -25,7 +19,6 @@ jobs:
         log_level: INFO
         extra: -lll
         css: true
-        action_debug: true
     - uses: actions/upload-artifact@v1
       with:
         name: log
