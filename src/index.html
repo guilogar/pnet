@@ -23,6 +23,27 @@
 
         <link rel="stylesheet" href="../files/css/general.css">
         <link rel="stylesheet" href="../files/css/index.css">
+
+        <!-- <script>
+            $(document).ready(() => {
+                $('.buttonNav').each(function (index) {
+                    $(this).click(function () {
+                        window.location.href = "./" + $(this).attr("id") + ".html";
+                    });
+                });
+            });
+        </script> -->
+
+        <script>
+            $(document).ready(() => {
+                $('.buttonNav').each(function (index) {
+                    $(this).click(function () {
+                        // TODO: make appear the submenus when click in buttons
+                        // and change the color of the button
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
         <header class="header">
@@ -41,37 +62,16 @@
                 </button>
                 <button type="button" class="btn btn-danger btn-lg buttonNav" id="localizacion">
                     Localización
-                </button>
-
-                <script>
-                    $(document).ready(() => {
-                        $('.buttonNav').each(function (index) {
-                            $(this).click(function () {
-                                window.location.href = "./" + $(this).attr("id") + ".html";
-                            });
-                        });
-                    });
-                </script> -->
-                <a src="./inscripcion.html" type="button" class="btn btn-danger btn-lg buttonNav">
+                </button> -->
+                <a href="./inscripcion.html" type="button" class="btn btn-danger btn-lg buttonNav">
                     Inscripción
                 </a>
-                <a src="./programa.html" type="button" class="btn btn-danger btn-lg buttonNav">
+                <a href="./programa.html" type="button" class="btn btn-danger btn-lg buttonNav">
                     Programa
                 </a>
-                <a src="./localizacion.html" type="button" class="btn btn-danger btn-lg buttonNav">
+                <a href="./localizacion.html" type="button" class="btn btn-danger btn-lg buttonNav">
                     Localización
                 </a>
-
-                <script>
-                    $(document).ready(() => {
-                        $('.buttonNav').each(function (index) {
-                            $(this).click(function () {
-                                // TODO: make appear the submenus when click in buttons
-                                // and change the color of the button
-                            });
-                        });
-                    });
-                </script>
             </nav>
         </header>
 
@@ -107,7 +107,11 @@
         <footer class="footer">
             <nav class="nav_footer">
                 <h5>Contacto</h5>
-                <h6>Info de contacto</h6>
+                <h6>
+                    <a href="./contacto.html">
+                        Info de contacto
+                    </a>
+                </h6>
             </nav>
         </footer>
     </body>
