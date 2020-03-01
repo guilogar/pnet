@@ -1,4 +1,4 @@
-name: Integration
+name: Validator W3C
 
 on:
   push:
@@ -11,7 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Test to html files.
+    - name: Test html files with validator
       uses: Cyb3r-Jak3/html5validator-action@v0.4
       with:
         root: src/
+    - uses: actions/upload-artifact@v1
+      with:
+        name: log
+        path: log.log
+    - name: Get information of log
+      run: echo "${{ steps.validate.outputs.result }}"
