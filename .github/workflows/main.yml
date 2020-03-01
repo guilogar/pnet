@@ -12,17 +12,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./
     steps:
     # - name: HTML5 Validator
     #   uses: Cyb3r-Jak3/html5validator-action@v0.4
     #   with:
     #     root: src/
+    - uses: actions/checkout@master
     - run: npm install
-      working-directory: ${{env.working-directory}}
     - run: ls -R
-      working-directory: ${{env.working-directory}}
     - uses: pCYSl5EDgo/cat@master
       id: log
       with:
