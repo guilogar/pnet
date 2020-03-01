@@ -17,6 +17,6 @@ jobs:
         root: ./src/
         log_level: INFO
     - uses: actions/upload-artifact@v1
-    with:
-      name: log
-      path: log.log
+      with:
+        name: log
+        path: log.log
