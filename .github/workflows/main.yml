@@ -16,12 +16,6 @@ jobs:
     - uses: actions/checkout@master
     - run: npm install
     - run: node . &> log.log
-    - uses: pCYSl5EDgo/cat@master
-      id: log
-      with:
-        path: log.log
-      env:
-        TEXT: ${{ steps.log.outputs.text }}
     - uses: actions/upload-artifact@v1
       with:
         name: log
