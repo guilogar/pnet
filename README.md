@@ -1,6 +1,9 @@
 # pnet
 Repositorio para la asignatura Programación en Internet
 
+# Backend
+NodeJS + PostgreSQL
+
 # Automatic validation on branch master with GitHub actions
 Wee use https://www.npmjs.com/package/html5-validator for make automatic validation of html5
 
