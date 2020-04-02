@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CCCS - Cadiz Congress Computer Science</title>
+        <title>CIC - Congreso de Informática de Cádiz</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               crossorigin="anonymous"
@@ -23,119 +27,72 @@
 
         <link rel="stylesheet" href="../files/css/general.css">
         <link rel="stylesheet" href="../files/css/localizacion.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    
         
-        <script>
-            $(document).ready(() => {
-                $('#localization').modal('show');
-                $('#localization').on('hidden.bs.modal', function (e) {
-                    window.location.href = "./index.html";
-                })
-            });
-        </script>
     </head>
     <body>
-        <section class="body">
-            <!-- Modal -->
-            <div class="modal fade" id="localization" tabindex="-1" role="dialog"
-                 aria-labelledby="localization" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="localizationTitle">Localizacion</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+        <div id="page-container">
+            <div id="content-wrap">
+                <header>
+                  <div class="header-header">
+                     <a class="logo" href="./index.html"><img src="../files/img/logo.png" alt="CIC logo" /></a>
+                     <nav class="nav-header">
+                        
+
+                        <a href="./inscripcion.html" class="btn btn-danger btn-lg buttonNav">
+                            Inscripción
+                        </a>
+                        
+                        <a href="./programa.html" class="btn btn-danger btn-lg buttonNav">Programa</a>
+                                 
+
+
+                        <a href="./localizacion.html" class="btn btn-danger btn-lg buttonNav">
+                            Localización
+                        </a>
+                    </nav>
+
                     </div>
-                    <div class="modal-body row">
-                        <article class="col-6">
-                            <h2>Cádiz</h2>
-                            Lorem ipsum dolor sit amet consectetur adipiscing
-                            elit mattis tellus, est ante curabitur id dui 
-                            lobortis urna eros, euismod dignissim rhoncus 
-                            sociis dictum risus convallis fermentum. Mi semper 
-                            tincidunt volutpat neque pulvinar phasellus cubilia 
-                            aptent morbi, urna 
-                        </article>
-                        <figure class="col-6">
-                            <img src='../files/img/map_cadiz.png' class="img_body"
-                                 alt='logo' title="logo" />
-                            <figcaption>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="modal-footer">
-                        <article>
-                            <h2>Alojamiento</h2>
-                            Lorem ipsum dolor sit amet consectetur adipiscing
-                            elit mattis tellus, est ante curabitur id dui 
-                            lobortis urna eros, euismod dignissim rhoncus 
-                            sociis dictum risus convallis fermentum. Mi semper 
-                            tincidunt volutpat neque pulvinar phasellus cubilia 
-                            aptent morbi, urna 
-                            Lorem ipsum dolor sit amet consectetur adipiscing
-                            elit mattis tellus, est ante curabitur id dui 
-                            lobortis urna eros, euismod dignissim rhoncus 
-                            sociis dictum risus convallis fermentum. Mi semper 
-                            tincidunt volutpat neque pulvinar phasellus cubilia 
-                            aptent morbi, urna Lorem ipsum dolor sit amet consectetur adipiscing
-                            elit mattis tellus, est ante curabitur id dui 
-                            lobortis urna eros, euismod dignissim rhoncus 
-                            sociis dictum risus convallis fermentum. Mi semper 
-                            tincidunt volutpat neque pulvinar phasellus cubilia 
-                            aptent morbi, urna Lorem ipsum dolor sit amet consectetur adipiscing
-                            elit mattis tellus, est ante curabitur id dui 
-                            lobortis urna eros, euismod dignissim rhoncus 
-                            sociis dictum risus convallis fermentum. Mi semper 
-                            tincidunt volutpat neque pulvinar phasellus cubilia 
-                            aptent morbi, urna Lorem ipsum dolor sit amet consectetur adipiscing
-                            elit mattis tellus, est ante curabitur id dui 
-                            lobortis urna eros, euismod dignissim rhoncus 
-                            sociis dictum risus convallis fermentum. Mi semper 
-                            tincidunt volutpat neque pulvinar phasellus cubilia 
-                            aptent morbi, urna Lorem ipsum dolor sit amet consectetur adipiscing
-                            elit mattis tellus, est ante curabitur id dui 
-                            lobortis urna eros, euismod dignissim rhoncus 
-                            sociis dictum risus convallis fermentum. Mi semper 
-                            tincidunt volutpat neque pulvinar phasellus cubilia 
-                            aptent morbi, urna Lorem ipsum dolor sit amet consectetur adipiscing
-                            elit mattis tellus, est ante curabitur id dui 
-                            lobortis urna eros, euismod dignissim rhoncus 
-                            sociis dictum risus convallis fermentum. Mi semper 
-                            tincidunt volutpat neque pulvinar phasellus cubilia 
-                            aptent morbi, urna 
-                        </article>
-                    </div>
-                </div>
-                </div>
+                </header>
+               
+
+                <section class="body"> 
+                    <h1>Localización</h1>  
+                 <article>
+                     El evento tendrá lugar en el centro de congresos de Cádiz, es decir, en la siguiente dirección: <span class="article-text">Calle Plocia, s/n, 11006 Cádiz</span>. Puedes consultar cómo llegar y los alojamientos más cercanos en el
+                     siguiente mapa interactivo de Google. Para más información acerca del alojamiento, recomendamos los siguientes <a href="https://www.google.com/travel/hotels/C%C3%A1diz?g2lb=2502548%2C4258168%2C4260007%2C4270442%2C4274032%2C4291318%2C4305595%2C4306835%2C4308216%2C4317915%2C4326765%2C4328159%2C4329288%2C4330113%2C4333265%2C4360590%2C4363568%2C4364231%2C4366015%2C4270859%2C4284970%2C4291517%2C4316256%2C4356900&hl=es&gl=es&un=1&q=alojamiento%20cadiz&rp=EOuhg4ygjr2RUxCmj5-s9ebi5UIQg_qQnsGimJ0yEKOzo7eN8ai17wE4AUAASAI&ictx=1&sa=X&utm_campaign=sharing&utm_medium=link&utm_source=htls&hrf=CgUIlgEQACIDRVVSKhYKBwjkDxAFGAMSBwjkDxAFGAQYASgAsAEAWAFoAZoBCBIGQ8OhZGl6ogESCggvbS8wZHZ0MBIGQ8OhZGl6qgEMCgMItgESAwi5ARgBkgECIAE">
+                        hoteles</a>. Los medios de transporte se pueden consultar en el mapa, aún así, recomendamos utilizar el transporte <a href="https://siu.cmtbc.es/es/horarios_lineas.php?municipioLineas=1">
+                            público</a>.
+                        
+                        <div class="map">
+                            
+                                <embed src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d18121.528508775402!2d-6.2623418331236165!3d36.51108544475623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d36.4961408!2d-6.2690776!4m5!1s0xd0dd166d956fd83%3A0x412ebadaad2a8da5!2sPalacio%20de%20Congresos%20de%20C%C3%A1diz%2C%20Calle%20Plocia%2C%20s%2Fn%2C%2011006%20C%C3%A1diz!3m2!1d36.5296549!2d-6.2904770999999995!5e0!3m2!1ses!2ses!4v1585826511453!5m2!1ses!2ses" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                            
+                        </div>
+                    
+                     
+                 </article>
+                 
+                 <hr>
+                 
+                 <h1>Otros congresos recomendados</h1>  
+                <article>
+                    Asimismo, recomendamos algunos eventos a asistir que puede ser de interés a los asistentes: <a href="https://congresocedi.es/">
+                        congreso CEDI 2020</a> y <a href="https://www.ondata.es/congreso/">
+                            congreso de Informática Forense y Ciberseguridad 2020</a>.
+                </article>
+                </section>
             </div>
-        </section>
-        
-        <footer class="footer">
-            <nav class="nav_footer row">
-                <section class="section_nav_footer col-4">
-                    <h2>Inscripción</h2>
-                    <hr>
-                    <ul>
-                        <li>Inscripciones</li>
-                    </ul>
-                </section>
-                <section class="section_nav_footer col-4">
-                    <h2>Programación</h2>
-                    <hr>
-                    <ul>
-                        <li>Viernes 28</li>
-                        <li>Sabado 29</li>
-                        <li>Domingo 1</li>
-                    </ul>
-                </section>
-                <section class="section_nav_footer col-4">
-                    <h2>Localización</h2>
-                    <hr>
-                    <ul>
-                        <li>Cádiz</li>
-                    </ul>
-                </section>
-            </nav>
-        </footer>
+            <footer class="footer">  
+                <div class="footer-div">   
+                    &copy;
+                  
+                <!--Second column.-->
+                        <h6 class="footer-second"> <a href="mailto:estoesunaprueba1234567890000@gmail.com?Subject=Interesado%20en%20el%20evento">Correo</a></h6>
+                </div>
+            </footer>
+        </div>
     </body>
 </html>

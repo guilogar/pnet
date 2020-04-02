@@ -1,22 +1,125 @@
-/* TODO: position static to image of cadiz */
-section.body {
-    height: 70%;
+header
+{
+    
+    display:inline;
 }
-
-section.body * img.img_body {
-    width: 100%;
+.header-header
+{
+    display:flex;
+    background-color:rgba(110, 23, 41, 0.7);
+    height: 50px;
+    
+    
+}
+header img{
     height: 100%;
+    
 }
 
-footer.footer {
-    height: 25%;
+
+nav{
+    display:inline;
+    font-family: Spartan;
 }
+.nav-list{
+    list-style:none;
+    display:none;
+
+}
+
+.nav-list:hover{
+    display:inline;
+}
+
+
+
+section.body {
+
+   /*Opacity in the background and not in the text.*/
+    background: rgba(248, 249, 250, 0.7);
+    margin: 5% 5% 0% 5%;
+    overflow: scroll;
+    font-size: 150%;
+    /*Top, right, bottom, left.*/
+    padding: 5% 5% 5% 5%; 
+    
+    height:700px;
+}
+
+hr{
+    background-color: rgba(130, 147, 165, 1);
+}
+
+article{
+   
+    column-gap: 60px;
+    margin-bottom: 6%;
+    margin-top:6%;
+}
+
+article img{
+    padding-left: 20%;
+    width: 400px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.map{
+    margin:5% 25% 5% 25%;
+}
+.article-text{
+    font-style: italic;
+}
+/*SEARCHER*/
+.searchbar{
+    margin-bottom: 3%;
+    margin-top: 3%;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+
+
 
 footer.footer * hr {
     color: #D3484B;
     border: 1px solid #D3484B;
 }
 
-footer.footer * ul {
-    list-style-type: none;
-}
+
