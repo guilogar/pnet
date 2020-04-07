@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CCCS - Cadiz Congress Computer Science</title>
+        <title>CIC - Congreso de Informática de Cádiz</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               crossorigin="anonymous"
@@ -23,105 +24,88 @@
 
         <link rel="stylesheet" href="../files/css/general.css">
         <link rel="stylesheet" href="../files/css/inscripcion.css">
+        <script type="text/javascript" src="../files/js/localizacion.js"></script>
         
-        <script>
-            $(document).ready(() => {
-                $('#whoAre').modal('show');
-                $('#whoAre').on('hidden.bs.modal', function (e) {
-                    window.location.href = "./index.html";
-                })
-            });
-        </script>
     </head>
     <body>
-        <section class="body">
-            <!-- Modal -->
-            <div class="modal fade" id="whoAre" tabindex="-1" role="dialog"
-                 aria-labelledby="whoAre" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="whoAreTitle">Inscripciones</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+        <div id="page-container">
+            <div id="content-wrap">
+                <header>
+                  <div class="header-header">
+                     <a class="logo" href="./index.html"><img src="../files/img/logo.png" alt="CIC logo" /></a>
+                     <nav class="nav-header">
+                        <!-- <button type="button" class="btn btn-danger btn-lg buttonNav" id="inscripcion">
+                            Inscripción
                         </button>
+                        <button type="button" class="btn btn-danger btn-lg buttonNav" id="programa">
+                            Programa
+                        </button>
+                        <button type="button" class="btn btn-danger btn-lg buttonNav" id="localizacion">
+                            Localización
+                        </button> -->
+
+                        <a href="./inscripcion.html" class="btn btn-danger btn-lg buttonNav">
+                            Inscripción
+                        </a>
+                        
+                        <a href="./programa.html" class="btn btn-danger btn-lg buttonNav">Programa</a>
+                                 
+
+
+                        <a href="./localizacion.html" class="btn btn-danger btn-lg buttonNav">
+                            Localización
+                        </a>
+                    </nav>
+
                     </div>
-                    <form action="/endpoint/inscripcion" method="POST">
-                        <div class="modal-body row">
-                            <article class="col-3">
-                                <div class="form-group">
-                                    <label for="name">Nombre</label>
-                                    <input type="text" class="form-control"
-                                        id="name" placeholder="Gabriel">
-                                </div>
-                                <div class="form-group">
-                                    <label for="dni">DNI</label>
-                                    <input type="text" class="form-control"
-                                        id="dni" placeholder="00000000X">
-                                </div>
-                            </article>
-                            <article class="col-3">
-                                <div class="form-group">
-                                    <label for="lastname">Apellidos</label>
-                                    <input type="text" class="form-control"
-                                        id="lastname" placeholder="Lopez">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Correo electrónico</label>
-                                    <input type="email" class="form-control"
-                                        id="email" placeholder="xxx@gmail.com">
-                                </div>
-                            </article>
-                            <article class="form-group col-6">
-                                <label for="days">Días a asistir</label>
-                                <select multiple class="form-control" id="days">
-                                    <option>Viernes 28</option>
-                                    <option>Sábado 29</option>
-                                    <option>Domingo 1</option>
+                </header>
+                
+                <section class="body"> 
+                    <h2 style="margin-bottom:5%;">Formulario de inscripción</h2>   
+                       <form  class="body-form" method="POST">
+                            <div>
+                                <label for="fname">Nombre:</label>
+                                <input type="text" id="fname" name="fname" style="float:right">
+                            </div>
+                            <div>
+                                <label for="lname">Apellidos:</label>
+                                <input type="text" id="lname" name="lname"  style="float:right">
+                            </div>
+                            <div>
+                                <label for="ename">Email:</label>
+                                <input type="email" id="ename" name="ename"  style="float:right">
+                            </div>
+                            <div>
+                                <label for="adname"  >Fecha entrada:</label>
+                                <input type="date" id="adname" name="idname" onclick="minDate1()" style="float:right">
+                            </div>
+                            <div>
+                                <label for="ddname">Fecha salida:</label>
+                                <input type="date" id="ddname" name="edname" onclick="minDate2()" onInput="selectionInscription()" style="float:right">
+                            </div>
+                            <div>
+                                <label for="form-selector">Tipo de inscripción :</label>
+                                <select id="form-selector" style="float:right">
+                                    <option value="completa">Inscripción completa</option>
+                                    <option value="doble">Inscripción 2 días</option>
+                                    <option value="individual">Inscripción 1 día</option>
                                 </select>
-                            </article>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
-                                    data-dismiss="modal">
-                                Cancelar
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                Enviar
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                </div>
+                             </div>
+                            <input type="submit" value="Enviar" onclick="form-verification()" style="float:right;">
+                            <input type="reset" value="Borrar" onclick="reload()" style="float:right;">
+                        </form>
+                <hr>
+                        <h6>Nota: Si tiene problemas con la página, haga click en Borrar para volver a empezar.</h6>
+                </section>
             </div>
-        </section>
-        
-        <footer class="footer">
-            <nav class="nav_footer row">
-                <section class="section_nav_footer col-4">
-                    <h2>Inscripción</h2>
-                    <hr>
-                    <ul>
-                        <li>Inscripciones</li>
-                    </ul>
-                </section>
-                <section class="section_nav_footer col-4">
-                    <h2>Programación</h2>
-                    <hr>
-                    <ul>
-                        <li>Viernes 28</li>
-                        <li>Sabado 29</li>
-                        <li>Domingo 1</li>
-                    </ul>
-                </section>
-                <section class="section_nav_footer col-4">
-                    <h2>Localización</h2>
-                    <hr>
-                    <ul>
-                        <li>Cádiz</li>
-                    </ul>
-                </section>
-            </nav>
-        </footer>
+            <footer class="footer">  
+                <div class="footer-div">   
+                    &copy;
+                  
+                <!--Second column.-->
+                        <h6 class="footer-second"> <a href="mailto:estoesunaprueba1234567890000@gmail.com?Subject=Interesado%20en%20el%20evento">Correo</a></h6>
+                </div>
+            </footer>
+        </div>
     </body>
 </html>

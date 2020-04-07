@@ -1,8 +1,40 @@
 @import url('https://fonts.googleapis.com/css?family=Spartan&display=swap');
 
+
+ 
+
+#page-container{
+    position: relative;
+    min-height: 100vh;
+    
+}
+
+#content-wrap {
+    padding-bottom: 1.5rem;    /* Footer height */
+}
+
+
+
 html, body {
     height: 100%;
     font-family: 'Spartan';
+}
+
+article{
+    text-align: justify;
+    
+}
+
+td,tr,table,th{
+    border:2px solid grey
+    
+}
+table{
+    /*They sum up 100% son it can be in the center.*/
+    width: 80%;
+    margin:10%;
+
+    background-color:rgba(248, 249, 250, 0.5);
 }
 
 body
@@ -12,16 +44,35 @@ body
     background-size: cover;
 }
 
-footer.footer {
-    background-color: #6E1729;
-    opacity: 0.5;
-    width: 100%;
-    height: 15%;
-    text-align: center;
-    padding: 2%;
+/*Footers from all the web pages of the site.*/
+footer a{
+    color:white;
+    
+  }
+
+footer a:hover{
+      color:red;
+  }
+
+  /*MAILTO*/
+.footer-second{
+    font-weight:bold;
 }
 
-.nav_footer {
-    color: white;
-    height: 100%;
+footer.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3.5rem;     
+    background-color: #6E1729;
+    opacity: 0.5;
+    /*text-align: center;*/
+    color:white;
+    font-size:100%;  
+    /*So content can be shown in the center.*/
+    padding:1%; 
 }
+
+.footer-div{
+    column-count: 2;
+  }

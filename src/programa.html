@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CCCS - Cadiz Congress Computer Science</title>
+        <title>CIC - Congreso de Informática de Cádiz</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               crossorigin="anonymous"
@@ -24,89 +25,369 @@
         <link rel="stylesheet" href="../files/css/general.css">
         <link rel="stylesheet" href="../files/css/programa.css">
         
-        <script>
-            $(document).ready(() => {
-                $('#program').modal('show');
-                $('#program').on('hidden.bs.modal', function (e) {
-                    window.location.href = "./index.html";
-                })
-            });
-        </script>
+        
     </head>
     <body>
-        <section class="body">
-            <!-- Modal -->
-            <div class="modal fade" id="program" tabindex="-1" role="dialog"
-                 aria-labelledby="program" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="programTitle">Viernes 19</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+        <div id="page-container">
+            <div id="content-wrap">
+                <header>
+                  <div class="header-header">
+                     <a class="logo" href="./index.html"><img src="../files/img/logo.png" alt="CIC logo" /></a>
+                     <nav class="nav-header">
+                        
+
+                        <a href="./inscripcion.html" class="btn btn-danger btn-lg buttonNav">
+                            Inscripción
+                        </a>
+                        
+                        <a href="./programa.html"  class="btn btn-danger btn-lg buttonNav">Programa</a>
+                                 
+
+
+                        <a href="./localizacion.html"  class="btn btn-danger btn-lg buttonNav">
+                            Localización
+                        </a>
+                    </nav>
+
                     </div>
-                    <div class="modal-body">
-                        <article class="alert alert-secondary" role="alert">
-                            <p>
-                                10:00 - Event 1
-                            </p>
-                            <button type="button" class="close"
-                                    data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </article>
-                        <article class="alert alert-secondary" role="alert">
-                            <p>
-                                11:00 - Event 2
-                            </p>
-                            <button type="button" class="close"
-                                    data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </article>
-                        <article class="alert alert-secondary" role="alert">
-                            <p>
-                                12:00 - Event 3
-                            </p>
-                            <button type="button" class="close"
-                                    data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </article>
-                    </div>
-                    <div class="modal-footer"></div>
-                </div>
-                </div>
+                </header>
+               
+
+                <section class="body">   
+                  <h1 style="text-align: center;">PROGRAMACIÓN - VIERNES 29</h1>
+                  <table>
+                    <tr>
+                      <th>Horario.</th>
+                      <th>Actividad.</th> 
+                      
+                    </tr>
+                    <tr>
+                        <td>9.30 - 10.00</td>
+                        <td>Bienvenida y acreditaciones.</td>
+                        
+                      </tr>
+                    <tr>
+                      <td>10.00-11.00.</td>
+                      <td>Desayuno y networking.</td> 
+                    </tr>
+                    <tr>
+                      <td>11.00-2.00.</td>
+                      <td>Conferencia - El mundo de la concurrencia (Edsger Dijkstra).</td>
+                    </tr>
+                    <tr>
+                      <td>2.00-4.00.</td>
+                      <td>Descanso y almuerzo.</td>
+                    </tr>
+                    <tr>
+                      <td>4.00-6.00.</td>
+                      <td>¿Qué hacer si me pierdo? Cómo la tecnología te ayuda (Edsger Dijkstra).</td>
+                    </tr>
+                    <tr>
+                      <td>6.00-7.00.</td>
+                      <td>Descanso, merienda y networking.</td>
+                    </tr>
+                    <tr>
+                      <td>7.00-8.00</td>
+                      <td>Acto de finalización del día.</td>
+                    </tr>  
+                  </table> 
+
+                  <h1 style="text-align: center;">PROGRAMACIÓN - SÁBADO 30</h1>
+                  <table>
+                    <tr>
+                      <th>Horario.</th>
+                      <th>Actividad.</th> 
+                      
+                    </tr>
+                    <tr>
+                        <td>9.30 - 10.00</td>
+                        <td>Bienvenida y acreditaciones.</td>
+                        
+                      </tr>
+                    <tr>
+                      <td>10.00-11.00.</td>
+                      <td>Desayuno y networking.</td> 
+                    </tr>
+                    <tr>
+                      <td>11.00-2.00.</td>
+                      <td>Taller de criptoanálisis (Alan Turing).</td>
+                    </tr>
+                    <tr>
+                      <td>2.00-4.00.</td>
+                      <td>Descanso y almuerzo.</td>
+                    </tr>
+                    <tr>
+                      <td>4.00-6.00.</td>
+                      <td>Taller - ¿Qué soy: un ordenador o una persona? (Alan Turing).</td>
+                    </tr>
+                    <tr>
+                      <td>6.00-7.00.</td>
+                      <td>Descanso, merienda y networking.</td>
+                    </tr>
+                    <tr>
+                      <td>7.00-8.00</td>
+                      <td>Acto de finalización del día.</td>
+                    </tr>  
+                  </table> 
+                  <h1 style="text-align: center;">PROGRAMACIÓN - DOMINGO 1</h1>
+                  <table>
+                    <tr>
+                      <th>Horario.</th>
+                      <th>Actividad.</th> 
+                      
+                    </tr>
+                    <tr>
+                        <td>9.30 - 10.00</td>
+                        <td>Bienvenida y acreditaciones.</td>
+                        
+                      </tr>
+                    <tr>
+                      <td>10.00-11.00.</td>
+                      <td>Desayuno y networking.</td> 
+                    </tr>
+                    <tr>
+                      <td>11.00-1.00.</td>
+                      <td>Conferencia - Éxito empresaria (Bill Gates).</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>1.00-2.00.</td>
+                      <td>Conferencia - Gestión de equipos de desarrollo (Bill Gates).</td>
+                    </tr>
+                    <tr>
+                      <td>2.00-4.00.</td>
+                      <td>Descanso y almuerzo.</td>
+                    </tr>
+                    <tr>
+                      <td>4.00-5.00.</td>
+                      <td>Conferencia - Las redes y la web (Tim Berners-Lee).</td>
+                    </tr>
+                    <tr>
+                      <td>4.00-5.00.</td>
+                      <td>Conferencia - Industria tecnológica (Steve Jobs).</td>
+                    </tr>
+                    <tr>
+                      <td>6.00-7.00.</td>
+                      <td>Descanso, merienda y networking.</td>
+                    </tr>
+                    <tr>
+                      <td>7.00-8.00</td>
+                      <td>Acto de finalización del día.</td>
+                    </tr>  
+                  </table> 
+                  <h1 style="text-align: center;">PONENTES</h1>
+                    <article>
+                        <div> <h2>Steven Paul Jobs</h2>
+                            Steven Paul Jobs (San Francisco, California),
+                        más conocido como Steve Jobs, fue un empresario y magnate de los negocios en el sector informático y de la industria del entretenimiento estadounidense.
+                        Fue cofundador y presidente ejecutivo de Apple y máximo accionista individual de The Walt Disney Company.
+                        </div>
+                        <div> 
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg/250px-Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg" alt="Steven Paul Jobs, primera imagen">
+                        </div> 
+                        <div>
+                            Durante los años 90 transformó una empresa 
+                            subsidiaria adquirida a Lucasfilm en Pixar, que revolucionó la industria de animación con el lanzamiento de Toy Story. 
+                            La integración de esta compañía en Disney, de la que era proveedor, convertiría a Jobs en el mayor accionista individual del gigante del
+                             entretenimiento. En el año de su muerte, su fortuna se valoraba en 8300 millones de dólares y ocupaba el puesto 110 en la lista de grandes
+                              fortunas de la revista Forbes. 
+                        </div>
+                        <div> 
+                            <img src="https://www.swashvillage.org/storage/img/images/steve-jobs-biography_2.jpg" alt="Steven Paul Jobs, segunda imagen">
+                        </div> 
+                    </article>
+                    <table>
+                        <tr>
+                          <th>Ocupación.</th>
+                          <th>Empresa.</th> 
+                          
+                        </tr>
+                        <tr>
+                          <td>Confundador.</td>
+                          <td>Apple.</td>
+                          
+                        </tr>
+                        <tr>
+                          <td>Confundador.</td>
+                          <td>Pixar.</td>
+                          
+                        </tr>
+                        <tr>
+                            <td>Fundador.</td>
+                            <td>NeXT Computers.</td>
+                          </tr>
+                      </table>
+                    <hr>
+                    <article>
+                         <h2>William Henry Gates III</h2>
+                         <p> William Henry Gates III (Seattle, 28 de octubre de 1955),
+                             conocido como Bill Gates, es un multimillonario magnate empresarial, informático y filántropo​ estadounidense, 
+                             cofundador de la empresa de software Microsoft junto con Paul Allen. Su fortuna se calcula en 96.5 mil millones de dólares (2019) 
+                             según la revista Forbes, hecho que le coloca como el segundo hombre más rico del mundo después de Jeff Bezos. Antes del estallido de la burbuja de 
+                             las punto com, su patrimonio neto ascendió a 100 000 millones de dólares, lo que lo convirtió en la décima persona más rica 
+                             en toda la historia de la humanidad.</p>
+                        <div> 
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bill_Gates_June_2015.png/800px-Bill_Gates_June_2015.png" alt="Bill Gates, primera imagen">
+                        </div> 
+                        <p>
+                            Es uno de los empresarios más conocidos que surgieron durante los inicios de los ordenadores personales.
+                             Ha sido criticado por sus tácticas de negocios, que han sido consideradas anticompetitivas, una opinión que en algunos 
+                             casos ha sido mantenida por numerosas sentencias judiciales.
+                        </p>
+                    </article>
+                    <table>
+                        <tr>
+                          <th>Ocupación.</th>
+                          <th>Empresa.</th> 
+                          
+                        </tr>
+                        <tr>
+                            <td>Cofundador.</td>
+                            <td>Microsoft Corporation.</td>
+                            
+                          </tr>
+                        <tr>
+                          <td>Copresidente.</td>
+                          <td>Fundación Bill y Melinda Gates.</td>
+                          
+                        </tr>
+                        <tr>
+                          <td>Copresidente.</td>
+                          <td>TerraPower
+                            Asesor tecnológico de Microsoft.</td>
+                          
+                        </tr>
+                       
+                      </table>
+                      <hr>
+                      <article>
+                          <h2>John Berners-Lee.</h2>
+                          <p>  Timothy "Tim" John Berners-Lee,(Londres, Reino Unido, 8 de junio de 1955), conocido como Tim Berners-Lee, es 
+                            un científico de la computación británica, conocido por ser el padre de la World Wide Web.
+                             Estableció la primera comunicación entre un cliente y un servidor usando el protocolo HTTP en noviembre de 1989.
+                              En octubre de 1994 fundó el Consorcio de la World Wide Web (W3C) con sede en el MIT, para supervisar y estandarizar 
+                              el desarrollo de las tecnologías sobre las que se fundamenta la Web y que permiten el funcionamiento de Internet.</p>
+                          <div> 
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tim_Berners-Lee_CP_2_head_crop.jpg/220px-Tim_Berners-Lee_CP_2_head_crop.jpg" alt="Tim Berners-Lee, primera imagen">
+                          </div> 
+                          <p>
+                            Ante la necesidad de distribuir e intercambiar información acerca de sus 
+                            investigaciones de una manera más efectiva, Berners-Lee desarrolló las ideas
+                             fundamentales que estructuran la web. Él y su grupo crearon lo que por sus siglas en inglés se denomina Lenguaje 
+                             HTML (HyperText Markup Language) o lenguaje de etiquetas de hipertexto, el protocolo HTTP (HyperText Transfer Protocol)
+                              y el sistema de localización de objetos en la web URL (Uniform Resource Locator). </p>
+                      </article>
+                      <table>
+                        <tr>
+                          <th>Ocupación.</th>
+                          <th>Empresa.</th> 
+                          
+                        </tr>
+                        <tr>
+                            <td>Informático teórico, físico, programador, profesor universitario, desarrollador web, ingeniero e inventor.</td>
+                            <td>Varias asociaciones.</td>
+                            
+                          </tr>
+                        <tr>
+                          <td>Miembro.</td>
+                          <td>	
+
+                            World Wide Web Consortium,
+                            School of Electronics and Computer Science, University of Southampton,
+                            Instituto Tecnológico de Massachusetts,
+                            Open Data Institute,
+                            Plessey (1976-1978),
+                            Organización Europea para la Investigación Nuclear (1980),
+                            Organización Europea para la Investigación Nuclear. </td>
+                          
+                        </tr>
+                        <tr>
+                          <td>Copresidente.</td>
+                          <td>TerraPower
+                            Asesor tecnológico de Microsoft.</td>
+                          
+                        </tr>
+                       
+                      </table>
+
+                      <article>
+                         <h2>Edsger Dijkstra</h2>
+                         <p>  Fue un científico de la computación de los Países Bajos. Trabajó en varios proyectos y desarrolló teorías como el algoritmo de Dijkstra, actualmente utilizado
+                        en Google Maps o bien los semáforos de Dijkstra, muy importantes en su momento ya que fueron pioneras primitivas de bajo nivel que controlaban la concurrencia, permitiendo a los ordenadores, ejecutar aplicaciones paralelas.</p>
+                        <div> 
+                            <img src="https://66.media.tumblr.com/tumblr_l4nhw73hGD1qz8lbio1_400.jpg" alt="Edsger Dijkstra, primera imagen">
+                        </div> 
+                        <p>
+                            Recibió la distinción ACM PODC Influential Paper Award en computación distribuida por su trabajo en la auto-estabilización en programas computacionales, posteriormente renombrado Premio Dijsktra.  </p>
+                    </article>
+                    <table>
+                        <tr>
+                          <th>Invención.</th>
+                          <th>Aplicación.</th> 
+                          
+                        </tr>
+                        <tr>
+                            <td>Semáforo Dijkstra.</td>
+                            <td>Primitiva de concurrencia.</td>
+                            
+                          </tr>
+                        <tr>
+                          <td>Algoritmo de Dijkstra.</td>
+                          <td>Google Maps.</td>
+                          
+                        </tr>
+                        <tr>
+                            <td>Aportación a la verificación normal.</td>
+                            <td>Mayor conocimiento científico y mucho más.</td>
+                            
+                          </tr>
+                       
+                      </table>
+
+                      <article>
+                        <p> <h2>Alan Mathison Turing.</h2>
+                            Es considerado uno de los padres de la ciencia de la computación y precursor de la informática moderna.
+                             Proporcionó una influyente formalización de los conceptos de algoritmo y computación: la máquina de Turing. 
+                             Formuló su propia versión que hoy es ampliamente aceptada como la tesis de Church-Turing (1936).  <p> 
+                            <img src="https://4.bp.blogspot.com/-bpaHUYQe0oc/VNc3FjadmEI/AAAAAAAA5Es/tLbR0dxvwUs/s1600/alan-turing1212.jpg" alt="Alan Turing, primera imagen">
+                        </p> 
+                        <p>
+                            Durante la segunda guerra mundial, trabajó en descifrar los códigos nazis, particularmente los de la máquina Enigma, y durante un tiempo fue el director de la sección Naval Enigma de Bletchley Park. Se ha estimado que su trabajo acortó la duración de esa guerra entre dos y cuatro años.6​ Tras la guerra, diseñó uno de los primeros computadores electrónicos programables digitales en el Laboratorio Nacional de Física del Reino Unido y poco tiempo después construyó otra de las primeras máquinas en la Universidad de Mánchester. 
+                        </p>
+                          </article>
+                    <table>
+                      <tr>
+                        <th>Invención.</th>
+                        <th>Aplicación.</th> 
+                        
+                      </tr>
+                      <tr>
+                          <td>Uno de los primeros ordenadores en el mundo.</td>
+                          <td>Precursores de los computadores actuales.</td>
+                          
+                        </tr>
+                      <tr>
+                        <td>Criptoanálisis.</td>
+                        <td>Precursor de la criptología en los ordenadores actuales.</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>Test de Turing.</td>
+                        <td>Barómetro de la inteligencia de una máquina.</td>
+                        
+                      </tr>
+                     
+                    </table>
+                </section>
             </div>
-        </section>
-        
-        <footer class="footer">
-            <nav class="nav_footer row">
-                <section class="section_nav_footer col-4">
-                    <h2>Inscripción</h2>
-                    <hr>
-                    <ul>
-                        <li>Inscripciones</li>
-                    </ul>
-                </section>
-                <section class="section_nav_footer col-4">
-                    <h2>Programación</h2>
-                    <hr>
-                    <ul>
-                        <li>Viernes 28</li>
-                        <li>Sabado 29</li>
-                        <li>Domingo 1</li>
-                    </ul>
-                </section>
-                <section class="section_nav_footer col-4">
-                    <h2>Localización</h2>
-                    <hr>
-                    <ul>
-                        <li>Cádiz</li>
-                    </ul>
-                </section>
-            </nav>
-        </footer>
+            <footer class="footer">  
+                <div class="footer-div">   
+                    &copy;
+                  
+                <!--Second column.-->
+                        <h6 class="footer-second"> <a href="mailto:estoesunaprueba1234567890000@gmail.com?Subject=Interesado%20en%20el%20evento">Correo</a></h6>
+                </div>
+            </footer>
+        </div>
     </body>
 </html>
