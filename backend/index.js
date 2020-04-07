@@ -15,17 +15,21 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-//http://localhost:8080/
-app.get('/', function (req, res) {
-	res.send('Hello World!');
-});
+const moviesService = require('./routes/timetable-service');
+const movies = require('./routes/timetable');
 
-const movies = require('./routes/movies');
-
-app.use('/movies', movies);
+app.use('/timetable', movies);
 
 const server = http.createServer(app);
 
-server.listen(PORT, function () {
-	console.log('Server up and running on localhost:' + PORT);
-});
+moviesService.connectDb(
+    function(err) {
+        if (err) {
+            console.log('Could not connect with MongoDB – moviesService', err);
+            process.exit(1);
+        }
+
+        server.listen(PORT, function() {
+            console.log('Server up and running on localhost:' + PORT);
+        });
+    });
