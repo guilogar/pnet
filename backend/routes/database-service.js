@@ -4,13 +4,16 @@ const MongoClient = require('mongodb').MongoClient;
 
 const ObjectId = require('mongodb').ObjectID;
 
+const USERNAME = 'pnet-guillermo-elias';
+const PASSWORD = 'pnet-guillermo-elias3000';
+
 class Database {
     async connectDb (callback, collectionDatabase)
     {
         try
         {
             const database = await MongoClient.connect(
-                "mongodb://pnet-guillermo-elias:pnet-guillermo-elias3000@ds157834.mlab.com:57834/heroku_0dql66zr",
+                "mongodb://" + USERNAME + ":" + PASSWORD + "@ds157834.mlab.com:57834/heroku_0dql66zr",
                 { useNewUrlParser: true, useUnifiedTopology: true }
             );
             this.db = await database.db('heroku_0dql66zr').collection(collectionDatabase);
