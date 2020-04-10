@@ -1,6 +1,9 @@
 # pnet
 Repositorio para la asignatura Programación en Internet
 
+# Previous execution
+``` npm install ```
+
 # Backend
 NodeJS + MongoDB
 
