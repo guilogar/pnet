@@ -2,14 +2,15 @@
 
 const express = require('express');
 const router = express.Router();
-const databaseService = require('./database-service');
+const { Database } = require('./database-service');
+const databaseServiceInscriptions = new Database();
 
-databaseService.connectDb(
+databaseServiceInscriptions.connectDb(
     function(err)
     {
         if (err)
         {
-            console.log('Could not connect with MongoDB – databaseService', err);
+            console.log('Could not connect with MongoDB – databaseServiceInscriptions', err);
             process.exit(1);
         }
     }, 'incriptions'
@@ -18,7 +19,7 @@ databaseService.connectDb(
 //http://localhost:8080/inscriptions
 
 router.get('/inscriptions', function (req, res) {
-	databaseService.getAll((err, object) => {
+	databaseServiceInscriptions.getAll((err, object) => {
             if (err) {
                 res.status(500).send({
                     msg: err
@@ -36,7 +37,7 @@ router.get('/inscriptions', function (req, res) {
 
 router.post('/inscriptions', function (req, res) {
     let object = req.body;
-    databaseService.add(object, (err, object) => {
+    databaseServiceInscriptions.add(object, (err, object) => {
             if (err) {
                 res.status(500).send({
                     msg: err
@@ -51,7 +52,7 @@ router.post('/inscriptions', function (req, res) {
 });
 
 router.delete('/inscriptions', function (req, res) {
-    databaseService.removeAll((err) => {
+    databaseServiceInscriptions.removeAll((err) => {
         if (err) {
             res.status(500).send({
                 msg: err
@@ -66,7 +67,7 @@ router.delete('/inscriptions', function (req, res) {
 
 router.get('/inscriptions/:_id', function (req, res) {
     let _id = req.params._id;
-    databaseService.get(_id, (err, object) => {
+    databaseServiceInscriptions.get(_id, (err, object) => {
         if (err) {
             res.status(500).send({
                 msg: err
@@ -84,7 +85,7 @@ router.get('/inscriptions/:_id', function (req, res) {
 router.put('/inscriptions/:_id', function (req, res) {
     const _id = req.params._id;
     const updatedobject = req.body;
-    databaseService.update(_id, updatedobject, (err, numUpdates) => {
+    databaseServiceInscriptions.update(_id, updatedobject, (err, numUpdates) => {
         if (err || numUpdates === 0) {
             res.status(500).send({
                 msg: err
@@ -99,7 +100,7 @@ router.put('/inscriptions/:_id', function (req, res) {
 
 router.delete('/inscriptions/:_id', function (req, res) {
     let _id = req.params._id;
-    databaseService.remove(_id, (err) => {
+    databaseServiceInscriptions.remove(_id, (err) => {
         if (err) {
             res.status(404).send({
                 msg: err

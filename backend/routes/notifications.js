@@ -2,14 +2,15 @@
 
 const express = require('express');
 const router = express.Router();
-const databaseService = require('./database-service');
+const { Database } = require('./database-service');
+const databaseServiceNotifications = new Database();
 
-databaseService.connectDb(
+databaseServiceNotifications.connectDb(
     function(err)
     {
         if (err)
         {
-            console.log('Could not connect with MongoDB – databaseService', err);
+            console.log('Could not connect with MongoDB – databaseServiceNotifications', err);
             process.exit(1);
         }
     }, 'notifications'
@@ -18,7 +19,7 @@ databaseService.connectDb(
 //http://localhost:8080/notifications
 
 router.get('/notifications', function (req, res) {
-	databaseService.getAll((err, object) => {
+	databaseServiceNotifications.getAll((err, object) => {
             if (err) {
                 res.status(500).send({
                     msg: err
@@ -36,7 +37,7 @@ router.get('/notifications', function (req, res) {
 
 router.post('/notifications', function (req, res) {
     let object = req.body;
-    databaseService.add(object, (err, object) => {
+    databaseServiceNotifications.add(object, (err, object) => {
             if (err) {
                 res.status(500).send({
                     msg: err
@@ -51,7 +52,7 @@ router.post('/notifications', function (req, res) {
 });
 
 router.delete('/notifications', function (req, res) {
-    databaseService.removeAll((err) => {
+    databaseServiceNotifications.removeAll((err) => {
         if (err) {
             res.status(500).send({
                 msg: err
@@ -66,7 +67,7 @@ router.delete('/notifications', function (req, res) {
 
 router.get('/notifications/:_id', function (req, res) {
     let _id = req.params._id;
-    databaseService.get(_id, (err, object) => {
+    databaseServiceNotifications.get(_id, (err, object) => {
         if (err) {
             res.status(500).send({
                 msg: err
@@ -84,7 +85,7 @@ router.get('/notifications/:_id', function (req, res) {
 router.put('/notifications/:_id', function (req, res) {
     const _id = req.params._id;
     const updatedobject = req.body;
-    databaseService.update(_id, updatedobject, (err, numUpdates) => {
+    databaseServiceNotifications.update(_id, updatedobject, (err, numUpdates) => {
         if (err || numUpdates === 0) {
             res.status(500).send({
                 msg: err
@@ -99,7 +100,7 @@ router.put('/notifications/:_id', function (req, res) {
 
 router.delete('/notifications/:_id', function (req, res) {
     let _id = req.params._id;
-    databaseService.remove(_id, (err) => {
+    databaseServiceNotifications.remove(_id, (err) => {
         if (err) {
             res.status(404).send({
                 msg: err
