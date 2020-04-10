@@ -13,7 +13,7 @@ databaseServiceInscriptions.connectDb(
             console.log('Could not connect with MongoDB – databaseServiceInscriptions', err);
             process.exit(1);
         }
-    }, 'incriptions'
+    }, 'inscriptions'
 );
 
 //http://localhost:8080/inscriptions
@@ -38,14 +38,19 @@ router.get('/inscriptions', function (req, res) {
 router.post('/inscriptions', function (req, res) {
     let object = req.body;
     databaseServiceInscriptions.add(object, (err, object) => {
-            if (err) {
+            if (err)
+            {
                 res.status(500).send({
                     msg: err
                 });
-            } else if (movie !== null) {
+            } else if (object !== null)
+            {
+                res.redirect(req.body.urlToRedirect);
+                /*
                 res.status(201).send({
                     msg: 'object created!'
                 });
+                */
             }
         }
     );

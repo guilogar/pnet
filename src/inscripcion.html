@@ -25,7 +25,11 @@
         <link rel="stylesheet" href="../files/css/general.css">
         <link rel="stylesheet" href="../files/css/inscripcion.css">
         <script type="text/javascript" src="../files/js/inscripcion.js"></script>
-        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                checkFormSend();
+            });
+        </script>
     </head>
     <body>
         <div id="page-container">
@@ -62,48 +66,54 @@
                 
                 <section class="body"> 
                     <h2 style="margin-bottom:5%;">Formulario de inscripción</h2>   
-                        <form  class="body-form" method="POST" onsubmit="sendData()" action="http://localhost:3000/api/v1/inscriptions">
-                            <div>
-                                <label for="fname">Nombre:</label>
-                                <input type="text" id="fname" name="fname" style="float:right" required>
+                    <form id="form-inscription" class="body-form" method="POST" onsubmit="sendData()" action="http://localhost:3000/api/v1/inscriptions">
+                        <div>
+                            <input type="text" name="urlToRedirect" value="http://localhost:5500/src/inscripcion.html?formSend=true" hidden>
+                        </div>
+                        <div>
+                            <label for="fname">Nombre:</label>
+                            <input type="text" id="fname" name="fname" class="form-inscription-input" style="float:right" required>
+                        </div>
+                        <div>
+                            <label for="lname">Apellidos:</label>
+                            <input type="text" id="lname" name="lname" class="form-inscription-input" style="float:right" required>
+                        </div>
+                        <div>
+                            <label for="ename">Email:</label>
+                            <input type="email" id="ename" name="ename" class="form-inscription-input" style="float:right" required>
+                        </div>
+                        <div>
+                            <label for="adname">Fecha entrada:</label>
+                            <input type="date" id="adname" name="adname" class="form-inscription-input" onclick="minDate1()" value="2020-03-29" style="float:right" required>
+                        </div>
+                        <div>
+                            <label for="ddname">Fecha salida:</label>
+                            <input type="date" id="ddname" name="ddname" class="form-inscription-input" onclick="minDate2()" value="2020-04-01" onInput="selectionInscription()" style="float:right" required>
+                        </div>
+                        <div>
+                            <label for="form-selector">Tipo de inscripción :</label>
+                            <select id="form-selector"  class="form-inscription-input" name="type_inscription" style="float:right" required>
+                                <option value="completa">Inscripción completa</option>
+                                <option value="doble">Inscripción 2 días</option>
+                                <option value="individual">Inscripción 1 día</option>
+                            </select>
                             </div>
-                            <div>
-                                <label for="lname">Apellidos:</label>
-                                <input type="text" id="lname" name="lname" style="float:right" required>
-                            </div>
-                            <div>
-                                <label for="ename">Email:</label>
-                                <input type="email" id="ename" name="ename" style="float:right" required>
-                            </div>
-                            <div>
-                                <label for="adname">Fecha entrada:</label>
-                                <input type="date" id="adname" name="adname" onclick="minDate1()" value="2020-03-29" style="float:right" required>
-                            </div>
-                            <div>
-                                <label for="ddname">Fecha salida:</label>
-                                <input type="date" id="ddname" name="ddname" onclick="minDate2()" value="2020-04-01" onInput="selectionInscription()" style="float:right" required>
-                            </div>
-                            <div>
-                                <label for="form-selector">Tipo de inscripción :</label>
-                                <select id="form-selector" style="float:right" required>
-                                    <option value="completa">Inscripción completa</option>
-                                    <option value="doble">Inscripción 2 días</option>
-                                    <option value="individual">Inscripción 1 día</option>
-                                </select>
-                             </div>
-                            <input type="submit" value="Enviar" style="float:right;">
-                            <input type="reset" value="Borrar" style="float:right;">
-                        </form>
-                        <hr>
-                        <h6>Nota: Si tiene problemas con la página, haga click en Borrar para volver a empezar.</h6>
+                        <input type="submit" value="Enviar" style="float:right;">
+                        <input type="reset" value="Borrar" style="float:right;">
+                    </form>
+                    <hr>
+                    <h6>Nota: Si tiene problemas con la página, haga click en Borrar para volver a empezar.</h6>
                 </section>
             </div>
             <footer class="footer">  
                 <div class="footer-div">   
                     &copy;
-                  
                     <!-- Second column -->
-                    <h6 class="footer-second"> <a href="mailto:estoesunaprueba1234567890000@gmail.com?Subject=Interesado%20en%20el%20evento">Correo</a></h6>
+                    <h6 class="footer-second">
+                        <a href="mailto:estoesunaprueba1234567890000@gmail.com?Subject=Interesado%20en%20el%20evento">
+                            Correo
+                        </a>
+                    </h6>
                 </div>
             </footer>
         </div>
