@@ -2,7 +2,16 @@
 Repositorio para la asignatura Programación en Internet
 
 # Backend
-NodeJS + PostgreSQL
+NodeJS + MongoDB
+
+## How to init the Backend
+Execute in main directory ``node .``
+
+## Hot to init the frontend
+Init the front in a server with the port 5500. The extension of Visual Code called ``Live Server`` with extension id ``ritwickdey.liveserver`` can help to this adventure <3.
+
+## Enjoy de web
+Put in your navigator http://localhost:5500/src/index.html
 
 # Automatic validation on branch master with GitHub actions
 Wee use https://www.npmjs.com/package/html5-validator for make automatic validation of html5
@@ -53,3 +62,6 @@ Previously, execute:
 ```
 npm install
 ```
+
+# Coming soon
+Automatic unit a integration test with mocha, postman and maybe, with selenium.
