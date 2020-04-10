@@ -12,12 +12,12 @@ databaseService.connectDb(
             console.log('Could not connect with MongoDB – databaseService', err);
             process.exit(1);
         }
-    }, 'timetable'
+    }, 'speakers'
 );
 
-//http://localhost:8080/timetable
+//http://localhost:8080/speakers
 
-router.get('/timetable', function (req, res) {
+router.get('/speakers', function (req, res) {
 	databaseService.getAll((err, object) => {
             if (err) {
                 res.status(500).send({
@@ -34,7 +34,7 @@ router.get('/timetable', function (req, res) {
     );
 });
 
-router.post('/timetable', function (req, res) {
+router.post('/speakers', function (req, res) {
     let object = req.body;
     databaseService.add(object, (err, object) => {
             if (err) {
@@ -50,7 +50,7 @@ router.post('/timetable', function (req, res) {
     );
 });
 
-router.delete('/timetable', function (req, res) {
+router.delete('/speakers', function (req, res) {
     databaseService.removeAll((err) => {
         if (err) {
             res.status(500).send({
@@ -64,7 +64,7 @@ router.delete('/timetable', function (req, res) {
     });
 });
 
-router.get('/timetable/:_id', function (req, res) {
+router.get('/speakers/:_id', function (req, res) {
     let _id = req.params._id;
     databaseService.get(_id, (err, object) => {
         if (err) {
@@ -81,7 +81,7 @@ router.get('/timetable/:_id', function (req, res) {
     });
 });
 
-router.put('/timetable/:_id', function (req, res) {
+router.put('/speakers/:_id', function (req, res) {
     const _id = req.params._id;
     const updatedobject = req.body;
     databaseService.update(_id, updatedobject, (err, numUpdates) => {
@@ -97,7 +97,7 @@ router.put('/timetable/:_id', function (req, res) {
     });
 });
 
-router.delete('/timetable/:_id', function (req, res) {
+router.delete('/speakers/:_id', function (req, res) {
     let _id = req.params._id;
     databaseService.remove(_id, (err) => {
         if (err) {

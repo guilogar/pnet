@@ -15,21 +15,18 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-const moviesService = require('./routes/timetable-service');
-const movies = require('./routes/timetable');
+const timetable = require('./routes/timetable');
+const inscriptions = require('./routes/inscriptions');
+const speakers = require('./routes/speakers');
+const notifications = require('./routes/notifications');
 
-app.use('/timetable', movies);
+app.use(baseAPI, timetable);
+app.use(baseAPI, inscriptions);
+app.use(baseAPI, speakers);
+app.use(baseAPI, notifications);
 
 const server = http.createServer(app);
 
-moviesService.connectDb(
-    function(err) {
-        if (err) {
-            console.log('Could not connect with MongoDB – moviesService', err);
-            process.exit(1);
-        }
-
-        server.listen(PORT, function() {
-            console.log('Server up and running on localhost:' + PORT);
-        });
-    });
+server.listen(PORT, function() {
+    console.log('Server up and running on localhost:' + PORT);
+});
