@@ -24,7 +24,7 @@
 
         <link rel="stylesheet" href="../files/css/general.css">
         <link rel="stylesheet" href="../files/css/inscripcion.css">
-        <script type="text/javascript" src="../files/js/localizacion.js"></script>
+        <script type="text/javascript" src="../files/js/inscripcion.js"></script>
         
     </head>
     <body>
@@ -62,39 +62,39 @@
                 
                 <section class="body"> 
                     <h2 style="margin-bottom:5%;">Formulario de inscripción</h2>   
-                       <form  class="body-form" method="POST">
+                        <form  class="body-form" method="POST" onsubmit="sendData()" action="http://localhost:3000/api/v1/inscriptions">
                             <div>
                                 <label for="fname">Nombre:</label>
-                                <input type="text" id="fname" name="fname" style="float:right">
+                                <input type="text" id="fname" name="fname" style="float:right" required>
                             </div>
                             <div>
                                 <label for="lname">Apellidos:</label>
-                                <input type="text" id="lname" name="lname"  style="float:right">
+                                <input type="text" id="lname" name="lname" style="float:right" required>
                             </div>
                             <div>
                                 <label for="ename">Email:</label>
-                                <input type="email" id="ename" name="ename"  style="float:right">
+                                <input type="email" id="ename" name="ename" style="float:right" required>
                             </div>
                             <div>
-                                <label for="adname"  >Fecha entrada:</label>
-                                <input type="date" id="adname" name="idname" onclick="minDate1()" style="float:right">
+                                <label for="adname">Fecha entrada:</label>
+                                <input type="date" id="adname" name="adname" onclick="minDate1()" value="2020-03-29" style="float:right" required>
                             </div>
                             <div>
                                 <label for="ddname">Fecha salida:</label>
-                                <input type="date" id="ddname" name="edname" onclick="minDate2()" onInput="selectionInscription()" style="float:right">
+                                <input type="date" id="ddname" name="ddname" onclick="minDate2()" value="2020-04-01" onInput="selectionInscription()" style="float:right" required>
                             </div>
                             <div>
                                 <label for="form-selector">Tipo de inscripción :</label>
-                                <select id="form-selector" style="float:right">
+                                <select id="form-selector" style="float:right" required>
                                     <option value="completa">Inscripción completa</option>
                                     <option value="doble">Inscripción 2 días</option>
                                     <option value="individual">Inscripción 1 día</option>
                                 </select>
                              </div>
-                            <input type="submit" value="Enviar" onclick="form-verification()" style="float:right;">
-                            <input type="reset" value="Borrar" onclick="reload()" style="float:right;">
+                            <input type="submit" value="Enviar" style="float:right;">
+                            <input type="reset" value="Borrar" style="float:right;">
                         </form>
-                <hr>
+                        <hr>
                         <h6>Nota: Si tiene problemas con la página, haga click en Borrar para volver a empezar.</h6>
                 </section>
             </div>
@@ -102,8 +102,8 @@
                 <div class="footer-div">   
                     &copy;
                   
-                <!--Second column.-->
-                        <h6 class="footer-second"> <a href="mailto:estoesunaprueba1234567890000@gmail.com?Subject=Interesado%20en%20el%20evento">Correo</a></h6>
+                    <!-- Second column -->
+                    <h6 class="footer-second"> <a href="mailto:estoesunaprueba1234567890000@gmail.com?Subject=Interesado%20en%20el%20evento">Correo</a></h6>
                 </div>
             </footer>
         </div>

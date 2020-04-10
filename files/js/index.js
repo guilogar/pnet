@@ -10,6 +10,8 @@ function putNotifications()
         url: notificationsUrl,
         success: function(data)
         {
+            $('aside.news-body').empty();
+            $('aside.news-body').hide();
             // iterate notifications...
             for(const notification of data)
             {
@@ -28,6 +30,7 @@ function putNotifications()
                 
                 $('aside.news-body').append(article);
             }
+            $('aside.news-body').slideDown('slow');
         },
         error: function(err)
         {

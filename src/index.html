@@ -22,7 +22,10 @@
       <script type="text/javascript">
          $(document).ready(function ()
          {
+               // Initial put of notifications
                putNotifications();
+               // Interval with 5 minutes
+               setInterval(putNotifications, 1000 * 60 * 5);
          });
       </script>
    </head>
