@@ -77,22 +77,25 @@
                             </div>
                             <div>
                                 <label for="adname"  >Fecha entrada:</label>
-                                <input type="date" id="adname" name="idname"  style="float:right">
+                                <input type="date" id="adname" name="idname" onclick="minDate1()" style="float:right">
                             </div>
                             <div>
                                 <label for="ddname">Fecha salida:</label>
-                                <input type="date" id="ddname" name="edname"  style="float:right">
+                                <input type="date" id="ddname" name="edname" onclick="minDate2()" onInput="selectionInscription()" style="float:right">
                             </div>
                             <div>
                                 <label for="form-selector">Tipo de inscripción :</label>
                                 <select id="form-selector" style="float:right">
-                                    <option value="viernes">Inscripción completa</option>
-                                    <option value="sabado">Inscripción de un día</option>
+                                    <option value="completa">Inscripción completa</option>
+                                    <option value="doble">Inscripción 2 días</option>
+                                    <option value="individual">Inscripción 1 día</option>
                                 </select>
                              </div>
                             <input type="submit" value="Enviar" onclick="form-verification()" style="float:right;">
-                            <input type="reset" value="Borrar"  style="float:right;">
+                            <input type="reset" value="Borrar" onclick="reload()" style="float:right;">
                         </form>
+                <hr>
+                        <h6>Nota: Si tiene problemas con la página, haga click en Borrar para volver a empezar.</h6>
                 </section>
             </div>
             <footer class="footer">  
