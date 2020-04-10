@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - run: npm install
-    - run: node . &> log.log
+    - run: node testhtml.js &> log.log
     - uses: actions/upload-artifact@v1
       with:
         name: log
