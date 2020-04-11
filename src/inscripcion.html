@@ -70,6 +70,7 @@
                         <div>
                             <input type="text" name="urlToRedirect" value="http://localhost:5500/src/inscripcion.html?formSend=true" hidden>
                         </div>
+                        <!-- TODO: DELETE ALL STYLES IN LINE... -->
                         <div>
                             <label for="fname">Nombre:</label>
                             <input type="text" id="fname" name="fname" class="form-inscription-input" style="float:right" required>
@@ -84,12 +85,58 @@
                         </div>
                         <div>
                             <label for="adname">Fecha entrada:</label>
-                            <input type="date" id="adname" name="adname" class="form-inscription-input" onclick="minDate1()" value="2020-03-29" style="float:right" required>
+                            <input type="date" id="adname" name="adname" class="form-inscription-input" min="2020-03-20" max="2020-04-01" value="2020-03-29" style="float:right" required>
                         </div>
+                        <!-- TODO: add attributes min and max to input type date down -->
                         <div>
                             <label for="ddname">Fecha salida:</label>
-                            <input type="date" id="ddname" name="ddname" class="form-inscription-input" onclick="minDate2()" value="2020-04-01" onInput="selectionInscription()" style="float:right" required>
+                            <input type="date" id="ddname" name="ddname" class="form-inscription-input" value="2020-04-01" style="float:right" oninput="" required>
                         </div>
+                        <script>
+                            // TODO: delete after learn this... TODO for Elias.
+                            // Example for dates
+                            const a = new Date();
+                            const b = new Date('2020-04-08');
+                            const c = new Date(a - b);
+                            console.log(c);
+                            console.log(c.getDate());
+
+                            // On key down disabled on input type dates...
+                            $("input[type=date].form-inscription-input").on("keydown", function search(e)
+                            {
+                                return false;
+                            });
+
+                            // Fecha de entrada restricciones....
+                            $("input[type=date].form-inscription-input#adname").change(function(event)
+                            {
+                                const value = $(this).val();
+                                const date = new Date(value);
+                                
+                                if(date < new Date('2020-03-20'))
+                                {
+                                    $(this).val('2020-03-20');
+                                } else if(date > new Date('2020-04-01'))
+                                {
+                                    $(this).val('2020-04-01');
+                                }
+                            });
+
+                            // Fecha de salida restricciones....
+                            $("input[type=date].form-inscription-input#ddname").change(function()
+                            {
+                                const value = $(this).val();
+                                const date = new Date(value);
+                                
+                                if(date < new Date('2020-03-20'))
+                                {
+                                    $(this).val('2020-03-20');
+                                } else if(date > new Date('2020-04-01'))
+                                {
+                                    $(this).val('2020-04-01');
+                                }
+                            });
+                        </script>
                         <div>
                             <label for="form-selector">Tipo de inscripción :</label>
                             <select id="form-selector"  class="form-inscription-input" name="type_inscription" style="float:right" required>

@@ -30,47 +30,8 @@ function checkFormSend()
     }
 }
 
-/*Establish the minimum date of the arrival date as the current one.*/
-function minDate1(){
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0.
-    var yyyy = today.getFullYear();
-    if(dd<10)
-    {
-            dd='0'+dd;
-    } 
-    if(mm<10)
-    {
-            mm='0'+mm;
-    } 
-
-    today = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("adname").setAttribute("min", today);
-}
-    
-/*Establish the minimum date of the departure date as the arrival date. */
-function minDate2(){
-    var myDate= document.getElementById("adname");
-    var min=new Date(myDate.value);
-    min.setDate(min.getDate()+1);
-   
-    var dd = min.getDate();
-    var mm = min.getMonth()+1; //January is 0.
-    var yyyy = min.getFullYear();
-    if(dd<10)
-    {
-            dd='0'+dd;
-    } 
-    if(mm<10)
-    {
-            mm='0'+mm;
-    } 
-
-    min = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("ddname").setAttribute("min", min);
-}
-
+// TODO: poner mas bonito esta funcion y convinarla con el codigo de script que esta en inscripcion.html relacionado con 
+// controlar los input de tipo date.
 /*Establish the possible inscription according to the number of days the user will stay (arrival date and departure date).*/
 function selectionInscription(){
     
