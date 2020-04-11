@@ -6,7 +6,6 @@ function sendData()
 {
     // $('form#form-inscription');
 }
-
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -14,11 +13,9 @@ function getUrlVars() {
     });
     return vars;
 }
-
 function checkFormSend()
 {
     let formSend = Boolean(getUrlVars()["formSend"]);
-    
     if(formSend)
     {
         $('section.body > form#form-inscription').remove();
@@ -29,38 +26,7 @@ function checkFormSend()
         $('section.body').append(alertBoostrap);
     }
 }
-
-// TODO: poner mas bonito esta funcion y convinarla con el codigo de script que esta en inscripcion.html relacionado con 
-// controlar los input de tipo date.
-/*Establish the possible inscription according to the number of days the user will stay (arrival date and departure date).*/
-function selectionInscription(){
-    
-    var date1= document.getElementById("adname");
-    var date2= document.getElementById("ddname");
-    var myDate1= new Date(date1.value);
-    var myDate2= new Date(date2.value);
-    var differenceTime=Math.abs(myDate2-myDate1);
-    var differenceDays = Math.ceil(differenceTime / (1000 * 60 * 60 * 24)); 
-    /*Difference between dates is at least 1 day.*/
-    if(differenceDays==1)
-    {
-        var selector=document.getElementById("form-selector");
-        for (var i=0; i<selector.length; i++) 
-        {
-            if (selector.options[i].value == "completa" || selector.options[i].value == "doble")
-                selector.remove(i);
-        }
-    }else
-    {
-        if(differenceDays==2)
-        {
-                var selector=document.getElementById("form-selector");
-            for (var i=0; i<selector.length; i++) 
-            {
-                if (selector.options[i].value == "completa")
-                    selector.remove(i);
-            }
-        }
-    }
-
+//Reloads web page to set input values to their default state.
+function reload(){
+    location.reload();
 }

@@ -37,14 +37,44 @@ section.body {
 
    /*Opacity in the background and not in the text.*/
     background: rgba(248, 249, 250, 0.7);
-    margin: 5% 5% 0% 5%;
+    margin: 3% 5% 5% 5%;
     overflow: auto;
     font-size: 170%;
     /*Top`, right, bottom, left.*/
     padding: 5% 15% 5% 15%; 
-    margin-top: 10%;
+    
     
 
+}
+
+/*Form fields.*/
+#fname{
+    float:right;
+}
+#lname{
+    float:right;
+}
+#ename{
+    float:right;
+}
+#adname{
+    float:right;
+}
+#ddname{
+    float:right;
+}
+#form-title{
+    margin-bottom:5%;
+}
+#form-selector{
+    float:right;
+}
+
+#send{
+    float:right;
+}
+#clean{
+    float:right;
 }
 
 

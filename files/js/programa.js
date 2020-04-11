@@ -79,7 +79,6 @@ function putSpeakers()
                     div.append(img);
                     article.append(div);
                 }
-
                 // insert table with bio...
                 let table = $('<table></table>');
                 let tr = $('<tr></tr>');
