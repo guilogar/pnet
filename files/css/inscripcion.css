@@ -47,6 +47,36 @@ section.body {
 
 }
 
+/*Form fields.*/
+#fname{
+    float:right;
+}
+#lname{
+    float:right;
+}
+#ename{
+    float:right;
+}
+#adname{
+    float:right;
+}
+#ddname{
+    float:right;
+}
+#form-title{
+    margin-bottom:5%;
+}
+#form-selector{
+    float:right;
+}
+
+#send{
+    float:right;
+}
+#clean{
+    float:right;
+}
+
 
 /*Not neccesary.*/
 /*footer.footer {

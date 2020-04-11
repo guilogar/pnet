@@ -66,6 +66,7 @@ article img{
 
 .map{
     margin:5% 25% 5% 25%;
+    border:0; 
 }
 .article-text{
     font-style: italic;
