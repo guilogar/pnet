@@ -1,22 +1,16 @@
 header
 {
-    
     display:inline;
 }
 .header-header
 {
     display:flex;
     background-color:rgba(110, 23, 41, 0.7);
-    height: 50px;
-    
-    
+    height: 50px;  
 }
 header img{
     height: 100%;
-    
 }
-
-
 nav{
     display:inline;
     font-family: Spartan;
@@ -24,17 +18,11 @@ nav{
 .nav-list{
     list-style:none;
     display:none;
-
 }
-
 .nav-list:hover{
     display:inline;
 }
-
-
-
 section.body {
-
    /*Opacity in the background and not in the text.*/
     background: rgba(248, 249, 250, 0.7);
     margin: 5% 5% 0% 5%;
@@ -42,36 +30,26 @@ section.body {
     font-size: 150%;
     /*Top, right, bottom, left.*/
     padding: 5% 5% 5% 5%; 
-    
     height:700px;
 }
-
 hr{
     background-color: rgba(130, 147, 165, 1);
 }
-
 article{
     column-count: 2;
     column-gap: 60px;
     margin-bottom: 6%;
     margin-top:6%;
 }
-
 article img{
     padding-left: 20%;
     width: 400px;
     height: 250px;
     border-radius: 50%;
     margin-top:5%;
-    margin-bottom:5%;
-    
+    margin-bottom:5%;  
 }
-
-
-
 footer.footer * hr {
     color: #D3484B;
     border: 1px solid #D3484B;
 }
-
-

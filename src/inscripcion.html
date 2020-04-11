@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        
+    <head>  
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CIC - Congreso de Informática de Cádiz</title>
@@ -21,7 +20,6 @@
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
                 crossorigin="anonymous">
         </script>
-
         <link rel="stylesheet" href="../files/css/general.css">
         <link rel="stylesheet" href="../files/css/inscripcion.css">
         <script type="text/javascript" src="../files/js/inscripcion.js"></script>
@@ -38,20 +36,14 @@
                   <div class="header-header">
                      <a class="logo" href="./index.html"><img src="../files/img/logo.png" alt="CIC logo" /></a>
                      <nav class="nav-header">
-                      
                         <a href="./inscripcion.html" class="btn btn-danger btn-lg buttonNav">
                             Inscripción
                         </a>
-                        
                         <a href="./programa.html" class="btn btn-danger btn-lg buttonNav">Programa</a>
-                                 
-
-
                         <a href="./localizacion.html" class="btn btn-danger btn-lg buttonNav">
                             Localización
                         </a>
                     </nav>
-
                     </div>
                 </header>
                 
@@ -61,7 +53,6 @@
                         <div>
                             <input type="text" name="urlToRedirect" value="http://localhost:5500/src/inscripcion.html?formSend=true" hidden>
                         </div>
-                        
                         <div>
                             <label for="fname">Nombre:</label>
                             <input  type="text" id="fname"  class="form-inscription-input"  required>
@@ -76,86 +67,13 @@
                         </div>
                         <div>
                             <label for="adname">Fecha entrada:</label>
-                            <input type="date" id="adname" name="adname" class="form-inscription-input" min="2020-03-20" value="2020-03-29"  required>
+                            <input type="date" id="adname" name="adname" class="form-inscription-input" min="2020-02-28" value="2020-02-28"  required>
                         </div>
-                        <!-- TODO: add attributes min and max to input type date down -->
+                        
                         <div>
                             <label for="ddname">Fecha salida:</label>
-                            <input type="date" id="ddname" name="ddname" class="form-inscription-input"  max="2020-04-01" value="2020-04-01"  required>
+                            <input type="date" id="ddname" name="ddname" class="form-inscription-input"  max="2020-03-01" value="2020-03-01"  required>
                         </div>
-                        <script>
-                          
-
-                            // On key down disabled on input type dates...
-                            $("input[type=date].form-inscription-input").on("keydown", function search(e)
-                            {
-                                return false;
-                            });
-
-                            // Restrictions arrival date: it will be between 2020-03-28 and the departure date.
-                            $("input[type=date].form-inscription-input#adname").change(function(event)
-                            {
-                                const value = $(this).val();
-                                const date = new Date(value);
-                                const valueDepartureDate=  $("#ddname").val();
-                                if(date < new Date("2020-03-28"))
-                                {
-                                    $(this).val("2020-03-28");
-                                } else if(date > new Date(valueDepartureDate))
-                                {
-                                    $(this).val(valueDepartureDate);
-                                   
-                                }
-
-                                
-                            });
-                        
-                            // Restrictions departure date: it will be between the arrival date and 2020-04-1.
-                            $("input[type=date].form-inscription-input#ddname").change(function()
-                            { 
-                                const value = $(this).val();
-                                const date = new Date(value);
-                                const valueArrivalDate=  $("#adname").val();
-                                
-
-                                if(date < new Date(valueArrivalDate))
-                                {
-                                    $(this).val(valueArrivalDate);
-                                } else if(date > new Date("2020-04-01"))
-                                {
-                                    $(this).val("2020-04-01");
-                                }
-                                
-                            });
-                            
-                            //Restrictions selector.
-                            $("input[type=date].form-inscription-input#form-selector").change(function()
-                            { 
-                              
-                                const a = new Date($("#adname").value);
-                                const b = new Date($("#ddname").value);
-                                const c = new Date(a - b);
-                                console.log(c);
-                                if(c.getDay() == 2)
-                                {
-                                                            
-                                    $("#form-selector option[value='completa']").remove();
-                                }else 
-                                {
-                                    if(c==1)
-                                    {
-                                        ("#form-selector option[value='completa']").remove();
-                                        ("#form-selector option[value='doble']").remove();
-                                        
-                                    }
-                                
-                                }
-                            });
-                           
-
-
-
-                        </script>
                         <div>
                             <label for="form-selector">Tipo de inscripción :</label>
                             <select id="form-selector"  class="form-inscription-input" name="type_inscription">
@@ -163,9 +81,65 @@
                                 <option value="doble">Inscripción 2 días</option>
                                 <option value="individual">Inscripción 1 día</option>
                             </select>
-                            </div>
+                        </div>
+                        <script>
+                            // On key down disabled on input type dates...
+                            $("input[type=date].form-inscription-input").on("keydown", function search(e)
+                            {
+                                return false;
+                            });
+                            // Restrictions arrival date: it will be between 2020-03-28 and the departure date.
+                            $("input[type=date].form-inscription-input#adname").change(function(event)
+                            {
+                                const value = $(this).val();
+                                const date = new Date(value);
+                                const valueDepartureDate=  $("#ddname").val();
+                                if(date < new Date("2020-02-28"))
+                                {
+                                    $(this).val("2020-02-28");
+                                } else if(date > new Date(valueDepartureDate))
+                                {
+                                    $(this).val(valueDepartureDate);  
+                                }
+                            });
+                            // Restrictions departure date: it will be between the arrival date and 2020-04-1.
+                            $("input[type=date].form-inscription-input#ddname").change(function()
+                            { 
+                                const value = $(this).val();
+                                const date = new Date(value);
+                                const valueArrivalDate=  $("#adname").val();
+                                if(date < new Date(valueArrivalDate))
+                                {
+                                    $(this).val(valueArrivalDate);
+                                } else if(date > new Date("2020-03-01"))
+                                {
+                                    $(this).val("2020-03-01");
+                                }
+                            });
+                            //Restrictions selector. It executes when the user changes an option from the selector (function change()).
+                            $("#form-selector").change(function()
+                            { 
+                                const arrivalDate = new Date($("#adname").val());
+                                const departureDate = new Date($("#ddname").val());
+                                const difference = new Date(departureDate- arrivalDate);
+                                alert(difference.getDate());
+                                if(difference.getDay() == 2)
+                                {                      
+                                    alert("esto es 2");
+                                    $("#form-selector option[value='completa']").remove();
+                                }else 
+                                {
+                                    if(difference.getDate()==1)
+                                    {
+                                        alert("esto es 1");
+                                        $("#form-selector option[value='completa']").remove();
+                                        $("#form-selector option[value='doble']").remove(); 
+                                    }
+                                }
+                            });
+                        </script>
                         <input id="send" type="submit" value="Enviar" >
-                        <input id="clean" type="reset" value="Borrar" >
+                        <input id="clean" type="reset" onclick="reload()" value="Borrar" >
                     </form>
                     <hr>
                     <h6>Nota: Si tiene problemas con la página, haga click en Borrar para volver a empezar.</h6>
@@ -182,9 +156,6 @@
                     </h6>
                 </div>
             </footer>
-        </div>
-        
+        </div>  
     </body>
-
-   
 </html>

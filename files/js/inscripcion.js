@@ -6,7 +6,6 @@ function sendData()
 {
     // $('form#form-inscription');
 }
-
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -14,11 +13,9 @@ function getUrlVars() {
     });
     return vars;
 }
-
 function checkFormSend()
 {
     let formSend = Boolean(getUrlVars()["formSend"]);
-    
     if(formSend)
     {
         $('section.body > form#form-inscription').remove();
@@ -28,4 +25,8 @@ function checkFormSend()
         alertBoostrap.append(a);
         $('section.body').append(alertBoostrap);
     }
+}
+//Reloads web page to set input values to their default state.
+function reload(){
+    location.reload();
 }
