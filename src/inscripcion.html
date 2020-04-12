@@ -22,7 +22,7 @@
         </script>
         <link rel="stylesheet" href="../files/css/general.css">
         <link rel="stylesheet" href="../files/css/inscripcion.css">
-        <script type="text/javascript" src="../files/js/inscripcion.js"></script>
+        <script type="text/javascript" src="../files/js/validacion-formulario.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 checkFormSend();
@@ -82,62 +82,6 @@
                                 <option value="individual">Inscripción 1 día</option>
                             </select>
                         </div>
-                        <script>
-                            // On key down disabled on input type dates...
-                            $("input[type=date].form-inscription-input").on("keydown", function search(e)
-                            {
-                                return false;
-                            });
-                            // Restrictions arrival date: it will be between 2020-03-28 and the departure date.
-                            $("input[type=date].form-inscription-input#adname").change(function(event)
-                            {
-                                const value = $(this).val();
-                                const date = new Date(value);
-                                const valueDepartureDate=  $("#ddname").val();
-                                if(date < new Date("2020-02-28"))
-                                {
-                                    $(this).val("2020-02-28");
-                                } else if(date > new Date(valueDepartureDate))
-                                {
-                                    $(this).val(valueDepartureDate);  
-                                }
-                            });
-                            // Restrictions departure date: it will be between the arrival date and 2020-04-1.
-                            $("input[type=date].form-inscription-input#ddname").change(function()
-                            { 
-                                const value = $(this).val();
-                                const date = new Date(value);
-                                const valueArrivalDate=  $("#adname").val();
-                                if(date < new Date(valueArrivalDate))
-                                {
-                                    $(this).val(valueArrivalDate);
-                                } else if(date > new Date("2020-03-01"))
-                                {
-                                    $(this).val("2020-03-01");
-                                }
-                            });
-                            //Restrictions selector. It executes when the user changes an option from the selector (function change()).
-                            $("#form-selector").change(function()
-                            { 
-                                const arrivalDate = new Date($("#adname").val());
-                                const departureDate = new Date($("#ddname").val());
-                                const difference = new Date(departureDate- arrivalDate);
-                                alert(difference.getDate());
-                                if(difference.getDay() == 2)
-                                {                      
-                                    alert("esto es 2");
-                                    $("#form-selector option[value='completa']").remove();
-                                }else 
-                                {
-                                    if(difference.getDate()==1)
-                                    {
-                                        alert("esto es 1");
-                                        $("#form-selector option[value='completa']").remove();
-                                        $("#form-selector option[value='doble']").remove(); 
-                                    }
-                                }
-                            });
-                        </script>
                         <input id="send" type="submit" value="Enviar" >
                         <input id="clean" type="reset" onclick="reload()" value="Borrar" >
                     </form>
