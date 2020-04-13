@@ -2,10 +2,38 @@
 // IMPORTANT: in all code, i use the method append of jquery for add the elements. For more information, see https://api.jquery.com/append/
 
 // Previous check of any condition....
-function sendData()
+
+function sendData(event)
 {
-    // TODO: Ancla por otro lado + Añadir comprobciones del hito y si falla, con el eventpreventDefault, parar el envio y añadir un bloque div de Boostrap con el mensajito de error. 
-    //event.preventDefault().
+    //Name contain only characters.
+    var str= $("#fname").val();
+    var check=/^[a-zA-Z]+$/.test(str);
+   
+    //Name is not the person who is going to give the talk.
+    var check3=  str.includes("Edsger Dijkstra");
+    var check4=  str.includes("Steve Jobs");
+    var check5=  str.includes("Alan Turing");
+    var check6=  str.includes("Tim Berners-Lee");
+   
+    // Surnames contains only characters.
+    str=$("#lname").val();
+    var check2=/^[a-zA-Z]+$/.test(str);
+   
+    if(!check || !check2 || check3 || check4 || check5 || check6)
+    {
+        //Alert.
+        $( ".body" ).append( "<div class='alert alert-danger' role='alert' > ¡ERROR, NOMBRE Y/O APELLIDOS INTRODUCIDOS SÓLO DEBEN CONTENER CARACTERES O NO SER ALGUN PONENTE!  </div>");
+        event.preventDefault();
+       // location.href="inscripcion.html";
+    }
+
+    //Checking if any option is selected.
+    if($("#form-selector").val()=="ninguna")
+    {
+        $( ".body" ).append( "<div class='alert alert-danger' role='alert' > ¡ERROR, SELECCIONA ALGUNA OPCIÓN EN EL SELECTOR!");
+        event.preventDefault();
+    }
+    
 }
 function getUrlVars() {
     var vars = {};
@@ -73,7 +101,6 @@ $(document).ready(function () {
         const arrivalDate = new Date($("#adname").val());
         const departureDate = new Date($("#ddname").val());
         const difference = new Date(departureDate- arrivalDate);
-        alert(difference.getDate());
         if(difference.getDate() == 2)
         {                   
             $("#form-selector option[value='completa']").remove();
