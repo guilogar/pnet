@@ -12,8 +12,8 @@ function insertSpeaker(event)
     for(let div of divJobs)
     {
         div = $(div);
-        const jobname = div.find('#jobname').val();
-        const jobcompany = div.find('#jobcompany').val();
+        const jobname = div.find('.jobname').val();
+        const jobcompany = div.find('.jobcompany').val();
         
         if(jobname && jobcompany)
         {
@@ -111,8 +111,8 @@ function updateSpeaker(event)
     for(let div of divJobs)
     {
         div = $(div);
-        const jobname = div.find('#jobname').val();
-        const jobcompany = div.find('#jobcompany').val();
+        const jobname = div.find('.jobname').val();
+        const jobcompany = div.find('.jobcompany').val();
         
         if(jobname && jobcompany)
         {
@@ -187,24 +187,24 @@ function updateSpeakerModal()
                 {
                     divJob = '<div class="form-group row job">' +
                         '<div class="col-sm-6 mb-3 mb-sm-0">' +
-                            '<input type="text" class="form-control form-control-user" id="jobname" value="' + job.invent + '" placeholder="Ocupación o Investigación" required>' +
+                            '<input type="text" class="form-control form-control-user jobname" value="' + job.invent + '" placeholder="Ocupación o Investigación" required>' +
                         '</div>' +
                         '<div class="col-sm-6">' +
-                            '<input type="text" class="form-control form-control-user" id="jobcompany" value="' + job.application + '" placeholder="Empresa o Aplicación de la Investigación" required>' +
+                            '<input type="text" class="form-control form-control-user jobcompany" value="' + job.application + '" placeholder="Empresa o Aplicación de la Investigación" required>' +
                         '</div>' +
                     '</div>';
                 } else
                 {
                     divJob = '<div class="form-group row job">' +
                         '<div class="col-sm-6 mb-3 mb-sm-0">' +
-                            '<input type="text" class="form-control form-control-user" id="jobname" value="' + job.position + '" placeholder="Ocupación o Investigación" required>' +
+                            '<input type="text" class="form-control form-control-user jobname" value="' + job.position + '" placeholder="Ocupación o Investigación" required>' +
                         '</div>' +
                         '<div class="col-sm-6">' +
-                            '<input type="text" class="form-control form-control-user" id="jobcompany" value="' + job.company + '" placeholder="Empresa o Aplicación de la Investigación" required>' +
+                            '<input type="text" class="form-control form-control-user jobcompany" value="' + job.company + '" placeholder="Empresa o Aplicación de la Investigación" required>' +
                         '</div>' +
                     '</div>';
                 }
-                form.find('#addJob').before(divJob);
+                form.find('.addJob').before(divJob);
             }
             
             // show the modal
@@ -221,10 +221,10 @@ function actionButtons(element = undefined)
 {
     const job = '<div class="form-group row job">' +
                     '<div class="col-sm-6 mb-3 mb-sm-0">' +
-                        '<input type="text" class="form-control form-control-user" id="jobname" placeholder="Ocupación o Investigación" required>' +
+                        '<input type="text" class="form-control form-control-user jobname" placeholder="Ocupación o Investigación" required>' +
                     '</div>' +
                     '<div class="col-sm-6">' +
-                        '<input type="text" class="form-control form-control-user" id="jobcompany" placeholder="Empresa o Aplicación de la Investigación" required>' +
+                        '<input type="text" class="form-control form-control-user jobcompany" placeholder="Empresa o Aplicación de la Investigación" required>' +
                     '</div>' +
                 '</div>';
     if(element)
