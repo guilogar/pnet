@@ -1,11 +1,3 @@
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
-
 function putDays()
 {
     const timetableUrl = "http://localhost:3000/api/v1/timetable";
@@ -43,7 +35,15 @@ $(document).ready(function ()
     putDays();
 });
 
-function addTable(idDiv, idTable, nameColumns, data, callback, hasActions = false)
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+function addTable(idDiv, idTable, nameColumns, data, callback, hasUpdate = false, hasDelete = false)
 {
     const table = $('<table class="table table-bordered text-center" id="' + idTable + '" width="100%" cellspacing="0"></table>');
 
@@ -58,12 +58,15 @@ function addTable(idDiv, idTable, nameColumns, data, callback, hasActions = fals
         tr_foot.append('<th>' + column + '</th>');
     }
 
-    
-    if(hasActions)
+    if(hasUpdate)
     {
         tr_head.append('<th>Actualizar</th>');
-        tr_head.append('<th>Eliminar</th>');
         tr_foot.append('<th>Actualizar</th>');
+    }
+
+    if(hasDelete)
+    {
+        tr_head.append('<th>Eliminar</th>');
         tr_foot.append('<th>Eliminar</th>');
     }
 
@@ -83,13 +86,17 @@ function addTable(idDiv, idTable, nameColumns, data, callback, hasActions = fals
             tr_body.append(td_body);
         }
         
-        if(hasActions)
+        if(hasUpdate)
         {
             const td_update = $('<td><button type="button" id="' + row.id + '" class="btn btn-warning btn-circle update '
                                 + idTable + '"><i class="fas fa-exclamation-triangle"></i></a></td>');
+            tr_body.append(td_update);
+        }
+
+        if(hasDelete)
+        {
             const td_delete = $('<td><button type="button" id="' + row.id + '" class="btn btn-danger btn-circle delete '
                                 + idTable + '"><i class="fas fa-trash"></i></a></td>');
-            tr_body.append(td_update);
             tr_body.append(td_delete);
         }
 
@@ -122,7 +129,12 @@ function putTimetable(idObject, idDiv, callback)
                     item.hour, item.activity
                 ]);
             }
-            addTable(idDiv, 'table_' + idDiv, ['Hora', 'Actividad'], arrayData, callback, false);
+            addTable(
+                idDiv,
+                'table_' + idDiv,
+                ['Hora', 'Actividad'],
+                arrayData, callback, false, false
+            );
         },
         error: function(err)
         {
@@ -159,7 +171,12 @@ function putSpeakers(idDiv, callback)
                 row.id = item._id;
                 arrayData.push(row);
             }
-            addTable(idDiv, 'table_' + idDiv, ['Nombre', 'Profesión', 'Trabajos'], arrayData, callback, true);
+            addTable(
+                idDiv,
+                'table_' + idDiv,
+                ['Nombre', 'Profesión', 'Trabajos'],
+                arrayData, callback, true, true
+            );
         },
         error: function(err)
         {
@@ -187,7 +204,12 @@ function putNotifications(idDiv, callback)
                 row.id = item._id;
                 arrayData.push(row);
             }
-            addTable(idDiv, 'table_' + idDiv, ['Mensaje', 'Fecha de creación'], arrayData, callback, true);
+            addTable(
+                idDiv,
+                'table_' + idDiv,
+                ['Mensaje', 'Fecha de creación'],
+                arrayData, callback, true, true
+            );
         },
         error: function(err)
         {
@@ -215,7 +237,12 @@ function putInscriptions(idDiv, callback)
                 row.id = item._id;
                 arrayData.push(row);
             }
-            addTable(idDiv, 'table_' + idDiv, ['Nombre', 'Apellidos', 'Email', 'Fecha de entrada', 'Fecha de salida'], arrayData, callback, true);
+            addTable(
+                idDiv,
+                'table_' + idDiv,
+                ['Nombre', 'Apellidos', 'Email', 'Fecha de entrada', 'Fecha de salida'],
+                arrayData, callback, false, true
+            );
         },
         error: function(err)
         {
