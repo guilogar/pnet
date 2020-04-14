@@ -85,8 +85,10 @@ function addTable(idDiv, idTable, nameColumns, data, callback, hasActions = fals
         
         if(hasActions)
         {
-            const td_update = $('<td><a href="#" class="btn btn-warning btn-circle ' + idTable + ' update" id=""><i class="fas fa-exclamation-triangle"></i></a></td>');
-            const td_delete = $('<td><a href="#" class="btn btn-danger btn-circle ' + idTable + ' delete" id=""><i class="fas fa-trash"></i></a></td>');
+            const td_update = $('<td><button type="button" id="' + row.id + '" class="btn btn-warning btn-circle updateSpeaker '
+                                + idTable + '"><i class="fas fa-exclamation-triangle"></i></a></td>');
+            const td_delete = $('<td><button type="button" id="' + row.id + '" class="btn btn-danger btn-circle deleteSpeaker '
+                                + idTable + '"><i class="fas fa-trash"></i></a></td>');
             tr_body.append(td_update);
             tr_body.append(td_delete);
         }
@@ -151,9 +153,11 @@ function putSpeakers(idDiv, callback)
                         stringJob += job.invent + ' (' + job.application + ' ), ';
                 }
 
-                arrayData.push([
+                let row = [
                     item.name, (item.researcher) ? 'Investigador' : 'Desarrollador', stringJob
-                ]);
+                ];
+                row.id = item._id;
+                arrayData.push(row);
             }
             addTable(idDiv, 'table_' + idDiv, ['Nombre', 'Profesión', 'Trabajos'], arrayData, callback, true);
         },

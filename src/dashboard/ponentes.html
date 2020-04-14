@@ -239,7 +239,16 @@
         <div class="container-fluid">
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Ponentes</h1>
-
+          
+          <a href="#" class="btn btn-success btn-icon-split" id="addSpeaker" data-toggle="modal" data-target="#addSpeakerModal">
+            <span class="icon text-white-50">
+                <i class="fas fa-arrow-right"></i>
+            </span>
+            <span class="text">Añadir ponente</span>
+          </a>
+          
+          <br />
+          <br />
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -298,36 +307,168 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Delete Speaker Modal-->
+  <div class="modal fade" id="deleteSpeakerModal" tabindex="-1" role="dialog" aria-labelledby="deleteSpeakerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteSpeakerModalLabel"></h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Una vez que realice la acción, no se podrá volver atrás.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <input type="text" id="idSpeaker" hidden>
+          <button class="btn btn-danger" type="button" id="deleteSpeakerButton">Borrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Add Speaker Modal-->
+  <div class="modal fade" id="addSpeakerModal" tabindex="-1" role="dialog" aria-labelledby="addSpeakerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addSpeakerModalLabel">Añadir Ponente</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form id="addSpeakerForm" onsubmit="insertSpeaker(event)">
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control form-control-user" id="addSpeakerName" placeholder="Nombre del ponente" required>
+                </div>
+                <div class="form-group">
+                    <label for="researcher">Investigador</label>
+                    <select class="form-control" name="researcher" id="addSpeakerResearcher">
+                      <option value="true">Sí</option>
+                      <option value="false">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="text" cols="30" rows="10" class="form-control" id="addSpeakerText" placeholder="Texto del ponente" required></textarea>
+                </div>
+                <h5>Trabajos</h5>
+                <div class="form-group row job">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <input type="text" class="form-control form-control-user" id="jobname" placeholder="Ocupación o Investigación" required>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control form-control-user" id="jobcompany" placeholder="Empresa o Aplicación de la Investigación" required>
+                    </div>
+                </div>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+                <button class="btn btn-info btn-icon-split addJob" type="button">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="text">Añadir trabajo</span>
+                </button>
+                <button class="btn btn-danger btn-icon-split deleteJob" type="button">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    <span class="text">Eliminar trabajo</span>
+                </button>
+                <hr />
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-success" type="submit">
+                    Enviar
+                </button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+  <!-- Update Speaker Modal-->
+  <div class="modal fade" id="updateSpeakerModal" tabindex="-1" role="dialog" aria-labelledby="updateSpeakerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateSpeakerModalLabel">Modificar Ponente</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form id="updateSpeakerForm" onsubmit="updateSpeaker(event)">
+            <div class="modal-body">
+                <input type="text" id="updateIdSpeaker" hidden>
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control form-control-user" id="updateSpeakerName" placeholder="Nombre del ponente" required>
+                </div>
+                <div class="form-group">
+                    <label for="researcher">Investigador</label>
+                    <select class="form-control" name="researcher" id="updateSpeakerResearcher">
+                      <option value="true">Sí</option>
+                      <option value="false">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="text" cols="30" rows="10" class="form-control" id="updateSpeakerText" placeholder="Texto del ponente" required></textarea>
+                </div>
+                
+                <h5>Trabajos</h5>
 
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+                <button class="btn btn-info btn-icon-split addJob" type="button">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="text">Añadir trabajo</span>
+                </button>
+                <button class="btn btn-danger btn-icon-split deleteJob" type="button">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    <span class="text">Eliminar trabajo</span>
+                </button>
+                <hr />
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-success" type="submit">
+                    Guardar
+                </button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-  <script src="js/addinfo.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    $(document).ready(function()
-    {
-        const idDiv = 'speakers';
-        $('#' + idDiv).empty();
-        putSpeakers(idDiv, function ()
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script src="js/addinfo.js"></script>
+    <script src="js/speakers.js"></script>
+
+    <script>
+        $(document).ready(function()
         {
-            $('#table_' + idDiv).DataTable();
+            loadSpeakers();
+            actionButtons();
         });
-    });
-  </script>
-</body>
+    </script>
+    
+  </body>
 
 </html>
