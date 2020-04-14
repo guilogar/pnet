@@ -53,13 +53,13 @@
                 
                 <section class="body"> 
                     <h2 id="form-title">Formulario de inscripción</h2>   
-                    <form id="form-inscription" class="body-form" method="POST" onsubmit=" sendData(event)" action="http://localhost:3000/api/v1/inscriptions">
+                    <form id="form-inscription" class="body-form" method="POST" onsubmit="sendData(event)" action="http://localhost:3000/api/v1/inscriptions">
                         <div>
                             <input type="text" name="urlToRedirect" id="urlToRedirect" value="" hidden>
                         </div>
                         <div>
                             <label for="fname">Nombre:</label>
-                            <input  type="text" id="fname"  class="form-inscription-input"  required>
+                            <input  type="text" id="fname" name="fname" class="form-inscription-input"  required>
                         </div>
                         <div>
                             <label for="lname">Apellidos:</label>

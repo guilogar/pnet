@@ -16,6 +16,7 @@ class Database {
                 "mongodb://" + USERNAME + ":" + PASSWORD + "@ds157834.mlab.com:57834/heroku_0dql66zr",
                 { useNewUrlParser: true, useUnifiedTopology: true }
             );
+            this.database = database;
             this.db = await database.db('heroku_0dql66zr').collection(collectionDatabase);
             return this.db;
         } catch(err)
@@ -47,6 +48,15 @@ class Database {
     async removeAll (callback) {
         return await this.db.deleteMany({}, callback);
     };
+
+    async close() {
+        try
+        {
+            this.database.close();
+        } catch(err) {
+            console.log(err)
+        }
+    }
 };
 
 module.exports.Database = Database;

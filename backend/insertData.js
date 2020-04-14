@@ -1,6 +1,7 @@
-const databaseServiceNotifications = require('./routes/database-service');
-const databaseServiceSpeakers = require('./routes/database-service');
-const databaseServiceTimetable = require('./routes/database-service');
+const { Database } = require('./routes/database-service');
+const databaseServiceNotifications = new Database();
+const databaseServiceSpeakers = new Database();
+const databaseServiceTimetable = new Database();
 
 // Insert notifications
 async function insertNotifications()
@@ -38,6 +39,8 @@ async function insertNotifications()
     );
     
     console.log(await databaseServiceNotifications.getAll());
+
+    await databaseServiceNotifications.close();
 }
 
 // Insert timetable
@@ -177,6 +180,7 @@ async function insertTimetable()
     );
     
     console.log(await databaseServiceTimetable.getAll());
+    await databaseServiceTimetable.close();
 }
 
 // Insert speakers
@@ -342,8 +346,8 @@ async function insertSpeakers()
     );
     
     console.log(await databaseServiceSpeakers.getAll());
+    await databaseServiceSpeakers.close();
 }
-
 
 // insert all
 (async () => {
