@@ -1,3 +1,13 @@
+function addSuccessAlert(message, idElement)
+{
+    let alertBoostrap = $('<div class="alert alert-success" role="alert">' + message +
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                                '<span aria-hidden="true">&times;</span>' + 
+                            '</button>' +
+                        '</div>');
+    $(idElement).before(alertBoostrap);
+}
+
 function insertSpeaker(event)
 {
     event.preventDefault();
@@ -46,11 +56,8 @@ function insertSpeaker(event)
         data: speaker,
         success: function(data)
         {
-            $('#addSpeakerModal').modal('toggle');
-
-            let alertBoostrap = $('<div class="alert alert-success" role="alert">Ponente añadido con éxito.</div>');
-            $('#addSpeaker').before(alertBoostrap);
-
+            $('#addSpeakerModal').modal('hide');
+            addSuccessAlert('Ponente añadido correctamente.', '#addSpeaker');
             loadSpeakers();
         },
         error: function(err)
@@ -69,10 +76,7 @@ function deleteSpeaker()
         success: function(data)
         {
             $('#deleteSpeakerModal').modal('hide');
-
-            let alertBoostrap = $('<div class="alert alert-success" role="alert">Ponente eliminado con éxito.</div>');
-            $('#addSpeaker').before(alertBoostrap);
-
+            addSuccessAlert('Ponente eliminado correctamente.', '#addSpeaker');
             loadSpeakers();
         },
         error: function(err)
@@ -151,10 +155,7 @@ function updateSpeaker(event)
         success: function(data)
         {
             $('#updateSpeakerModal').modal('hide');
-
-            let alertBoostrap = $('<div class="alert alert-success" role="alert">Ponente actualizado con éxito.</div>');
-            $('#addSpeaker').before(alertBoostrap);
-
+            addSuccessAlert('Ponente actualizado correctamente.', '#addSpeaker');
             loadSpeakers();
         },
         error: function(err)
