@@ -217,7 +217,7 @@ function updateSpeakerModal()
     });
 }
 
-function actionButtons(element = undefined)
+function actionButtons()
 {
     const job = '<div class="form-group row job">' +
                     '<div class="col-sm-6 mb-3 mb-sm-0">' +
@@ -227,23 +227,12 @@ function actionButtons(element = undefined)
                         '<input type="text" class="form-control form-control-user jobcompany" placeholder="Empresa o Aplicación de la Investigación" required>' +
                     '</div>' +
                 '</div>';
-    if(element)
-    {
-        element.find('#addJob').click(function () {
-            $(this).before(job);
-        });
-        element.find('#deleteJob').click(function () {
-            if($('.job').length > 1) $('.job').last().remove();
-        });
-    } else
-    {
-        $('.addJob').click(function () {
-            $(this).before(job);
-        });
-        $('.deleteJob').click(function () {
-            if($('.job').length > 1) $('.job').last().remove();
-        });
-    }
+    $('.addJob').click(function () {
+        $(this).before(job);
+    });
+    $('.deleteJob').click(function () {
+        if($('.job').length > 1) $('.job').last().remove();
+    });
 }
 
 function loadSpeakers()
