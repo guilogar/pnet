@@ -458,12 +458,14 @@
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
+    <script src="js/utils.js"></script>
     <script src="js/addinfo.js"></script>
     <script src="js/speakers.js"></script>
 
     <script>
         $(document).ready(function()
         {
+            $('#deleteSpeakerButton').click(deleteSpeaker);
             loadSpeakers();
             actionButtons();
         });

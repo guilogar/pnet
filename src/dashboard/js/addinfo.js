@@ -85,9 +85,9 @@ function addTable(idDiv, idTable, nameColumns, data, callback, hasActions = fals
         
         if(hasActions)
         {
-            const td_update = $('<td><button type="button" id="' + row.id + '" class="btn btn-warning btn-circle updateSpeaker '
+            const td_update = $('<td><button type="button" id="' + row.id + '" class="btn btn-warning btn-circle update '
                                 + idTable + '"><i class="fas fa-exclamation-triangle"></i></a></td>');
-            const td_delete = $('<td><button type="button" id="' + row.id + '" class="btn btn-danger btn-circle deleteSpeaker '
+            const td_delete = $('<td><button type="button" id="' + row.id + '" class="btn btn-danger btn-circle delete '
                                 + idTable + '"><i class="fas fa-trash"></i></a></td>');
             tr_body.append(td_update);
             tr_body.append(td_delete);
@@ -181,9 +181,11 @@ function putNotifications(idDiv, callback)
             let arrayData = [];
             for(const item of data)
             {
-                arrayData.push([
+                let row = [
                     item.text, new Date(item.createdAt)
-                ]);
+                ];
+                row.id = item._id;
+                arrayData.push(row);
             }
             addTable(idDiv, 'table_' + idDiv, ['Mensaje', 'Fecha de creación'], arrayData, callback, true);
         },
@@ -207,9 +209,11 @@ function putInscriptions(idDiv, callback)
             let arrayData = [];
             for(const item of data)
             {
-                arrayData.push([
+                let row = [
                     item.fname, item.lname, item.ename, item.adname, item.ddname
-                ]);
+                ];
+                row.id = item._id;
+                arrayData.push(row);
             }
             addTable(idDiv, 'table_' + idDiv, ['Nombre', 'Apellidos', 'Email', 'Fecha de entrada', 'Fecha de salida'], arrayData, callback, true);
         },

@@ -1,13 +1,3 @@
-function addSuccessAlert(message, idElement)
-{
-    let alertBoostrap = $('<div class="alert alert-success" role="alert">' + message +
-                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-                                '<span aria-hidden="true">&times;</span>' + 
-                            '</button>' +
-                        '</div>');
-    $(idElement).before(alertBoostrap);
-}
-
 function insertSpeaker(event)
 {
     event.preventDefault();
@@ -97,7 +87,6 @@ function deleteSpeakerModal()
         {
             data = data[0];
             $('#deleteSpeakerModalLabel').text('¿Esta seguro de eliminar al ponente "' + data.name + '"?');
-            $('#deleteSpeakerButton').click(deleteSpeaker);
             $('#idSpeaker').val(id);
             $('#deleteSpeakerModal').modal('show');
         },
@@ -264,8 +253,8 @@ function loadSpeakers()
     putSpeakers(idDiv, function ()
     {
         $('#table_' + idDiv).DataTable();
-        $('.updateSpeaker').click(updateSpeakerModal);
-        $('.deleteSpeaker').click(deleteSpeakerModal);
+        $('.update').click(updateSpeakerModal);
+        $('.delete').click(deleteSpeakerModal);
     });
     
 }
