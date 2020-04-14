@@ -6,22 +6,29 @@
 function sendData(event)
 {
     //Name contain only characters.
-    var str= $("#fname").val();
-    var check=/^[a-zA-Z]+$/.test(str);
+    var str = $("#fname").val();
+    var check = /^[a-zA-Z]+$/.test(str);
    
     //Name is not the person who is going to give the talk.
-    var check3=  str.includes("Edsger Dijkstra");
-    var check4=  str.includes("Steve Jobs");
-    var check5=  str.includes("Alan Turing");
-    var check6=  str.includes("Tim Berners-Lee");
+    var check3 = str.includes("Edsger Dijkstra");
+    var check4 = str.includes("Steve Jobs");
+    var check5 = str.includes("Alan Turing");
+    var check6 = str.includes("Tim Berners-Lee");
    
     // Surnames contains only characters.
-    str=$("#lname").val();
-    var check2=/^[a-zA-Z]+$/.test(str);
+    str = $("#lname").val();
+    var check2 = /^[a-zA-Z]+$/.test(str); // TODO: permit blank spaces between lastname......
    
+    // console.log(!check)
+    // console.log(!check2)
+    // console.log(check3)
+    // console.log(check4)
+    // console.log(check5)
+    // console.log(check6)
     if(!check || !check2 || check3 || check4 || check5 || check6)
     {
         //Alert.
+        $('div.alert').remove(); // Delete previous alerts....
         $( ".body" ).append( "<div class='alert alert-danger' role='alert' > ¡ERROR, NOMBRE Y/O APELLIDOS INTRODUCIDOS SÓLO DEBEN CONTENER CARACTERES O NO SER ALGUN PONENTE!  </div>");
         event.preventDefault();
        // location.href="inscripcion.html";
@@ -42,7 +49,8 @@ function getUrlVars() {
     });
     return vars;
 }
-function checkFormSend()
+
+function checkFormSend(url)
 {
     let formSend = Boolean(getUrlVars()["formSend"]);
     if(formSend)
@@ -50,7 +58,7 @@ function checkFormSend()
         $('section.body > form#form-inscription').remove();
         $('section.body > h6').remove();
         let alertBoostrap = $('<div class="alert alert-success" role="alert">Formulario enviado con éxito. </div>');
-        let a = $('<span>Haz click <a href="http://localhost:5500/src/inscripcion.html">aquí</a> para enviar otro.</span>');
+        let a = $('<span>Haz click <a href="' + url + '">aquí</a> para enviar otro.</span>');
         alertBoostrap.append(a);
         $('section.body').append(alertBoostrap);
     }
