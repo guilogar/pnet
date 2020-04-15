@@ -74,16 +74,20 @@ function putSpeakers()
                     article.append(div);
                 }
 
-                // insert images...
-                for(const image of speaker.images)
+                if(speaker.images !== undefined)
                 {
-                    let div = $('<div></div>');
-                    let img = $('<img></img>');
-                    img.attr('src', image);
+                    // insert images...
+                    for(const image of speaker.images)
+                    {
+                        let div = $('<div></div>');
+                        let img = $('<img></img>');
+                        img.attr('src', image);
 
-                    div.append(img);
-                    article.append(div);
+                        div.append(img);
+                        article.append(div);
+                    }
                 }
+                
                 // insert table with bio...
                 let table = $('<table></table>');
                 let tr = $('<tr></tr>');
@@ -104,7 +108,7 @@ function putSpeakers()
                 tr.append(th_position);
                 tr.append(th_company);
                 table.append(tr);
-
+                
                 // insert rows of table...
                 for(const job of speaker.jobs)
                 {
@@ -112,7 +116,7 @@ function putSpeakers()
                     let td_position = undefined;
                     let td_company = undefined;
 
-                    if(speaker.researcher !== undefined && speaker.researcher === true)
+                    if(speaker.researcher !== undefined && JSON.parse(speaker.researcher) === true)
                     {
                         td_position = $('<td>' + job.invent + '</td>');
                         td_company = $('<td>' + job.application + '</td>');

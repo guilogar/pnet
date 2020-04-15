@@ -157,16 +157,19 @@ function putSpeakers(idDiv, callback)
             for(const item of data)
             {
                 let stringJob = '';
-                for(const job of item.jobs)
+                if(item.jobs !== undefined)
                 {
-                    if(job.company)
-                        stringJob += job.company + ' (' + job.position + '), ';
-                    else
-                        stringJob += job.invent + ' (' + job.application + '), ';
+                    for(const job of item.jobs)
+                    {
+                        if(job.company)
+                            stringJob += job.company + ' (' + job.position + '), ';
+                        else
+                            stringJob += job.invent + ' (' + job.application + '), ';
+                    }
+    
+                    stringJob = stringJob.trim().slice(0, -1);
                 }
-
-                stringJob = stringJob.trim().slice(0, -1);
-
+                
                 let row = [
                     item.name, (item.researcher) ? 'Investigador' : 'Desarrollador', stringJob
                 ];

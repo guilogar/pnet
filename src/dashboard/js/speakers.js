@@ -3,7 +3,7 @@ function insertSpeaker(event)
     event.preventDefault();
     const form = $('form#addSpeakerForm');
     const name = form.find('#addSpeakerName').val();
-    const researcher = (form.find('#addSpeakerResearcher').val() === 'true') ? true : false;
+    const researcher = JSON.parse(form.find('#addSpeakerResearcher').val());
     const text = form.find('#addSpeakerText').val();
     let jobs = [];
 
@@ -19,13 +19,13 @@ function insertSpeaker(event)
         {
             if(researcher)
                 jobs.push({
-                    position: jobname,
-                    company: jobcompany
+                    invent: jobname,
+                    application: jobcompany
                 });
             else
                 jobs.push({
-                    invent: jobname,
-                    application: jobcompany
+                    position: jobname,
+                    company: jobcompany
                 });
         }
     }
@@ -102,7 +102,7 @@ function updateSpeaker(event)
     event.preventDefault();
     const form = $('form#updateSpeakerForm');
     const name = form.find('#updateSpeakerName').val();
-    const researcher = (form.find('#updateSpeakerResearcher').val() === 'true') ? true : false;
+    const researcher = JSON.parse(form.find('#updateSpeakerResearcher').val());
     const text = form.find('#updateSpeakerText').val();
     let jobs = [];
 
