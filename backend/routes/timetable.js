@@ -42,7 +42,7 @@ router.post('/timetable', function (req, res) {
                 res.status(500).send({
                     msg: err
                 });
-            } else if (movie !== null) {
+            } else if (object !== null) {
                 res.status(201).send({
                     msg: 'object created!'
                 });

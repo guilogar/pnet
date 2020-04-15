@@ -1,0 +1,9 @@
+function addSuccessAlert(message, idElement)
+{
+    let alertBoostrap = $('<div class="alert alert-success" role="alert">' + message +
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                                '<span aria-hidden="true">&times;</span>' + 
+                            '</button>' +
+                        '</div>');
+    $(idElement).before(alertBoostrap);
+}

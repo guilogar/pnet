@@ -37,6 +37,8 @@ router.get('/inscriptions', function (req, res) {
 
 router.post('/inscriptions', function (req, res) {
     let object = req.body;
+    if(object.urlToRedirect !== undefined) delete object.urlToRedirect;
+    
     databaseServiceInscriptions.add(object, (err, object) => {
             if (err)
             {
@@ -45,12 +47,9 @@ router.post('/inscriptions', function (req, res) {
                 });
             } else if (object !== null)
             {
-                res.redirect(req.body.urlToRedirect);
-                /*
                 res.status(201).send({
                     msg: 'object created!'
                 });
-                */
             }
         }
     );
