@@ -48,7 +48,6 @@ function putSpeakers()
         url: speakersUrl,
         success: function(data)
         {
-            console.log(data);
             let h1 = $('<h1 class="text-center">PONENTES</h1>');
             $('section.speakers').append(h1);
 
@@ -57,6 +56,12 @@ function putSpeakers()
                 let article = $('<article></article>');
                 let h2 = $('<h2 class="text-center">' + speaker.name + '</h2>');
                 article.append(h2);
+
+                if(typeof speaker.text == 'string')
+                {
+                    const text = speaker.text;
+                    speaker.text = [text];
+                }
 
                 // insert text...
                 for(const text of speaker.text)
