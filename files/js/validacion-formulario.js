@@ -5,6 +5,8 @@
 
 function sendData(event)
 {
+    event.preventDefault();
+
     //Name contain only characters.
     var str = $("#fname").val();
     var check = /^[a-zA-Z]+$/.test(str);
@@ -30,18 +32,45 @@ function sendData(event)
         //Alert.
         $('div.alert').remove(); // Delete previous alerts....
         $( ".body" ).append( "<div class='alert alert-danger' role='alert' > ¡ERROR, NOMBRE Y/O APELLIDOS INTRODUCIDOS SÓLO DEBEN CONTENER CARACTERES O NO SER ALGUN PONENTE!  </div>");
-        event.preventDefault();
        // location.href="inscripcion.html";
+       return;
     }
 
     //Checking if any option is selected.
     if($("#form-selector").val()=="ninguna")
     {
         $( ".body" ).append( "<div class='alert alert-danger' role='alert' > ¡ERROR, SELECCIONA ALGUNA OPCIÓN EN EL SELECTOR!");
-        event.preventDefault();
+        return;
     }
     
+    const inputs = $('#form-inscription * input[name]');
+    let inscription = { };
+    
+    for(const input of inputs)
+    {
+        const nameInput = $(input).attr('name');
+        const valInput = $(input).val();
+        inscription[nameInput] = valInput;
+    }
+
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "http://localhost:3000/api/v1/inscriptions",
+        data: inscription,
+        success: function(data)
+        {
+            console.log(data);
+            window.location.href = inscription.urlToRedirect;
+        },
+        error: function(err)
+        {
+            console.log(err);
+            window.location.href = inscription.urlToRedirect.replace('true', 'false');
+        }
+    });    
 }
+
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -52,12 +81,24 @@ function getUrlVars() {
 
 function checkFormSend(url)
 {
-    let formSend = Boolean(getUrlVars()["formSend"]);
-    if(formSend)
+    let formSend = getUrlVars()["formSend"];
+    
+    if(formSend === undefined) return;
+
+    formSend = JSON.parse(getUrlVars()["formSend"]);
+
+    $('section.body > form#form-inscription').remove();
+    $('section.body > h6').remove();
+
+    if(formSend === true)
     {
-        $('section.body > form#form-inscription').remove();
-        $('section.body > h6').remove();
-        let alertBoostrap = $('<div class="alert alert-success" role="alert">Formulario enviado con éxito. </div>');
+        let alertBoostrap = $('<div class="alert alert-success" role="alert">Formulario enviado con éxito.</div>');
+        let a = $('<span>Haz click <a href="' + url + '">aquí</a> para enviar otro.</span>');
+        alertBoostrap.append(a);
+        $('section.body').append(alertBoostrap);
+    } else if(formSend === false)
+    {
+        let alertBoostrap = $('<div class="alert alert-danger" role="alert">Lo lamentamos, pero su formulario no se ha podido enviar con éxito. Vuelva a intentarlo.</div>');
         let a = $('<span>Haz click <a href="' + url + '">aquí</a> para enviar otro.</span>');
         alertBoostrap.append(a);
         $('section.body').append(alertBoostrap);
