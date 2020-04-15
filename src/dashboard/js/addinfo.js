@@ -89,7 +89,7 @@ function addTable(idDiv, idTable, nameColumns, data, callback, hasUpdate = false
         if(hasUpdate)
         {
             const td_update = $('<td><button type="button" id="' + row.id + '" class="btn btn-warning btn-circle update '
-                                + idTable + '"><i class="fas fa-exclamation-triangle"></i></a></td>');
+                                + idTable + '"><i class="fas fa-edit"></i></a></td>');
             tr_body.append(td_update);
         }
 
