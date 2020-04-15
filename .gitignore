@@ -3,10 +3,5 @@
 /reports
 /vendor
 *.log
-<<<<<<< HEAD
 /node_modules
 *.zip
-*.mp4
-=======
-/node_modules
->>>>>>> 6effe763763d7ae920a848e7dba533e4f9029117
