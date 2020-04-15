@@ -1,0 +1,22 @@
+name: Integration
+
+on:
+  push:
+    branches:
+      - master
+      - test-github-actions
+  schedule:
+    - cron: '0 0 * * 0' # Weekly on Sundays at 02:00
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - run: npm install
+    - run: node testhtml.js &> log.log
+    - uses: actions/upload-artifact@v1
+      with:
+        name: log
+        path: log.log

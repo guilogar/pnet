@@ -1,0 +1,8 @@
+/cache/
+/config/development/
+/reports
+/vendor
+*.log
+/node_modules
+*.zip
+*.mp4
