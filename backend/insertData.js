@@ -63,6 +63,11 @@ async function insertTimetable()
         {
             day: 29,
             title: 'Programación - Viernes 29',
+            lozalization: {
+                x: 0.0,
+                y: 0.0,
+                verbose: 'Calle La Floritura, S/n, código postal: 11540'
+            },
             table: [
                 {
                     hour: '9.30 - 10.00',
@@ -100,6 +105,11 @@ async function insertTimetable()
         {
             day: 30,
             title: 'Programación - Sábado 30',
+            lozalization: {
+                x: 0.0,
+                y: 0.0,
+                verbose: 'Calle La Floritura, S/n, código postal: 11540'
+            },
             table: [
                 {
                     hour: '9.30 - 10.00',
@@ -137,6 +147,11 @@ async function insertTimetable()
         {
             day: 1,
             title: 'Programación - Domingo 1',
+            lozalization: {
+                x: 0.0,
+                y: 0.0,
+                verbose: 'Calle La Floritura, S/n, código postal: 11540'
+            },
             table: [
                 {
                     hour: '9.30 - 10.00',
