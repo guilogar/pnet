@@ -66,5 +66,15 @@ Previously, execute:
 npm install
 ```
 
+# Access to global domain heroku
+The backend is upload with 
+`
+https://pnet.herokuapp.com/api/v1/
+`
+url. To access to any endpoint, must complete the url with
+`timetable`, `inscriptions`, `speakers` and `notifications`.
+
+By example, to access `timetable` data, you must access to `https://pnet.herokuapp.com/api/v1/timetable`
+
 # Coming soon
 Automatic unit a integration test with mocha, postman and maybe, with selenium.
