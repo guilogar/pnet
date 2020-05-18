@@ -1,0 +1,22 @@
+*********************************************************
+*ARCHIVOS DE LA APP EN ANDROID DONDE SE CONFIGURA LA URL*
+*********************************************************
+NOTA: Todas las URL se pueden sustituir por: //http://10.0.2.2:3000/api/v1/inscriptions, añadiendo "/id" del dato en cuestión si corresponde, siempre que se ejecute el servidor en una
+máquina local con la orden: node index.js.
+
+1.- Archivo : form_view.java (que se encuentra en: ..\pnet\android_application\app\src\main\java\es\uca\android_application).
+	* Clase postTask, en función doInBackground: URL = https://pnet.herokuapp.com/api/v1/inscriptions.
+
+2.- Archivo : event_attendees.java (que se encuentra en: ..\pnet\android_application\app\src\main\java\es\uca\android_application).
+	* Clase GetAllJson en función doInBackground: URL = https://pnet.herokuapp.com/api/v1/inscriptions.
+
+3.- Archivo : attendee_view.java (que se encuentra en: ..\pnet\android_application\app\src\main\java\es\uca\android_application).
+	* Clase GetAttendee en función doInBackground: URL = https://pnet.herokuapp.com/api/v1/inscriptions/"id".
+	* Clase deleteAttende en función doInBackground: URL = https://pnet.herokuapp.com/api/v1/inscriptions/"id".
+
+4.- Archivo : change_attendee.java (que se encuentra en: ..\pnet\android_application\app\src\main\java\es\uca\android_application).
+	* Clase GetAttendee en función doInBackground: URL = https://pnet.herokuapp.com/api/v1/inscriptions/"id".
+	* Clase updateAttendee en función doInBackground: URL = https://pnet.herokuapp.com/api/v1/inscriptions/"id".
+	
+
+	

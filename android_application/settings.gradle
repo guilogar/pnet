@@ -1,2 +1,2 @@
-rootProject.name='CIC'
+rootProject.name='android_application'
 include ':app'

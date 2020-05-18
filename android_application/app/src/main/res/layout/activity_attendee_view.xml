@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/general_form2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".attendee_view">
+
+    <TextView
+        android:id="@+id/name_text2"
+        android:layout_width="86dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="17dp"
+        android:text="Nombre"
+        android:textSize="16.0dip"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_attendee" />
+
+    <TextView
+        android:id="@+id/title_attendee"
+        android:layout_width="173dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Ficha de asistente"
+        android:textSize="16.0dip"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dd_text2"
+        android:layout_width="88dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="17dp"
+        android:text="Fech. salida"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ad_text2" />
+
+    <TextView
+        android:id="@+id/dni_text2"
+        android:layout_width="88dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="14dp"
+        android:text="DNI"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dd_text2" />
+
+    <TextView
+        android:id="@+id/phone_text2"
+        android:layout_width="93dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="16dp"
+        android:text="Teléfono"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dni_text2" />
+
+    <TextView
+        android:id="@+id/bd_text2"
+        android:layout_width="93dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="9dp"
+        android:text="F. nac."
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone_text2" />
+
+    <TextView
+        android:id="@+id/id_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="15dp"
+        android:text="F. inscr."
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bd_text2" />
+
+    <TextView
+        android:id="@+id/name_text2_1"
+        android:layout_width="143dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="18dp"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toEndOf="@+id/name_text2"
+        app:layout_constraintTop_toBottomOf="@+id/title_attendee" />
+
+    <TextView
+        android:id="@+id/surnames_text2"
+        android:layout_width="85dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="16dp"
+        android:text="Apellidos"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_text2" />
+
+    <TextView
+        android:id="@+id/surnames_text2_1"
+        android:layout_width="144dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="16dp"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toEndOf="@+id/surnames_text2"
+        app:layout_constraintTop_toBottomOf="@+id/name_text2_1" />
+
+    <TextView
+        android:id="@+id/email_text3"
+        android:layout_width="87dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="15dp"
+        android:text="Email"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/surnames_text2" />
+
+    <TextView
+        android:id="@+id/email_text2_1"
+        android:layout_width="143dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="9dp"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toEndOf="@+id/email_text3"
+        app:layout_constraintTop_toBottomOf="@+id/surnames_text2_1" />
+
+    <TextView
+        android:id="@+id/ad_text2"
+        android:layout_width="85dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="13dp"
+        android:text="Fech. llegada"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_text3" />
+
+    <TextView
+        android:id="@+id/ad_text2_1"
+        android:layout_width="146dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="13dp"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toEndOf="@+id/ad_text2"
+        app:layout_constraintTop_toBottomOf="@+id/email_text2_1" />
+
+    <TextView
+        android:id="@+id/dd_text2_1"
+        android:layout_width="146dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="15dp"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toEndOf="@+id/dd_text2"
+        app:layout_constraintTop_toBottomOf="@+id/ad_text2_1" />
+
+    <TextView
+        android:id="@+id/dni_text2_1"
+        android:layout_width="147dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="13dp"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toEndOf="@+id/dni_text2"
+        app:layout_constraintTop_toBottomOf="@+id/dd_text2_1" />
+
+    <TextView
+        android:id="@+id/phone_text2_1"
+        android:layout_width="145dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="17dp"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toEndOf="@+id/phone_text2"
+        app:layout_constraintTop_toBottomOf="@+id/dni_text2_1" />
+
+    <TextView
+        android:id="@+id/bd_text2_1"
+        android:layout_width="144dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="17dp"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toEndOf="@+id/bd_text2"
+        app:layout_constraintTop_toBottomOf="@+id/phone_text2_1" />
+
+
+    <TextView
+        android:id="@+id/id_text2_1"
+        android:layout_width="149dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
+        android:textSize="16.0dip"
+        app:layout_constraintStart_toEndOf="@+id/id_text2"
+        app:layout_constraintTop_toBottomOf="@+id/bd_text2_1" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="411dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="148dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_text2">
+
+        <Button
+            android:id="@+id/back_form2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Volver"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/delete_form2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Eliminar"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toEndOf="@+id/put_form2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/put_form2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="CAMBIAR"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toEndOf="@+id/back_form2"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
