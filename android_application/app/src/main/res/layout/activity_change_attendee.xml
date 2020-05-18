@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".form_view">
+
+
+
+    <TextView
+        android:id="@+id/name_form_text3"
+        android:layout_width="95dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:text="Nombre"
+        android:textSize="23.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <TextView
+        android:id="@+id/surnames_text3"
+        android:layout_width="95dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:text="Apellidos"
+        android:textSize="23.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <TextView
+        android:id="@+id/email_text3"
+        android:layout_width="95dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="84dp"
+        android:text="Email"
+        android:textSize="23.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <TextView
+        android:id="@+id/ad_text3"
+        android:layout_width="103dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="132dp"
+        android:text="Fech. llegada"
+        android:textSize="23.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <TextView
+        android:id="@+id/dd_text3"
+        android:layout_width="99dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="204dp"
+        android:text="Fech. salida"
+        android:textSize="23.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <TextView
+        android:id="@+id/birth_text3"
+        android:layout_width="95dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="396dp"
+        android:text="F. nac."
+        android:textSize="23.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dni_form3"
+        android:layout_width="209dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="324dp"
+        android:ems="10"
+        android:hint="Introduzca DNI...."
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/dni_text3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/surnames_form3"
+        android:layout_width="211dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="Introduzca sus apellidos.."
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/surnames_text3"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <EditText
+        android:id="@+id/email_form3"
+        android:layout_width="211dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:hint="Introduzca su email.."
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/email_text3"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <EditText
+        android:id="@+id/ad_form3"
+        android:layout_width="211dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="132dp"
+        android:ems="10"
+        android:hint="Fecha de llegada.."
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/ad_text3"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <EditText
+        android:id="@+id/dd_form3"
+        android:layout_width="211dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="204dp"
+        android:ems="10"
+        android:hint="Fecha de salida.."
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/dd_text3"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <EditText
+        android:id="@+id/name_form3"
+        android:layout_width="211dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Introduzca su nombre..."
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/name_form_text3"
+        app:layout_constraintTop_toBottomOf="@+id/form_title3" />
+
+    <EditText
+        android:id="@+id/date_form3"
+        android:layout_width="209dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="396dp"
+        android:ems="10"
+        android:hint="Introduzca fech. nac..."
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/birth_text3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/phone_form3"
+        android:layout_width="209dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="360dp"
+        android:ems="10"
+        android:hint="Introduzca su num. tel.."
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/phone_text3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/phone_text3"
+        android:layout_width="95dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="360dp"
+        android:text="Teléfono"
+        android:textSize="23.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dni_text3"
+        android:layout_width="95dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="324dp"
+        android:text="DNI"
+        android:textSize="23.0dip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/form_title3"
+        android:layout_width="315dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Ficha a modificar del asistente"
+        android:textSize="23.0dip"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/send_button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/colorPrimary"
+        android:text="Actualizar"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_form3" />
+
+    <Button
+        android:id="@+id/back_button3"
+        android:layout_width="91dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/colorPrimary"
+        android:text="VOLVER"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birth_text3" />
+</androidx.constraintlayout.widget.ConstraintLayout>
