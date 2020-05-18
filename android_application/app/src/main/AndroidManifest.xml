@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".change_attendee"></activity>
+        <activity android:name=".program"></activity>
+        <activity android:name=".change_attendee" />
         <activity android:name=".attendee_view" />
         <activity android:name=".form_view" />
         <activity android:name=".event_attendees" />

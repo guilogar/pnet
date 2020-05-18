@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".program">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/program_title"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_span="2"
+                android:text="MY TITLE (DAY)"
+                android:textSize="16dp"
+                android:textStyle="bold|italic" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="28dp">
+
+            <TextView
+                android:id="@+id/program_hour1"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+
+            <TextView
+                android:id="@+id/program_activity1"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="20dp">
+
+            <TextView
+                android:id="@+id/program_hour2"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+
+            <TextView
+                android:id="@+id/program_activity2"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="20dp">
+
+            <TextView
+                android:id="@+id/program_hour3"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+
+            <TextView
+                android:id="@+id/program_activity3"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/program_hour4"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+
+            <TextView
+                android:id="@+id/program_activity4"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/program_hour5"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+
+            <TextView
+                android:id="@+id/program_activity5"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/program_hour6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+
+            <TextView
+                android:id="@+id/program_activity6"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="MY TITLE (DAY)" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+    </TableLayout>
+
+</LinearLayout>

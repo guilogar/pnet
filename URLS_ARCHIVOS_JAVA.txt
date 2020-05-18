@@ -17,6 +17,10 @@ máquina local con la orden: node index.js.
 4.- Archivo : change_attendee.java (que se encuentra en: ..\pnet\android_application\app\src\main\java\es\uca\android_application).
 	* Clase GetAttendee en función doInBackground: URL = https://pnet.herokuapp.com/api/v1/inscriptions/"id".
 	* Clase updateAttendee en función doInBackground: URL = https://pnet.herokuapp.com/api/v1/inscriptions/"id".
+
+5.- Archivo : program.java (que se encuentra en: ..\pnet\android_application\app\src\main\java\es\uca\android_application).
+	* Clase GetAllPrograms en función doInBackground: URL = https://pnet.herokuapp.com/api/v1/timetable.
+
 	
 
 	
