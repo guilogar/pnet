@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">android_application</string>
+    <string name="app_name">CIC App</string>
     <string name="add_button">¡Voy!</string>
     <string name="name_text">Escribe aquí tu nombre..</string>
 </resources>
