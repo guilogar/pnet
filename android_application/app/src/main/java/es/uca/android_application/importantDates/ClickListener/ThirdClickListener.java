@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat;
 
 import es.uca.android_application.R;
 import es.uca.android_application.importantDates.ImportantDates;
+import es.uca.android_application.localization.Localization;
 
 public class ThirdClickListener extends ClickListener implements RecyclerViewClickListener
 {
@@ -55,7 +56,7 @@ public class ThirdClickListener extends ClickListener implements RecyclerViewCli
                 .setContentTitle(this.title)
                 .setContentText(this.message);
 
-        Intent resultIntent = new Intent(ctx, ImportantDates.class);
+        Intent resultIntent = new Intent(ctx, Localization.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(ctx);
         stackBuilder.addParentStack(ImportantDates.class);
         stackBuilder.addNextIntent(resultIntent);

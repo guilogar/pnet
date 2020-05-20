@@ -1,48 +1,32 @@
-package es.uca.android_application.importantDates;
+package es.uca.android_application.localization;
+
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
 import es.uca.android_application.R;
 import es.uca.android_application.importantDates.RecyclerView.ImportantDatesAdapter;
+import es.uca.android_application.importantDates.Timetable;
 
-public class ImportantDates extends AppCompatActivity
+public class Localization extends AppCompatActivity
 {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.important_dates);
+        this.setContentView(R.layout.localization);
 
         // to make visible the back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        this.mRecyclerView = (RecyclerView) findViewById(R.id.important_dates_recycler_view);
-        this.mRecyclerView.setHasFixedSize(true);
-        this.mLayoutManager = new LinearLayoutManager(this);
-        this.mRecyclerView.setLayoutManager(this.mLayoutManager);
-
-        try
-        {
-            ArrayList<Timetable> timetables = Timetable.getAllTimetable();;
-            mAdapter = new ImportantDatesAdapter(timetables);
-            mRecyclerView.setAdapter(mAdapter);
-        } catch (Exception e)
-        {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-        }
+        Toast.makeText(this, "localizacion!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
