@@ -31,9 +31,9 @@ public class Timetable
         return this.attributes.get(key);
     }
 
-    /*
+
     // Method to update one Timetable by id
-    public static String updateTimetable(String id) throws InterruptedException, ExecutionException, JSONException, UnsupportedEncodingException
+    public static String updateTimetable(HashMap<String, Object> data, String id) throws InterruptedException, ExecutionException, JSONException
     {
         ProcessBuilder pb = new ProcessBuilder();
 
@@ -41,14 +41,11 @@ public class Timetable
         env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
         Database db = new Database(pb);
 
-        HashMap<String, Object> data = new HashMap<>();
-        data.put("a", "c");
         return db.putData("timetable", data, id).toString();
     }
-    */
-    /*
+
     // Method to insert one Timetable
-    public static String insertTimetable() throws InterruptedException, ExecutionException, JSONException, UnsupportedEncodingException
+    public static String insertTimetable(HashMap<String, Object> data) throws InterruptedException, ExecutionException, JSONException
     {
         ProcessBuilder pb = new ProcessBuilder();
 
@@ -56,14 +53,11 @@ public class Timetable
         env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
         Database db = new Database(pb);
 
-        HashMap<String, Object> data = new HashMap<>();
-        data.put("a", "b");
         return db.postData("timetable", data).toString();
     }
-    */
-    /*
+
     // Method to delete one Timetable by id
-    public static String deleteTimetable(String id) throws InterruptedException, ExecutionException, JSONException, UnsupportedEncodingException
+    public static String deleteTimetable(String id) throws InterruptedException, ExecutionException, JSONException
     {
         ProcessBuilder pb = new ProcessBuilder();
 
@@ -73,7 +67,6 @@ public class Timetable
 
         return db.deleteData("timetable", id).toString();
     }
-    */
 
     public static Timetable getTimetable(String id) throws InterruptedException, ExecutionException, JSONException
     {

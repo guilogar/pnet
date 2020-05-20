@@ -69,12 +69,12 @@ public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 if(dayTimetable > dayToday)
                 {
                     FirstClickListener f = new FirstClickListener(this.cl.getContext());
-                    f.setText("Ya ha pasado el plazo de acceso a este evento." + dayTimetable + "/" + dayToday);
+                    f.setText("Ya ha pasado el plazo de acceso a este evento.");
                     cl = f;
                 } else if(dayTimetable < dayToday)
                 {
                     SecondClickListener s = new SecondClickListener(this.cl.getContext());
-                    s.setText("Aun no ha llegado este evento." + dayTimetable + "/" + dayToday);
+                    s.setText("Aun no ha llegado este evento.");
                     cl = s;
                 } else
                 {
@@ -93,10 +93,14 @@ public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             }
 
             String image = (String) t.getAttribute("image");
-
-            String imageBase64 = image.substring(image.indexOf(",")  + 1);
-
-            rowHolder.setViewClickListener(cl, imageBase64);
+            if(image != null)
+            {
+                String imageBase64 = image.substring(image.indexOf(",")  + 1);
+                rowHolder.setViewClickListener(cl, imageBase64);
+            } else
+            {
+                rowHolder.setViewClickListener(cl);
+            }
         }
     }
 
