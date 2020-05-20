@@ -17,6 +17,7 @@ import es.uca.android_application.importantDates.Timetable;
 public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     private ArrayList<Timetable> data = new ArrayList<>();
+    private FirstClickListener f;
 
     public ImportantDatesAdapter(ArrayList<Timetable> data)
     {
@@ -36,9 +37,8 @@ public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         View v = LayoutInflater.from(context).inflate(R.layout.image_button, parent, false);
 
-        FirstClickListener f = new FirstClickListener(context);
-
-        return new RowViewHolder(v, f);
+        this.f = new FirstClickListener(context);
+        return new RowViewHolder(v);
     }
 
     @Override
@@ -47,6 +47,8 @@ public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (holder instanceof RowViewHolder)
         {
             RowViewHolder rowHolder = (RowViewHolder) holder;
+            this.f.setString("" + position);
+            rowHolder.setViewClickListener(this.f);
         }
     }
 

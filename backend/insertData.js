@@ -57,6 +57,10 @@ async function insertTimetable()
             }
         }, 'timetable'
     );
+
+    const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
+    const today = new Date();
+    const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1));
     
     await databaseServiceTimetable.removeAll();
     await databaseServiceTimetable.add(
@@ -68,6 +72,7 @@ async function insertTimetable()
                 y: 0.0,
                 verbose: 'Calle La Floritura, S/n, código postal: 11540'
             },
+            dateOfMake: yesterday,
             table: [
                 {
                     hour: '9.30 - 10.00',
@@ -110,6 +115,7 @@ async function insertTimetable()
                 y: 0.0,
                 verbose: 'Calle La Floritura, S/n, código postal: 11540'
             },
+            dateOfMake: today,
             table: [
                 {
                     hour: '9.30 - 10.00',
@@ -152,6 +158,7 @@ async function insertTimetable()
                 y: 0.0,
                 verbose: 'Calle La Floritura, S/n, código postal: 11540'
             },
+            dateOfMake: tomorrow,
             table: [
                 {
                     hour: '9.30 - 10.00',

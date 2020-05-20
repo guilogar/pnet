@@ -12,14 +12,15 @@ public class RowViewHolder extends RecyclerView.ViewHolder
 {
     private ImageButton ib;
 
-    RowViewHolder(View v, RecyclerViewClickListener listener)
+    RowViewHolder(View v)
     {
         super(v);
-
-        ViewClickListener vcl = new ViewClickListener(listener, this);
-
         this.ib = (ImageButton) v.findViewById(R.id.ib);
+    }
 
+    public void setViewClickListener(RecyclerViewClickListener listener)
+    {
+        ViewClickListener vcl = new ViewClickListener(listener, this);
         this.ib.setOnClickListener(vcl);
     }
 }
