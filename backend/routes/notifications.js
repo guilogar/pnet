@@ -16,8 +16,6 @@ databaseServiceNotifications.connectDb(
     }, 'notifications'
 );
 
-//http://localhost:8080/notifications
-
 router.get('/notifications', function (req, res) {
 	databaseServiceNotifications.getAll((err, object) => {
             if (err) {

@@ -16,8 +16,6 @@ databaseServiceInscriptions.connectDb(
     }, 'inscriptions'
 );
 
-//http://localhost:8080/inscriptions
-
 router.get('/inscriptions', function (req, res) {
 	databaseServiceInscriptions.getAll((err, object) => {
             if (err) {

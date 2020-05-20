@@ -16,8 +16,6 @@ databaseServiceSpeaker.connectDb(
     }, 'speakers'
 );
 
-//http://localhost:8080/speakers
-
 router.get('/speakers', function (req, res) {
 	databaseServiceSpeaker.getAll((err, object) => {
             if (err) {

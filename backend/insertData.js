@@ -377,9 +377,8 @@ async function insertSpeakers()
     await databaseServiceSpeakers.close();
 }
 
-// insert all
-(async () => {
+module.exports.renewal = async () => {
     await insertNotifications();
     await insertSpeakers();
     await insertTimetable();
-}) ();
+};
