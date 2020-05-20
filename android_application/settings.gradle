@@ -1,2 +1,2 @@
-rootProject.name='CIC'
+rootProject.name='CIC App'
 include ':app'
