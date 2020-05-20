@@ -5,21 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import es.uca.android_application.R;
-import es.uca.android_application.event_attendees;
-import es.uca.android_application.form;
+import es.uca.android_application.importantDates.ClickListener.FirstClickListener;
+import es.uca.android_application.importantDates.RecyclerView.ImportantDatesAdapter;
 
 public class ImportantDates extends AppCompatActivity
 {
@@ -41,6 +38,16 @@ public class ImportantDates extends AppCompatActivity
         this.mRecyclerView.setHasFixedSize(true);
         this.mLayoutManager = new LinearLayoutManager(this);
         this.mRecyclerView.setLayoutManager(this.mLayoutManager);
+
+        try
+        {
+            ArrayList<Timetable> timetables = Timetable.getAllTimetable();;
+            mAdapter = new ImportantDatesAdapter(timetables);
+            mRecyclerView.setAdapter(mAdapter);
+        } catch (Exception e)
+        {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -50,15 +57,13 @@ public class ImportantDates extends AppCompatActivity
         {
             case android.R.id.home:
             {
-                this.finish();
-                /*
                 try
                 {
-                    Toast.makeText(this, "Hay " + Timetable.getAllTimetable().size() + " tablas....", Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    this.finish();
+                } catch (Exception e)
+                {
+                    Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
-                */
                 return true;
             }
             default:

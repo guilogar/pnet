@@ -32,24 +32,24 @@ public class formAdapter extends RecyclerView.Adapter<formAdapter.MyViewHolder>
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position)
     {
-                holder.number.setText(String.valueOf(forms.get(position).getInscrDate()));
-                holder.name.setText(forms.get(position).getName());
-                holder.show.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            int duration = Toast.LENGTH_LONG;
-                            Intent intent = new Intent(context.getApplicationContext(), attendee_view.class);
-                            //La colocamos en el paquete.
-                            Bundle bundle = new Bundle();
-                            //Rellenamos el paquete, el tipo de dato puesto o clave si es un String, y el dato en cuestión.
-                            //Añadimos la información que queremos pasar.
-                            bundle.putString("id_attendee",forms.get(position).getId());
-                            //Añadimos el paquete al mensajero.
-                            intent.putExtras(bundle);
-                            //Cambiamos de actividad. El mensajero se va.
-                            context.startActivity(intent);
-                        }
-                });
+        holder.number.setText(String.valueOf(forms.get(position).getInscrDate()));
+        holder.name.setText(forms.get(position).getName());
+        holder.show.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+            int duration = Toast.LENGTH_LONG;
+            Intent intent = new Intent(context.getApplicationContext(), attendee_view.class);
+            //La colocamos en el paquete.
+            Bundle bundle = new Bundle();
+            //Rellenamos el paquete, el tipo de dato puesto o clave si es un String, y el dato en cuestión.
+            //Añadimos la información que queremos pasar.
+            bundle.putString("id_attendee",forms.get(position).getId());
+            //Añadimos el paquete al mensajero.
+            intent.putExtras(bundle);
+            //Cambiamos de actividad. El mensajero se va.
+            context.startActivity(intent);
+                }
+        });
     }
     @Override
     public int getItemCount()
