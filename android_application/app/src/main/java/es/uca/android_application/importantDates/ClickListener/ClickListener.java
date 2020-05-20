@@ -19,12 +19,12 @@ public class ClickListener implements RecyclerViewClickListener
         return this.context;
     }
 
-    public void onClick(View view, int position)
+    public void onClick(View v)
     {
         Toast.makeText(this.context, this.text, Toast.LENGTH_SHORT).show();
     }
 
-    public void setString(String text)
+    public void setText(String text)
     {
         this.text = text;
     }

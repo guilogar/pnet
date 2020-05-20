@@ -20,6 +20,6 @@ public class ViewClickListener implements View.OnClickListener
     @Override
     public void onClick(View v)
     {
-        this.listener.onClick(v, this.vh.getAdapterPosition());
+        this.listener.onClick(v);
     }
 }
