@@ -8,9 +8,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
+
+import es.uca.android_application.ImportantDates.ImportantDates;
+import es.uca.android_application.Localization.Localization;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -22,21 +22,39 @@ public class MainActivity extends AppCompatActivity
         switch(item.getItemId())
         {
             case R.id.item1:
+            {
                 Intent intent = new Intent(this, event_attendees.class);
                 startActivity(intent);
                 return true;
+            }
             case R.id.item2:
-                Intent intent2 = new Intent(this, program.class);
-                startActivity(intent2);
+            {
+                Toast.makeText(this, "Item 2 selected", Toast.LENGTH_SHORT).show();
                 return true;
+            }
             case R.id.item3:
-                Toast.makeText(this, "Item 3 selected", Toast.LENGTH_SHORT).show();
+            {
+                try
+                {
+                    Intent intent = new Intent(this, ImportantDates.class);
+                    startActivity(intent);
+                } catch(Exception e)
+                {
+                    Toast.makeText(this, "Open important dates...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
                 return true;
+            }
             case R.id.item4:
-                Toast.makeText(this, "Item 4 selected", Toast.LENGTH_SHORT).show();
+            {
+                Intent intent = new Intent(this, Localization.class);
+                startActivity(intent);
                 return true;
-
-            default:  return super.onOptionsItemSelected(item);
+            }
+            default:
+            {
+                return super.onOptionsItemSelected(item);
+            }
         }
     }
     @Override

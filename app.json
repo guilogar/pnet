@@ -1,0 +1,8 @@
+{
+  "name": "Programación en Internet Proyecto",
+  "description": "Despliegue del backend en heroku",
+  "repository": "https://github.com/guilogar/pnet",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}

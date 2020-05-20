@@ -19,11 +19,13 @@ const timetable = require('./routes/timetable');
 const inscriptions = require('./routes/inscriptions');
 const speakers = require('./routes/speakers');
 const notifications = require('./routes/notifications');
+const renewalData = require('./routes/renewalData');
 
 app.use(baseAPI, timetable);
 app.use(baseAPI, inscriptions);
 app.use(baseAPI, speakers);
 app.use(baseAPI, notifications);
+app.use(baseAPI, renewalData);
 
 const server = http.createServer(app);
 

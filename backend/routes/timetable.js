@@ -16,8 +16,6 @@ databaseServiceTimetable.connectDb(
     }, 'timetable'
 );
 
-//http://localhost:8080/timetable
-
 router.get('/timetable', function (req, res) {
 	databaseServiceTimetable.getAll((err, object) => {
             if (err) {

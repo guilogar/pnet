@@ -54,16 +54,38 @@ jobs:
 # For check with W3C validator with NodeJS
 For check in local, execute the command:
 ```
-node .
-
-or 
-
 node testhtml.js
 ```
 
 Previously, execute:
 ```
 npm install
+```
+
+# Access to global domain heroku
+The backend is upload with 
+`
+https://pnet.herokuapp.com/api/v1/
+`
+url. To access to any endpoint, must complete the url with
+`timetable`, `inscriptions`, `speakers` and `notifications`.
+
+By example, to access `timetable` data, you must access to `https://pnet.herokuapp.com/api/v1/timetable`
+
+## Renewal data from console.
+Execute
+```
+node backend/makeInsertData.js
+```
+
+## Renewal data from http request
+Make a http get request to:
+```
+http://localhost:3000/api/v1/renewalData
+```
+or
+```
+https://pnet.herokuapp.com/api/v1/renewalData
 ```
 
 # Coming soon
