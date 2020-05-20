@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
@@ -20,9 +21,17 @@ public class Database
         this.env = pb.environment();
     }
 
-    public JSONArray getData(String collection) throws JSONException, ExecutionException, InterruptedException
+    public JSONArray getAllData(String collection) throws JSONException, ExecutionException, InterruptedException
     {
         AsyncTask<Void, Void, String> asyncTask = new HttpGetRequest(this.env.get("URL_BASE"), collection);
+        asyncTask.execute();
+        String result = asyncTask.get();
+        return new JSONArray(result);
+    }
+
+    public JSONArray getData(String collection, String id) throws JSONException, ExecutionException, InterruptedException
+    {
+        AsyncTask<Void, Void, String> asyncTask = new HttpGetRequest(this.env.get("URL_BASE"), collection, id);
         asyncTask.execute();
         String result = asyncTask.get();
         return new JSONArray(result);

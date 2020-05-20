@@ -31,6 +31,28 @@ public class Timetable
         return this.attributes.get(key);
     }
 
+    public static Timetable getTimetable(String id) throws InterruptedException, ExecutionException, JSONException
+    {
+        ProcessBuilder pb = new ProcessBuilder();
+
+        Map<String, String> env = pb.environment();
+        env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
+        Database db = new Database(pb);
+
+        JSONObject time = db.getData("timetable", id).getJSONObject(0);
+        Iterator<String> iterator = time.keys();
+
+        HashMap<String, Object> attributes = new HashMap<>();
+
+        while(iterator.hasNext())
+        {
+            String key = iterator.next();
+            attributes.put(key, time.get(key));
+        }
+
+        return new Timetable(attributes);
+    }
+
     public static ArrayList<Timetable> getAllTimetable() throws JSONException, ExecutionException, InterruptedException
     {
         ProcessBuilder pb = new ProcessBuilder();
@@ -41,7 +63,7 @@ public class Timetable
 
         ArrayList<Timetable> timetables = new ArrayList<>();
 
-        JSONArray time = db.getData("timetable");
+        JSONArray time = db.getAllData("timetable");
         
         for(int i = 0; i < time.length(); i++)
         {

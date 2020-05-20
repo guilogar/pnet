@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -82,7 +83,8 @@ public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     ThirdClickListener s = new ThirdClickListener(
                             this.cl.getContext(),
                             (String) t.getAttribute("title"),
-                            (String) t.getAttribute("title")
+                            (String) t.getAttribute("title"),
+                            (String) t.getAttribute("_id")
                     );
                     cl = s;
                 }
@@ -92,7 +94,13 @@ public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 cl.setText(e.toString());
             }
 
-            rowHolder.setViewClickListener(cl);
+            String image = (String) t.getAttribute("image");
+
+            String imageBase64 = image.substring(image.indexOf(",")  + 1);
+
+            Toast.makeText(cl.getContext(), imageBase64, Toast.LENGTH_SHORT).show();
+
+            rowHolder.setViewClickListener(cl, imageBase64);
         }
     }
 

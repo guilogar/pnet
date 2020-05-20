@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import es.uca.android_application.ImportantDates.ImportantDates;
+import es.uca.android_application.Localization.Localization;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity
             }
             case R.id.item4:
             {
-                Toast.makeText(this, "Item 4 selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, Localization.class);
+                startActivity(intent);
                 return true;
             }
             default:

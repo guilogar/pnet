@@ -1,5 +1,8 @@
 package es.uca.android_application.ImportantDates.RecyclerView;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -22,5 +25,16 @@ public class RowViewHolder extends RecyclerView.ViewHolder
     {
         ViewClickListener vcl = new ViewClickListener(listener, this);
         this.ib.setOnClickListener(vcl);
+    }
+
+    public void setViewClickListener(RecyclerViewClickListener listener, String image)
+    {
+        ViewClickListener vcl = new ViewClickListener(listener, this);
+        this.ib.setOnClickListener(vcl);
+
+        byte [] encodeByte = Base64.decode(image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+
+        this.ib.setImageBitmap(bitmap);
     }
 }

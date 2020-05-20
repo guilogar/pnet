@@ -27,7 +27,7 @@ public class ImportantDates extends AppCompatActivity
         this.setContentView(R.layout.important_dates);
 
         // to make visible the back button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         this.mRecyclerView = (RecyclerView) findViewById(R.id.important_dates_recycler_view);
         this.mRecyclerView.setHasFixedSize(true);
@@ -37,7 +37,9 @@ public class ImportantDates extends AppCompatActivity
         try
         {
             ArrayList<Timetable> timetables = Timetable.getAllTimetable();;
+
             mAdapter = new ImportantDatesAdapter(timetables);
+
             mRecyclerView.setAdapter(mAdapter);
         } catch (Exception e)
         {

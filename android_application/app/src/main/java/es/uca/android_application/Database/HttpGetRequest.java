@@ -20,6 +20,12 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
         this.collection = collection;
     }
 
+    public HttpGetRequest(String url, String collection, String id)
+    {
+        this.url = url;
+        this.collection = collection + "/" + id;
+    }
+
     public String httpRequest(String url, String collection)
     {
         String text = null;

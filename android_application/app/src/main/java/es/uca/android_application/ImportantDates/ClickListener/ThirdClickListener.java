@@ -18,12 +18,14 @@ public class ThirdClickListener extends ClickListener implements RecyclerViewCli
 {
     private String title;
     private String message;
+    private String idEvent;
 
-    public ThirdClickListener(Context context, String title, String message)
+    public ThirdClickListener(Context context, String title, String message, String idEvent)
     {
         super(context);
         this.title = title;
         this.message = message;
+        this.idEvent = idEvent;
     }
 
     public void onClick(View v)
@@ -55,6 +57,7 @@ public class ThirdClickListener extends ClickListener implements RecyclerViewCli
                 .setContentText(this.message);
 
         Intent resultIntent = new Intent(ctx, Localization.class);
+        resultIntent.putExtra("ID_EVENT", this.idEvent);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(ctx);
         stackBuilder.addParentStack(ImportantDates.class);
         stackBuilder.addNextIntent(resultIntent);
