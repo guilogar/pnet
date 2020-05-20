@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
