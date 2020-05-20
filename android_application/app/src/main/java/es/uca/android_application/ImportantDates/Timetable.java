@@ -1,8 +1,4 @@
-package es.uca.android_application.importantDates;
-
-import android.content.Context;
-import android.os.AsyncTask;
-import android.widget.Toast;
+package es.uca.android_application.ImportantDates;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -8,11 +8,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
 
-import es.uca.android_application.importantDates.ImportantDates;
+import es.uca.android_application.ImportantDates.ImportantDates;
 
 public class MainActivity extends AppCompatActivity
 {

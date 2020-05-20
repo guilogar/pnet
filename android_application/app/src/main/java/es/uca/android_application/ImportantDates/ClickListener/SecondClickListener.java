@@ -1,8 +1,7 @@
-package es.uca.android_application.importantDates.ClickListener;
+package es.uca.android_application.ImportantDates.ClickListener;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 

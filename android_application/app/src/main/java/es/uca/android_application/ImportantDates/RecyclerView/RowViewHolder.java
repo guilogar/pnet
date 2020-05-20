@@ -1,4 +1,4 @@
-package es.uca.android_application.importantDates.RecyclerView;
+package es.uca.android_application.ImportantDates.RecyclerView;
 
 import android.view.View;
 import android.widget.ImageButton;
@@ -6,7 +6,7 @@ import android.widget.ImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import es.uca.android_application.R;
-import es.uca.android_application.importantDates.ClickListener.RecyclerViewClickListener;
+import es.uca.android_application.ImportantDates.ClickListener.RecyclerViewClickListener;
 
 public class RowViewHolder extends RecyclerView.ViewHolder
 {

@@ -1,4 +1,4 @@
-package es.uca.android_application.importantDates;
+package es.uca.android_application.ImportantDates;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import es.uca.android_application.R;
-import es.uca.android_application.importantDates.RecyclerView.ImportantDatesAdapter;
+import es.uca.android_application.ImportantDates.RecyclerView.ImportantDatesAdapter;
 
 public class ImportantDates extends AppCompatActivity
 {

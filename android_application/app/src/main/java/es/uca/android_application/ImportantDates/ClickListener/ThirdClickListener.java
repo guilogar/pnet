@@ -1,6 +1,5 @@
-package es.uca.android_application.importantDates.ClickListener;
+package es.uca.android_application.ImportantDates.ClickListener;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,13 +7,12 @@ import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
 import es.uca.android_application.R;
-import es.uca.android_application.importantDates.ImportantDates;
-import es.uca.android_application.localization.Localization;
+import es.uca.android_application.ImportantDates.ImportantDates;
+import es.uca.android_application.Localization.Localization;
 
 public class ThirdClickListener extends ClickListener implements RecyclerViewClickListener
 {

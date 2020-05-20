@@ -1,10 +1,10 @@
-package es.uca.android_application.importantDates.RecyclerView;
+package es.uca.android_application.ImportantDates.RecyclerView;
 
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import es.uca.android_application.importantDates.ClickListener.RecyclerViewClickListener;
+import es.uca.android_application.ImportantDates.ClickListener.RecyclerViewClickListener;
 
 public class ViewClickListener implements View.OnClickListener
 {

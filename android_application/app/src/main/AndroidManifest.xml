@@ -18,8 +18,8 @@
         <activity android:name=".attendee_view" />
         <activity android:name=".form_view" />
         <activity android:name=".event_attendees" />
-        <activity android:name=".importantDates.ImportantDates" />
-        <activity android:name=".localization.Localization" />
+        <activity android:name=".ImportantDates.ImportantDates" />
+        <activity android:name=".Localization.Localization" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

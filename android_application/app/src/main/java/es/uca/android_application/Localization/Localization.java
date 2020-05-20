@@ -1,4 +1,4 @@
-package es.uca.android_application.localization;
+package es.uca.android_application.Localization;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -6,14 +6,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 
 import es.uca.android_application.R;
-import es.uca.android_application.importantDates.RecyclerView.ImportantDatesAdapter;
-import es.uca.android_application.importantDates.Timetable;
 
 public class Localization extends AppCompatActivity
 {

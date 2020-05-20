@@ -1,4 +1,4 @@
-package es.uca.android_application.importantDates.RecyclerView;
+package es.uca.android_application.ImportantDates.RecyclerView;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import es.uca.android_application.R;
-import es.uca.android_application.importantDates.ClickListener.ClickListener;
-import es.uca.android_application.importantDates.ClickListener.FirstClickListener;
-import es.uca.android_application.importantDates.ClickListener.SecondClickListener;
-import es.uca.android_application.importantDates.ClickListener.ThirdClickListener;
-import es.uca.android_application.importantDates.Timetable;
+import es.uca.android_application.ImportantDates.ClickListener.ClickListener;
+import es.uca.android_application.ImportantDates.ClickListener.FirstClickListener;
+import es.uca.android_application.ImportantDates.ClickListener.SecondClickListener;
+import es.uca.android_application.ImportantDates.ClickListener.ThirdClickListener;
+import es.uca.android_application.ImportantDates.Timetable;
 
 public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
