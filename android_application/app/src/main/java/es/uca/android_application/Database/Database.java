@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -37,21 +36,33 @@ public class Database
         return new JSONArray(result);
     }
 
-    public JSONArray postData(String collection, Map<String, String> data) throws JSONException, UnsupportedEncodingException
+    public JSONObject postData(String collection, Map<String, Object> data) throws JSONException, ExecutionException, InterruptedException
     {
-        String result = ""; // this.httpPostRequest(collection, data);
-        return new JSONArray(result);
+        AsyncTask<Void, Void, String> asyncTask = new HttpPostRequest(
+                this.env.get("URL_BASE"), collection, data
+        );
+        asyncTask.execute();
+        String result = asyncTask.get();
+        return new JSONObject(result);
     }
 
-    // not implemented yet
-    public JSONArray putData(String collection, Map<String, String> data) throws JSONException
+    public String putData(String collection, Map<String, Object> data, String id) throws JSONException, ExecutionException, InterruptedException
     {
-        return null;
+        AsyncTask<Void, Void, String> asyncTask = new HttpPutRequest(
+                this.env.get("URL_BASE"), collection, id, data
+        );
+        asyncTask.execute();
+        String result = asyncTask.get();
+        return result;
     }
 
-    public JSONArray destroy(String collection, String id) throws JSONException, UnsupportedEncodingException
+    public JSONObject deleteData(String collection, String id) throws JSONException, ExecutionException, InterruptedException
     {
-        String result = ""; //this.httpDeleteRequest(collection, id);
-        return new JSONArray(result);
+        AsyncTask<Void, Void, String> asyncTask = new HttpDeleteRequest(
+                this.env.get("URL_BASE"), collection, id
+        );
+        asyncTask.execute();
+        String result = asyncTask.get();
+        return new JSONObject(result);
     }
 }

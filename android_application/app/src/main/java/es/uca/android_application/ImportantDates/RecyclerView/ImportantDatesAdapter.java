@@ -83,7 +83,7 @@ public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     ThirdClickListener s = new ThirdClickListener(
                             this.cl.getContext(),
                             (String) t.getAttribute("title"),
-                            (String) t.getAttribute("title"),
+                            (String) t.getAttribute("description"),
                             (String) t.getAttribute("_id")
                     );
                     cl = s;
@@ -97,8 +97,6 @@ public class ImportantDatesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             String image = (String) t.getAttribute("image");
 
             String imageBase64 = image.substring(image.indexOf(",")  + 1);
-
-            Toast.makeText(cl.getContext(), imageBase64, Toast.LENGTH_SHORT).show();
 
             rowHolder.setViewClickListener(cl, imageBase64);
         }

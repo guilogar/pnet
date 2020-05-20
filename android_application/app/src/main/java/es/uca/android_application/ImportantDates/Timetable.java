@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,6 +31,50 @@ public class Timetable
     {
         return this.attributes.get(key);
     }
+
+    /*
+    // Method to update one Timetable by id
+    public static String updateTimetable(String id) throws InterruptedException, ExecutionException, JSONException, UnsupportedEncodingException
+    {
+        ProcessBuilder pb = new ProcessBuilder();
+
+        Map<String, String> env = pb.environment();
+        env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
+        Database db = new Database(pb);
+
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("a", "c");
+        return db.putData("timetable", data, id).toString();
+    }
+    */
+    /*
+    // Method to insert one Timetable
+    public static String insertTimetable() throws InterruptedException, ExecutionException, JSONException, UnsupportedEncodingException
+    {
+        ProcessBuilder pb = new ProcessBuilder();
+
+        Map<String, String> env = pb.environment();
+        env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
+        Database db = new Database(pb);
+
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("a", "b");
+        return db.postData("timetable", data).toString();
+    }
+    */
+    /*
+    // Method to delete one Timetable by id
+    public static String deleteTimetable(String id) throws InterruptedException, ExecutionException, JSONException, UnsupportedEncodingException
+    {
+        ProcessBuilder pb = new ProcessBuilder();
+
+        Map<String, String> env = pb.environment();
+        env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
+        Database db = new Database(pb);
+
+        return db.deleteData("timetable", id).toString();
+    }
+    */
 
     public static Timetable getTimetable(String id) throws InterruptedException, ExecutionException, JSONException
     {
