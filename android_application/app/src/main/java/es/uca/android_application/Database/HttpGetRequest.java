@@ -12,7 +12,7 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
 
     private String url;
     private String collection;
-    private int responseConnCode;
+    private int responseCode = 0;
 
     public HttpGetRequest(String url, String collection)
     {
@@ -26,9 +26,9 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
         this.collection = collection + "/" + id;
     }
 
-    public int getResponseConnCode()
+    public int getResponseCode()
     {
-        return responseConnCode;
+        return this.responseCode;
     }
 
     public String httpRequest(String url, String collection)
@@ -42,6 +42,8 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
             urlConnection = (HttpURLConnection) urlToRequest.openConnection();
             urlConnection.setRequestMethod("GET");
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+
+            this.responseCode = urlConnection.getResponseCode();
             text = new Scanner(in).useDelimiter("\\A").next();
             responseConnCode= urlConnection.getResponseCode();
         }
