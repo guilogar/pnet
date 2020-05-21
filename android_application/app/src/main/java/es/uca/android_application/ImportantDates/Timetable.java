@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import es.uca.android_application.Database.Database;
+import es.uca.android_application.Database.GenericProcessBuilder;
 
 public class Timetable
 {
@@ -35,10 +36,7 @@ public class Timetable
     // Method to update one Timetable by id
     public static String updateTimetable(HashMap<String, Object> data, String id) throws InterruptedException, ExecutionException, JSONException
     {
-        ProcessBuilder pb = new ProcessBuilder();
-
-        Map<String, String> env = pb.environment();
-        env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
+        ProcessBuilder pb = GenericProcessBuilder.genericProcess();
         Database db = new Database(pb);
 
         return db.putData("timetable", data, id).toString();
@@ -47,10 +45,7 @@ public class Timetable
     // Method to insert one Timetable
     public static String insertTimetable(HashMap<String, Object> data) throws InterruptedException, ExecutionException, JSONException
     {
-        ProcessBuilder pb = new ProcessBuilder();
-
-        Map<String, String> env = pb.environment();
-        env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
+        ProcessBuilder pb = GenericProcessBuilder.genericProcess();
         Database db = new Database(pb);
 
         return db.postData("timetable", data).toString();
@@ -59,10 +54,7 @@ public class Timetable
     // Method to delete one Timetable by id
     public static String deleteTimetable(String id) throws InterruptedException, ExecutionException, JSONException
     {
-        ProcessBuilder pb = new ProcessBuilder();
-
-        Map<String, String> env = pb.environment();
-        env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
+        ProcessBuilder pb = GenericProcessBuilder.genericProcess();
         Database db = new Database(pb);
 
         return db.deleteData("timetable", id).toString();
@@ -70,10 +62,7 @@ public class Timetable
 
     public static Timetable getTimetable(String id) throws InterruptedException, ExecutionException, JSONException
     {
-        ProcessBuilder pb = new ProcessBuilder();
-
-        Map<String, String> env = pb.environment();
-        env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
+        ProcessBuilder pb = GenericProcessBuilder.genericProcess();
         Database db = new Database(pb);
 
         JSONObject time = db.getData("timetable", id).getJSONObject(0);
@@ -92,10 +81,7 @@ public class Timetable
 
     public static ArrayList<Timetable> getAllTimetable() throws JSONException, ExecutionException, InterruptedException
     {
-        ProcessBuilder pb = new ProcessBuilder();
-
-        Map<String, String> env = pb.environment();
-        env.put("URL_BASE", "https://pnet.herokuapp.com/api/v1");
+        ProcessBuilder pb = GenericProcessBuilder.genericProcess();
         Database db = new Database(pb);
 
         ArrayList<Timetable> timetables = new ArrayList<>();

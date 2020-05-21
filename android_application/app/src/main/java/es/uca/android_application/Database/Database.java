@@ -16,8 +16,18 @@ public class Database
 
     public Database(ProcessBuilder pb)
     {
+        this.setProcessBuilder(pb);
+    }
+
+    public Database()
+    {
+        this.setProcessBuilder(GenericProcessBuilder.genericProcess());
+    }
+
+    private void setProcessBuilder(ProcessBuilder pb)
+    {
         this.pb = pb;
-        this.env = pb.environment();
+        this.env = this.pb.environment();
     }
 
     public JSONArray getAllData(String collection) throws JSONException, ExecutionException, InterruptedException
