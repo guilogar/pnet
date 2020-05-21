@@ -9,6 +9,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+
+import es.uca.android_application.Database.Database;
 import es.uca.android_application.ImportantDates.ImportantDates;
 import es.uca.android_application.Localization.Localization;
 
@@ -69,5 +74,17 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Database db = new Database();
+
+        try
+        {
+            String result = db.getAllData("renewalData").toString();
+
+            Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+        } catch (Exception e)
+        {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+        }
     }
 }
