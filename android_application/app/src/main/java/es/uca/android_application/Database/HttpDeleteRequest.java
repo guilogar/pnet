@@ -21,7 +21,7 @@ public class HttpDeleteRequest extends AsyncTask<Void, Void, String> {
 
     public String httpRequest(String urlString, String collection)
     {
-        String text = null;
+        String text = "";
         HttpURLConnection urlConnection = null;
         try
         {
@@ -32,7 +32,7 @@ public class HttpDeleteRequest extends AsyncTask<Void, Void, String> {
             text = new Scanner(in).useDelimiter("\\A").next();
         } catch (Exception e)
         {
-            return e.toString();
+            return "";
         }
 
         return text;
