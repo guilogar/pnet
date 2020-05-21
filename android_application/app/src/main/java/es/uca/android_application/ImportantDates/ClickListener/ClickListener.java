@@ -7,7 +7,7 @@ import android.widget.Toast;
 public class ClickListener implements RecyclerViewClickListener
 {
     private Context context;
-    private String text = "toatsito";
+    private String text = "";
 
     public ClickListener(Context context)
     {
