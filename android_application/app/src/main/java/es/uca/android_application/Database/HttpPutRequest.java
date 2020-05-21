@@ -82,7 +82,7 @@ public class HttpPutRequest extends AsyncTask<Void, Void, String> {
             }
         } catch (Exception e)
         {
-            return e.toString();
+            return "";
         }
 
         return response;

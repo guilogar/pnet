@@ -27,7 +27,7 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
 
     public String httpRequest(String url, String collection)
     {
-        String text = null;
+        String text = "";
         HttpURLConnection urlConnection = null;
 
         try
@@ -40,7 +40,7 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
         }
         catch (Exception e)
         {
-            return e.toString();
+            return "";
         }
         finally
         {

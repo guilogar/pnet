@@ -13,6 +13,7 @@ public class Database
 {
     private ProcessBuilder pb;
     private Map<String, String> env;
+    private int status = 0;
 
     public Database(ProcessBuilder pb)
     {
@@ -32,6 +33,14 @@ public class Database
 
     private Object returnResult(String result) throws JSONException
     {
+        if(result == null || result.isEmpty())
+        {
+            this.status = 500;
+        } else
+        {
+            this.status = 200;
+        }
+
         try
         {
             return new JSONArray(result);
@@ -39,6 +48,11 @@ public class Database
         {
             return new JSONObject(result);
         }
+    }
+
+    public int getStatusOfLastRequest()
+    {
+        return this.status;
     }
 
     public Object getAllData(String collection) throws JSONException, ExecutionException, InterruptedException
