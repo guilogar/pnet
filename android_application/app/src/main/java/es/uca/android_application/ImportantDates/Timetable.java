@@ -65,7 +65,7 @@ public class Timetable
         ProcessBuilder pb = GenericProcessBuilder.genericProcess();
         Database db = new Database(pb);
 
-        JSONObject time = db.getData("timetable", id).getJSONObject(0);
+        JSONObject time = ((JSONArray) db.getData("timetable", id)).getJSONObject(0);
         Iterator<String> iterator = time.keys();
 
         HashMap<String, Object> attributes = new HashMap<>();
@@ -86,7 +86,7 @@ public class Timetable
 
         ArrayList<Timetable> timetables = new ArrayList<>();
 
-        JSONArray time = db.getAllData("timetable");
+        JSONArray time = (JSONArray) db.getAllData("timetable");
         
         for(int i = 0; i < time.length(); i++)
         {

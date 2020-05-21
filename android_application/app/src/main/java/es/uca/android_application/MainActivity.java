@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity
             }
             case R.id.item2:
             {
-                Toast.makeText(this, "Item 2 selected", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(this, program.class);
+                startActivity(intent2);
                 return true;
             }
             case R.id.item3:
@@ -75,12 +76,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // To renewal data when application init....
         Database db = new Database();
-
         try
         {
             String result = db.getAllData("renewalData").toString();
-
             Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
         } catch (Exception e)
         {

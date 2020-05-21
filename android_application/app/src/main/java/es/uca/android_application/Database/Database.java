@@ -30,49 +30,65 @@ public class Database
         this.env = this.pb.environment();
     }
 
-    public JSONArray getAllData(String collection) throws JSONException, ExecutionException, InterruptedException
+    private Object returnResult(String result) throws JSONException
+    {
+        try
+        {
+            return new JSONArray(result);
+        } catch(Exception e)
+        {
+            return new JSONObject(result);
+        }
+    }
+
+    public Object getAllData(String collection) throws JSONException, ExecutionException, InterruptedException
     {
         AsyncTask<Void, Void, String> asyncTask = new HttpGetRequest(this.env.get("URL_BASE"), collection);
         asyncTask.execute();
         String result = asyncTask.get();
-        return new JSONArray(result);
+
+        return this.returnResult(result);
     }
 
-    public JSONArray getData(String collection, String id) throws JSONException, ExecutionException, InterruptedException
+    public Object getData(String collection, String id) throws JSONException, ExecutionException, InterruptedException
     {
         AsyncTask<Void, Void, String> asyncTask = new HttpGetRequest(this.env.get("URL_BASE"), collection, id);
         asyncTask.execute();
         String result = asyncTask.get();
-        return new JSONArray(result);
+
+        return this.returnResult(result);
     }
 
-    public JSONObject postData(String collection, Map<String, Object> data) throws JSONException, ExecutionException, InterruptedException
+    public Object postData(String collection, Map<String, Object> data) throws JSONException, ExecutionException, InterruptedException
     {
         AsyncTask<Void, Void, String> asyncTask = new HttpPostRequest(
                 this.env.get("URL_BASE"), collection, data
         );
         asyncTask.execute();
         String result = asyncTask.get();
-        return new JSONObject(result);
+
+        return this.returnResult(result);
     }
 
-    public JSONObject putData(String collection, Map<String, Object> data, String id) throws JSONException, ExecutionException, InterruptedException
+    public Object putData(String collection, Map<String, Object> data, String id) throws JSONException, ExecutionException, InterruptedException
     {
         AsyncTask<Void, Void, String> asyncTask = new HttpPutRequest(
                 this.env.get("URL_BASE"), collection, id, data
         );
         asyncTask.execute();
         String result = asyncTask.get();
-        return new JSONObject(result);
+
+        return this.returnResult(result);
     }
 
-    public JSONObject deleteData(String collection, String id) throws JSONException, ExecutionException, InterruptedException
+    public Object deleteData(String collection, String id) throws JSONException, ExecutionException, InterruptedException
     {
         AsyncTask<Void, Void, String> asyncTask = new HttpDeleteRequest(
                 this.env.get("URL_BASE"), collection, id
         );
         asyncTask.execute();
         String result = asyncTask.get();
-        return new JSONObject(result);
+
+        return this.returnResult(result);
     }
 }
