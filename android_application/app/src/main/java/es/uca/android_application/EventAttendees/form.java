@@ -1,4 +1,4 @@
-package es.uca.android_application;
+package es.uca.android_application.EventAttendees;
 //CLASE FORMULARIO.
 public class form
 {

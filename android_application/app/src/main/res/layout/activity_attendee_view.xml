@@ -5,7 +5,7 @@
     android:id="@+id/general_form2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".attendee_view">
+    tools:context=".EventAttendees.attendee_view">
 
     <TextView
         android:id="@+id/name_text2"

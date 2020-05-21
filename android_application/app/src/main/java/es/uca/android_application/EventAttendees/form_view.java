@@ -1,4 +1,4 @@
-package es.uca.android_application;
+package es.uca.android_application.EventAttendees;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -12,9 +12,7 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -22,6 +20,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.TimeZone;
+
+import es.uca.android_application.R;
 
 public class form_view extends AppCompatActivity
 {

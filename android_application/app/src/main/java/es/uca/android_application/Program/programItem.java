@@ -1,10 +1,6 @@
-package es.uca.android_application;
+package es.uca.android_application.Program;
 
 import android.util.Pair;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 
 //CLASE QUE MODELA UN DÍA DEL PROGRAMA.

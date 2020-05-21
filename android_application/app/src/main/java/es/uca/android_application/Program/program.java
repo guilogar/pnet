@@ -1,4 +1,4 @@
-package es.uca.android_application;
+package es.uca.android_application.Program;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +20,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import es.uca.android_application.MainActivity;
+import es.uca.android_application.R;
 
 public class program extends AppCompatActivity
 {

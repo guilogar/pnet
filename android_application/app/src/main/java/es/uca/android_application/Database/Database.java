@@ -13,6 +13,7 @@ public class Database
 {
     private ProcessBuilder pb;
     private Map<String, String> env;
+    private int responseRequestCode;
 
     public Database(ProcessBuilder pb)
     {
@@ -46,7 +47,6 @@ public class Database
         AsyncTask<Void, Void, String> asyncTask = new HttpGetRequest(this.env.get("URL_BASE"), collection);
         asyncTask.execute();
         String result = asyncTask.get();
-
         return this.returnResult(result);
     }
 

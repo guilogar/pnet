@@ -1,19 +1,16 @@
-package es.uca.android_application;
+package es.uca.android_application.Program;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
+
+import es.uca.android_application.R;
 
 public class programAdapter extends RecyclerView.Adapter<programAdapter.MyViewHolder>
 {

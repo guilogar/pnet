@@ -23,7 +23,6 @@ public class HttpDeleteRequest extends AsyncTask<Void, Void, String> {
     {
         String text = null;
         HttpURLConnection urlConnection = null;
-
         try
         {
             URL urlToRequest = new URL(urlString + '/' + collection);

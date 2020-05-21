@@ -1,4 +1,4 @@
-package es.uca.android_application;
+package es.uca.android_application.EventAttendees;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,19 +15,23 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Scanner;
+
+import es.uca.android_application.Database.Database;
+import es.uca.android_application.R;
 
 public class attendee_view extends AppCompatActivity
 {
     private Button change,back,delete;
     private TextView name,surnames,email,ad,dd,dni,phone,bd,idate;
-    private deleteAttende request;
-    private GetAttendee request2;
+    private int responseRequestCode;
+    private JSONObject results;
+    //private deleteAttende request;
+    //private GetAttendee request2;
+    private Database myInvokeTask = new Database();
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -52,26 +56,75 @@ public class attendee_view extends AppCompatActivity
         final Bundle extras = intent.getExtras();
         //Colocamos la información recibida en el view.
         final String id_attendee=extras.getString("id_attendee");
-        request2 = new GetAttendee();
-        request2.execute(id_attendee);
+        /////////////
+        try
+        {
+            JSONArray myArray= (JSONArray) myInvokeTask.getData("inscriptions",id_attendee);
+            JSONObject obj = myArray.getJSONObject(0);
+            //Nombre: fname.
+            //Apellidos: lname.
+            //Email: ename.
+            //Fecha de llegada: adname.
+            //Fecha de salida: ddname.
+            //DNI: dniname.
+            //Teléfono: phonename.
+            //Fecha de nacimiento: bdname.
+            //Fecha de inscripción: idname.
+            name.setText(obj.getString("fname"));
+            surnames.setText(obj.getString("lname"));
+            email.setText(obj.getString("ename"));
+            ad.setText(obj.getString("adname"));
+            dd.setText(obj.getString("ddname"));
+            dni.setText(obj.getString("dniname"));
+            phone.setText(obj.getString("phonename"));
+            bd.setText(obj.getString("bdname"));
+            idate.setText(obj.getString("idname"));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         //Listeners. (Al hacer click en un botón..).
-        delete.setOnClickListener(new View.OnClickListener(){
+        delete.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                request= new deleteAttende();
-                request.execute(id_attendee);
+            public void onClick(View v)
+            {
+                Intent transition = new Intent(attendee_view.this,  event_attendees.class);
+                try
+                {
+                    results =(JSONObject)myInvokeTask.deleteData("inscriptions",id_attendee);
+                     String servermessage= results.getString("msg");
+                    responseRequestCode= .....
+                    if (responseRequestCode == 200)
+                    {
+                        Toast.makeText(getApplicationContext(), "Asistente eliminado. Código servidor: "+responseRequestCode+" con descripción: "+servermessage, Toast.LENGTH_SHORT).show();
+                        startActivity(transition);
+                    }
+                }
+                catch(Exception e)
+                {
+                    responseRequestCode= .....
+                    Toast.makeText(getApplicationContext(), "¡Ups, ha habido un error! Código de error "+responseRequestCode+": asistente inexistente.", Toast.LENGTH_SHORT).show();
+                    startActivity(transition);
+                    e.printStackTrace();
+                }
             }
         });
-        back.setOnClickListener(new View.OnClickListener(){
+        back.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(attendee_view.this, event_attendees.class);
                 startActivity(intent);
             }
         });
-        change.setOnClickListener(new View.OnClickListener(){
+        change.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent = new Intent(getApplicationContext(), change_attendee.class);
                 //La colocamos en el paquete.
                 Bundle bundle = new Bundle();
@@ -203,9 +256,7 @@ public class attendee_view extends AppCompatActivity
         @Override
         protected void onPostExecute(String results)
         {
-            //Ha recibido algo.
                 Intent transition = new Intent(attendee_view.this,  event_attendees.class);
-                System.out.println("RESULST "+results);
                 try {
                     if (responseConnCode == 200)
                     {

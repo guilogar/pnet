@@ -22,11 +22,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".program" />
-        <activity android:name=".change_attendee" />
-        <activity android:name=".attendee_view" />
-        <activity android:name=".form_view" />
-        <activity android:name=".event_attendees" />
+        <activity android:name=".Program.program" />
+        <activity android:name=".EventAttendees.change_attendee" />
+        <activity android:name=".EventAttendees.attendee_view" />
+        <activity android:name=".EventAttendees.form_view" />
+        <activity android:name=".EventAttendees.event_attendees" />
         <activity android:name=".ImportantDates.ImportantDates" />
         <activity android:name=".Localization.Localization" />
         <activity android:name=".MainActivity">
