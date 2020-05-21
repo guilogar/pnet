@@ -12,11 +12,17 @@ public class HttpDeleteRequest extends AsyncTask<Void, Void, String> {
 
     private String url;
     private String collection;
+    private int responseCode = 0;
 
     public HttpDeleteRequest(String url, String collection, String id)
     {
         this.url = url;
         this.collection = collection + "/" + id;
+    }
+
+    public int getResponseCode()
+    {
+        return this.responseCode;
     }
 
     public String httpRequest(String urlString, String collection)
@@ -30,6 +36,8 @@ public class HttpDeleteRequest extends AsyncTask<Void, Void, String> {
             urlConnection = (HttpURLConnection) urlToRequest.openConnection();
             urlConnection.setRequestMethod("DELETE");
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+
+            this.responseCode = urlConnection.getResponseCode();
             text = new Scanner(in).useDelimiter("\\A").next();
         } catch (Exception e)
         {

@@ -19,6 +19,7 @@ public class HttpPutRequest extends AsyncTask<Void, Void, String> {
     private String url;
     private String collection;
     private Map<String, Object> data;
+    private int responseCode = 0;
 
     public HttpPutRequest(String url, String collection,  Map<String, Object> data)
     {
@@ -32,6 +33,11 @@ public class HttpPutRequest extends AsyncTask<Void, Void, String> {
         this.url = url;
         this.collection = collection + "/" + id;
         this.data = data;
+    }
+
+    public int getResponseCode()
+    {
+        return this.responseCode;
     }
 
     public String httpRequest(String urlString, String collection, Map<String, Object> data) throws UnsupportedEncodingException
@@ -71,6 +77,8 @@ public class HttpPutRequest extends AsyncTask<Void, Void, String> {
             out.close();
 
             urlConnection.connect();
+
+            this.responseCode = urlConnection.getResponseCode();
 
             // see the response...
             String line;
