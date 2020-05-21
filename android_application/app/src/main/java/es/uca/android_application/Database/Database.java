@@ -56,14 +56,14 @@ public class Database
         return new JSONObject(result);
     }
 
-    public String putData(String collection, Map<String, Object> data, String id) throws JSONException, ExecutionException, InterruptedException
+    public JSONObject putData(String collection, Map<String, Object> data, String id) throws JSONException, ExecutionException, InterruptedException
     {
         AsyncTask<Void, Void, String> asyncTask = new HttpPutRequest(
                 this.env.get("URL_BASE"), collection, id, data
         );
         asyncTask.execute();
         String result = asyncTask.get();
-        return result;
+        return new JSONObject(result);
     }
 
     public JSONObject deleteData(String collection, String id) throws JSONException, ExecutionException, InterruptedException
