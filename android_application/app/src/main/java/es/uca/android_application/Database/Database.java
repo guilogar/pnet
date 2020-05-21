@@ -33,14 +33,14 @@ public class Database
 
     private Object returnResult(String result) throws JSONException
     {
-        if(result == null || result.isEmpty())
-        {
-            this.status = 500;
-        } else
-        {
-            this.status = 200;
-        }
 
+        if(result == null || result.isEmpty())
+    {
+        this.status = 500;
+    } else
+    {
+        this.status = 200;
+    }
         try
         {
             return new JSONArray(result);

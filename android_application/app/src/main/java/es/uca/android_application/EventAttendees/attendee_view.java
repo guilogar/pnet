@@ -96,7 +96,7 @@ public class attendee_view extends AppCompatActivity
                 {
                     results =(JSONObject)myInvokeTask.deleteData("inscriptions",id_attendee);
                      String servermessage= results.getString("msg");
-                    responseRequestCode= .....
+                    responseRequestCode= myInvokeTask.getStatusOfLastRequest();
                     if (responseRequestCode == 200)
                     {
                         Toast.makeText(getApplicationContext(), "Asistente eliminado. Código servidor: "+responseRequestCode+" con descripción: "+servermessage, Toast.LENGTH_SHORT).show();
@@ -105,7 +105,7 @@ public class attendee_view extends AppCompatActivity
                 }
                 catch(Exception e)
                 {
-                    responseRequestCode= .....
+                    responseRequestCode= myInvokeTask.getStatusOfLastRequest();
                     Toast.makeText(getApplicationContext(), "¡Ups, ha habido un error! Código de error "+responseRequestCode+": asistente inexistente.", Toast.LENGTH_SHORT).show();
                     startActivity(transition);
                     e.printStackTrace();
