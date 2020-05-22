@@ -5,7 +5,7 @@
     android:id="@+id/general_form2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".attendee_view">
+    tools:context=".EventAttendees.attendee_view">
 
     <TextView
         android:id="@+id/name_text2"
@@ -220,23 +220,10 @@
         app:layout_constraintTop_toBottomOf="@+id/id_text2">
 
         <Button
-            android:id="@+id/back_form2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary"
-            android:text="Volver"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
             android:id="@+id/delete_form2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
             android:text="Eliminar"
             android:textColor="@android:color/white"
@@ -247,12 +234,11 @@
             android:id="@+id/put_form2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="109dp"
             android:background="@color/colorPrimary"
             android:text="CAMBIAR"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/back_form2"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

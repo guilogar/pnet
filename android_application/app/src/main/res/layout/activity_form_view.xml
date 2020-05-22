@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".form_view">
+    tools:context=".EventAttendees.form_view">
 
 
 
@@ -210,23 +210,12 @@
         android:id="@+id/send_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="212dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="52dp"
         android:background="@color/colorPrimary"
         android:text="Enviar"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date_form" />
 
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="91dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="107dp"
-        android:layout_marginTop="56dp"
-        android:background="@color/colorPrimary"
-        android:text="VOLVER"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birth_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
