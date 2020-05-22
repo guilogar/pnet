@@ -45,7 +45,6 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
 
             this.responseCode = urlConnection.getResponseCode();
             text = new Scanner(in).useDelimiter("\\A").next();
-            responseConnCode= urlConnection.getResponseCode();
         }
         catch (Exception e)
         {

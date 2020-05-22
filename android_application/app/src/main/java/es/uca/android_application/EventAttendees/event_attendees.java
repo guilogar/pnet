@@ -1,5 +1,6 @@
 package es.uca.android_application.EventAttendees;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,7 +32,7 @@ public class event_attendees extends AppCompatActivity
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private Button myAddButton,back;
+    private Button myAddButton;
     //private GetAllJson myInvokeTask;
     private Database myInvokeTask;
     private JSONArray myArray;
@@ -39,12 +42,12 @@ public class event_attendees extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_attendees);
-        back= (Button)findViewById(R.id.back_button);
         myAddButton=(Button)findViewById(R.id.add_button);
         mRecyclerView=(RecyclerView)findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager=new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         myInvokeTask= new Database();
         try
         {
@@ -91,13 +94,6 @@ public class event_attendees extends AppCompatActivity
         }
         mAdapter=new formAdapter(forms);
         mRecyclerView.setAdapter(mAdapter);
-        back.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(event_attendees.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
         myAddButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -105,6 +101,30 @@ public class event_attendees extends AppCompatActivity
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    //Controlamos lo que hace el botón de volver.
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case android.R.id.home:
+            {
+                try
+                {
+                    //Terminamos la activity.
+                    this.finish();
+                } catch (Exception e)
+                {
+                    Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+            default:
+            {
+                return super.onOptionsItemSelected(item);
+            }
+        }
     }
 
 }

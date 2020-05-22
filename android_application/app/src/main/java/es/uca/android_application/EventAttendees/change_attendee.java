@@ -1,10 +1,12 @@
 package es.uca.android_application.EventAttendees;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,23 +21,26 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
+import es.uca.android_application.Database.Database;
 import es.uca.android_application.R;
 
 public class change_attendee extends AppCompatActivity
 {
-    private Button back, update;
-    private updateAttendee request;
-    private GetAttendee request2;
+    private Button update;
+    private Database myInvokeTask = new Database();
+    private JSONObject results;
     private EditText name, surnames, email, ad, dd, dni, phone, bd;
+    private int responseConnCode;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_attendee);
         //Obtenemos referencias.
-        back=(Button)findViewById(R.id.back_button3);
         update=(Button)findViewById(R.id.send_button3);
         name=(EditText)findViewById(R.id.name_form3);
         surnames=(EditText)findViewById(R.id.surnames_form3);
@@ -45,6 +50,7 @@ public class change_attendee extends AppCompatActivity
         dni=(EditText)findViewById(R.id.dni_form3);
         phone=(EditText)findViewById(R.id.phone_form3);
         bd=(EditText)findViewById(R.id.date_form3);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Recibimos el mensajero.
         Intent intent2 = getIntent();
         //Abrimos el paquete.
@@ -52,34 +58,68 @@ public class change_attendee extends AppCompatActivity
         //Colocamos la información recibida en el view.
         final String id_attendee=extras.getString("id_attendee");
         //Establecemos la información por defecto para que el usuario tenga que escribir lo menos posible en el formulario de actualización.
-        request2=new GetAttendee();
-        request2.execute(id_attendee);
-        back.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(change_attendee.this, event_attendees.class);
-                startActivity(intent);
-            }
-        });
+        try
+        {
+            JSONArray myArray= (JSONArray) myInvokeTask.getData("inscriptions",id_attendee);
+            JSONObject obj = myArray.getJSONObject(0);
+            System.out.println(myArray);
+            //Nombre: fname.
+            //Apellidos: lname.
+            //Email: ename.
+            //Fecha de llegada: adname.
+            //Fecha de salida: ddname.
+            //DNI: dniname.
+            //Teléfono: phonename.
+            //Fecha de nacimiento: bdname.
+            name.setText(obj.getString("fname"));
+            surnames.setText(obj.getString("lname"));
+            email.setText(obj.getString("ename"));
+            ad.setText(obj.getString("adname"));
+            dd.setText(obj.getString("ddname"));
+            dni.setText(obj.getString("dniname"));
+            phone.setText(obj.getString("phonename"));
+            bd.setText(obj.getString("bdname"));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         update.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
                 if(notEmptyFields())
                 {
-                    request = new updateAttendee();
-                    request.execute(
-                            id_attendee,
-                            name.getText().toString(),
-                            surnames.getText().toString(),
-                            email.getText().toString(),
-                            ad.getText().toString(),
-                            dd.getText().toString(),
-                            dni.getText().toString(),
-                            phone.getText().toString(),
-                            bd.getText().toString()
-                    );
-                }else
+                            Map<String,Object> json_map = new HashMap<String, Object>();
+                            json_map.put("fname",name.getText().toString());
+                            json_map.put("lname",surnames.getText().toString());
+                            json_map.put("ename",email.getText().toString());
+                            json_map.put("adname",ad.getText().toString());
+                            json_map.put("ddname",dd.getText().toString());
+                            json_map.put("dniname",dni.getText().toString());
+                            json_map.put("phonename",phone.getText().toString());
+                            json_map.put("bdname",bd.getText().toString());
+
+                            Intent transition = new Intent(change_attendee.this,  event_attendees.class);
+                            try
+                            {
+                                results =(JSONObject) myInvokeTask.putData("inscriptions",json_map,id_attendee);
+                                String servermessage= results.getString("msg");
+                                responseConnCode=myInvokeTask.getStatusOfLastRequest();
+                                if (responseConnCode == 200)
+                                {
+                                    Toast.makeText(getApplicationContext(), "Asistente actualizado. Código servidor: "+responseConnCode+" y descripción: "+servermessage, Toast.LENGTH_SHORT).show();
+                                    startActivity(transition);
+                                }
+                            }
+                            catch(Exception e)
+                            {
+                                responseConnCode=myInvokeTask.getStatusOfLastRequest();
+                                Toast.makeText(getApplicationContext(), "¡Error al actualizar! Código de error: "+responseConnCode, Toast.LENGTH_SHORT).show();
+                                startActivity(transition);
+                            }
+                }
+                else
                 {
                     Toast.makeText(getApplicationContext(), "¡No pueden haber campos vacíos!", Toast.LENGTH_SHORT).show();
                 }
@@ -102,148 +142,25 @@ public class change_attendee extends AppCompatActivity
         }
     }
 
-    //CLASE QUE MODELA EL SERVICIO GET POR ID PARA RELLENAR CAMPOS DEL FORMULARIO CON DATOS ANTIGUOS.
-    private class GetAttendee extends AsyncTask<String, String, String>
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
-        @Override
-        protected String doInBackground(String... params)
+        switch(item.getItemId())
         {
-            String text= null;
-            HttpURLConnection urlConnection= null;
-            try
-            {
-                URL urlToRequest= new URL("https://pnet.herokuapp.com/api/v1/inscriptions/"+params[0]);
-                urlConnection= (HttpURLConnection) urlToRequest.openConnection();
-                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                text= new Scanner(in).useDelimiter("\\A").next();
-            }
-            catch (Exception e)
-            {
-                return e.toString();
-            }
-            finally
-            {
-                if(urlConnection!= null)
-                    urlConnection.disconnect();
-            }
-            return text;
-        }
-        @Override
-        protected void onPostExecute(String results)
-        {
-            //Ha recibido algo.
-            if(results!= null)
+            case android.R.id.home:
             {
                 try
                 {
-                    JSONArray myArray= new JSONArray(results);
-                    JSONObject obj= myArray.getJSONObject(0);
-                    name.setText(obj.getString("fname"));
-                    surnames.setText(obj.getString("lname"));
-                    email.setText(obj.getString("ename"));
-                    ad.setText(obj.getString("adname"));
-                    dd.setText(obj.getString("ddname"));
-                    dni.setText(obj.getString("dniname"));
-                    phone.setText(obj.getString("phonename"));
-                    bd.setText(obj.getString("bdname"));
-                }
-                catch (Exception e)
+                    this.finish();
+                } catch (Exception e)
                 {
-                    e.printStackTrace();
+                    Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
+                return true;
             }
-        }
-    }
-    //CLASE QUE MODELA EL SERVICIO DELETE POR ID, PARA ELIMINAR EL ASISTENTE MOSTRADO.
-    private class updateAttendee extends AsyncTask<String, String, String>
-    {
-        String text= null;
-        HttpURLConnection urlConnection= null;
-        private int responseConnCode;
-        private InputStream stream;
-        private  String servermessage = null;
-        @Override
-        protected String doInBackground(String... params)
-        {
-            try
+            default:
             {
-                URL urlToRequest= new URL("https://pnet.herokuapp.com/api/v1/inscriptions/"+params[0]);
-                urlConnection= (HttpURLConnection) urlToRequest.openConnection();
-                urlConnection.setRequestMethod("PUT");
-                urlConnection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-                urlConnection.setRequestProperty("Accept", "application/json");
-                urlConnection.setDoInput(true);
-                urlConnection.setDoOutput(true);
-                //Preparamos la información a enviar en formato JSON.
-                JSONObject obj = new JSONObject();
-                obj.put("fname",params[1]);
-                obj.put("lname",params[2]);
-                obj.put("ename",params[3]);
-                obj.put("adname",params[4]);
-                obj.put("ddname",params[5]);
-                obj.put("dniname",params[6]);
-                obj.put("phonename", params[7]);
-                obj.put("bdname",params[8]);
-                //Envío de datos por el flujo de abstracción: conexión.
-                OutputStreamWriter osw = new OutputStreamWriter(urlConnection.getOutputStream());
-                osw.write(obj.toString());
-                osw.flush();
-                responseConnCode =  urlConnection.getResponseCode();
-                //En función del código de error.
-                if(responseConnCode == 200) {
-
-                    stream = urlConnection.getInputStream();
-
-                    try (Scanner scanner = new Scanner(stream, StandardCharsets.UTF_8.name()))
-                    {
-                        servermessage = scanner.useDelimiter("\\A").next();
-                    }
-                }
-                else
-                {
-                    stream = urlConnection.getErrorStream();
-
-                    try (Scanner scanner = new Scanner(stream, StandardCharsets.UTF_8.name()))
-                    {
-                        servermessage = scanner.useDelimiter("\\A").next();
-                    }
-                }
-                //Extraemos del JSON el texto de error.
-                JSONObject json = new JSONObject(servermessage);
-                servermessage = json.getString("msg");
-            }
-            catch (Exception e)
-        {
-            return e.toString();
-        }
-            finally
-        {
-            if(urlConnection!= null)
-                urlConnection.disconnect();
-        }
-            return text;
-        }
-        @Override
-        protected void onPostExecute(String results)
-        {
-            //Ha recibido algo.
-            Intent transition = new Intent(change_attendee.this,  event_attendees.class);
-            try
-            {
-                if (responseConnCode == 200)
-                {
-                    Toast.makeText(getApplicationContext(), "Asistente actualizado. Código servidor: "+responseConnCode+" y descripción: "+servermessage, Toast.LENGTH_SHORT).show();
-                    startActivity(transition);
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "¡Error al actualizar! Código de error: "+responseConnCode+" con descripción: "+servermessage, Toast.LENGTH_SHORT).show();
-                    startActivity(transition);
-                }
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
+                return super.onOptionsItemSelected(item);
             }
         }
     }

@@ -17,18 +17,6 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="821dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-
-        <Button
-            android:id="@+id/back_button_program"
-            android:layout_width="114dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="148dp"
-            android:background="@color/colorPrimary"
-            android:text="Volver"
-            android:textColor="@android:color/white"
-            http:layout_constraintStart_toStartOf="parent"
-            http:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"/>
 </LinearLayout>

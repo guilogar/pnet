@@ -1,9 +1,12 @@
 package es.uca.android_application.EventAttendees;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,16 +21,21 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.TimeZone;
 
+import es.uca.android_application.Database.Database;
 import es.uca.android_application.R;
 
 public class form_view extends AppCompatActivity
 {
     private EditText name, surnames, email,ad,dd,dni,phone_number,birthday;
-   private Button send,back;
-   private postTask myInvokeTask;
+   private Button send;
+   private int responseConnCode;
+   private JSONObject results;
+   private Database myInvokeTask= new Database();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,7 +44,6 @@ public class form_view extends AppCompatActivity
         setContentView(R.layout.activity_form_view);
         //Almaceno referencias de donde voy a sacar la información.
         send= (Button)findViewById(R.id.send_button);
-        back= (Button)findViewById(R.id.back_button);
         name = (EditText) findViewById(R.id.name_form);
         surnames = (EditText) findViewById(R.id.surnames_form);
         email = (EditText) findViewById(R.id.email_form);
@@ -45,14 +52,7 @@ public class form_view extends AppCompatActivity
         dni = (EditText) findViewById(R.id.dni_form);
         phone_number = (EditText) findViewById(R.id.phone_form);
         birthday = (EditText) findViewById(R.id.date_form);
-        back.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-
-                Intent intent= new Intent(form_view.this, event_attendees.class);
-                startActivity(intent);
-            }
-        });
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         send.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -68,20 +68,37 @@ public class form_view extends AppCompatActivity
                     int day = cal.get(Calendar.DAY_OF_MONTH);
                     month+=1;
                     String inscDate= String.valueOf(day)+"/"+String.valueOf(month)+"/"+String.valueOf(year);
-                    //Llamada al servicio.
-                    myInvokeTask = new postTask();
+
+                    Map<String, Object> json_map= new HashMap<String,Object>();
+
                     //Le paso los parámetros necesarios.
-                    myInvokeTask.execute(
-                            name.getText().toString(),
-                            surnames.getText().toString(),
-                            email.getText().toString(),
-                            ad.getText().toString(),
-                            dd.getText().toString(),
-                            dni.getText().toString(),
-                            phone_number.getText().toString(),
-                            birthday.getText().toString(),
-                            inscDate
-                            );
+                           json_map.put("fname",name.getText().toString());
+                           json_map.put("lname",surnames.getText().toString());
+                           json_map.put("ename",email.getText().toString());
+                           json_map.put("adname",ad.getText().toString());
+                           json_map.put("ddname",dd.getText().toString());
+                           json_map.put("dniname",dni.getText().toString());
+                           json_map.put("phonename",phone_number.getText().toString());
+                           json_map.put("bdname",birthday.getText().toString());
+                           json_map.put("idname",inscDate);
+                           Intent transition = new Intent(form_view.this, event_attendees.class);
+                           try
+                           {
+
+                               results= (JSONObject) myInvokeTask.postData("inscriptions",json_map);
+                               responseConnCode=myInvokeTask.getStatusOfLastRequest();
+                               String servermessage = results.getString("msg") ;
+                               if(responseConnCode == 201)
+                               {
+                                   Toast.makeText(getApplicationContext(), "¡Registro correctamente! Código servidor: "+responseConnCode+" y descripción: "+servermessage, Toast.LENGTH_SHORT).show();
+                                   startActivity(transition);
+                               }
+                           }
+                           catch (Exception e)
+                           {
+                               responseConnCode=myInvokeTask.getStatusOfLastRequest();
+                               Toast.makeText(getApplicationContext(), "¡Ha habido algún error, inténtalo de nuevo! Código de error: "+responseConnCode, Toast.LENGTH_SHORT).show();
+                           }
                 }
                 else
                 {
@@ -110,92 +127,31 @@ public class form_view extends AppCompatActivity
                 return true;
             }
     }
-    //CLASE QUE IMPLEMENTA EL SERVICIO POST.
-    private class postTask extends AsyncTask<String, String, String>
-    {
-        private TextView myName;
-        private  int responseConnCode;
-        private InputStream stream;
-        private  String servermessage = null;
-        @Override
-        protected String doInBackground(String... params)
-        {
-            String text= null;
-            HttpURLConnection urlConnection= null;
-            try
-            {
-                URL urlToRequest= new URL("https://pnet.herokuapp.com/api/v1/inscriptions");
-                urlConnection= (HttpURLConnection) urlToRequest.openConnection();
-                urlConnection.setRequestMethod("POST");
-                urlConnection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-                urlConnection.setRequestProperty("Accept", "application/json");
-                urlConnection.setDoInput(true);
-                urlConnection.setDoOutput(true);
-                //Preparamos la información a enviar en formato JSON.
-                JSONObject obj = new JSONObject();
-                obj.put("fname",params[0]);
-                obj.put("lname",params[1]);
-                obj.put("ename",params[2]);
-                obj.put("adname",params[3]);
-                obj.put("ddname",params[4]);
-                obj.put("dniname",params[5]);
-                obj.put("phonename", params[6]);
-                obj.put("bdname",params[7]);
-                obj.put("idname",params[8]);
-                //Envío de datos por el flujo de abstracción: conexión.
-                OutputStreamWriter osw = new OutputStreamWriter(urlConnection.getOutputStream());
-                osw.write(obj.toString());
-                osw.flush();
 
-                responseConnCode = urlConnection.getResponseCode();
-                //En función del código de error..
-                if(responseConnCode == 201)
-                {
-                    stream = urlConnection.getInputStream();
-                    try (Scanner scanner = new Scanner(stream, StandardCharsets.UTF_8.name()))
-                    {
-                        servermessage = scanner.useDelimiter("\\A").next();
-                    }
-                }
-                else
-                    {
-                    stream = urlConnection.getErrorStream();
-                    try (Scanner scanner = new Scanner(stream, StandardCharsets.UTF_8.name()))
-                    {
-                        servermessage = scanner.useDelimiter("\\A").next();
-                    }
-                }
-                //Extraemos del JSON el texto de error.
-                JSONObject json = new JSONObject(servermessage);
-                servermessage = json.getString("msg");
-            }
-            catch (Exception e)
-            {
-                return e.toString();
-            }
-            finally
-            {
-                if(urlConnection!= null)
-                    urlConnection.disconnect();
-            }
-            return text;
-        }
-        @Override
-        protected void onPostExecute(String results)
+    @Override
+    //Controlamos lo que hace el botón de volver.
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch(item.getItemId())
         {
-            Toast msg;
-            //Vuelvo a la anterior actividad: CLASE ACTUAL --> CLASE POSTERIOR.
-            Intent transition = new Intent(form_view.this, event_attendees.class);
-            if(responseConnCode == 201)
+            case android.R.id.home:
             {
-                msg = Toast.makeText(getApplicationContext(), "¡Registro correctamente! Código servidor: "+responseConnCode+" y descripción: "+servermessage, Toast.LENGTH_SHORT);
-                startActivity(transition);
-            }
-            else
+                try
                 {
-                    msg = Toast.makeText(getApplicationContext(), "¡Ha habido algún error, inténtalo de nuevo! Código de error: "+responseConnCode+" y descripción: "+servermessage, Toast.LENGTH_SHORT);
+                    //Terminamos la activity.
+                    this.finish();
+                } catch (Exception e)
+                {
+                    Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
-            msg.show();
+                return true;
+            }
+            default:
+            {
+                //Se lo pasa a la clase padre el objeto por si ésta sabe qué hacer con él.
+                return super.onOptionsItemSelected(item);
+            }
         }
     }
+
 }
