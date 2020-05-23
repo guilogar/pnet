@@ -1,7 +1,5 @@
 package es.uca.android_application.Database;
 
-import android.os.AsyncTask;
-
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -14,30 +12,20 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
-public class HttpPutRequest extends AsyncTask<Void, Void, String> {
-
-    private String url;
-    private String collection;
+public class HttpPutRequest extends HttpRequest
+{
     private Map<String, Object> data;
-    private int responseCode = 0;
 
     public HttpPutRequest(String url, String collection,  Map<String, Object> data)
     {
-        this.url = url;
-        this.collection = collection;
+        super(url, collection);
         this.data = data;
     }
 
     public HttpPutRequest(String url, String collection, String id,  Map<String, Object> data)
     {
-        this.url = url;
-        this.collection = collection + "/" + id;
+        super(url, collection + "/" + id);
         this.data = data;
-    }
-
-    public int getResponseCode()
-    {
-        return this.responseCode;
     }
 
     public String httpRequest(String urlString, String collection, Map<String, Object> data) throws UnsupportedEncodingException
@@ -78,7 +66,7 @@ public class HttpPutRequest extends AsyncTask<Void, Void, String> {
 
             urlConnection.connect();
 
-            this.responseCode = urlConnection.getResponseCode();
+            this.setResponseCode(urlConnection.getResponseCode());
 
             // see the response...
             String line;
@@ -99,7 +87,7 @@ public class HttpPutRequest extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... params)
     {
         try {
-            return this.httpRequest(this.url, this.collection, this.data);
+            return this.httpRequest(this.getUrl(), this.getCollection(), this.data);
         } catch (Exception e)
         {
             return e.toString();

@@ -1,34 +1,21 @@
 package es.uca.android_application.Database;
 
-import android.os.AsyncTask;
-
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-public class HttpGetRequest extends AsyncTask<Void, Void, String> {
-
-    private String url;
-    private String collection;
-    private int responseCode = 0;
-
+public class HttpGetRequest extends HttpRequest
+{
     public HttpGetRequest(String url, String collection)
     {
-        this.url = url;
-        this.collection = collection;
+        super(url, collection);
     }
 
     public HttpGetRequest(String url, String collection, String id)
     {
-        this.url = url;
-        this.collection = collection + "/" + id;
-    }
-
-    public int getResponseCode()
-    {
-        return this.responseCode;
+        super(url, collection + "/" + id);
     }
 
     public String httpRequest(String url, String collection)
@@ -43,7 +30,7 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
             urlConnection.setRequestMethod("GET");
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
-            this.responseCode = urlConnection.getResponseCode();
+            this.setResponseCode(urlConnection.getResponseCode());
             text = new Scanner(in).useDelimiter("\\A").next();
         }
         catch (Exception e)
@@ -61,7 +48,7 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... params)
     {
         try {
-            return this.httpRequest(this.url, this.collection);
+            return this.httpRequest(this.getUrl(), this.getCollection());
         } catch (Exception e)
         {
             return e.toString();

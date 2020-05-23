@@ -8,21 +8,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-public class HttpDeleteRequest extends AsyncTask<Void, Void, String> {
-
-    private String url;
-    private String collection;
-    private int responseCode = 0;
-
+public class HttpDeleteRequest extends HttpRequest
+{
     public HttpDeleteRequest(String url, String collection, String id)
     {
-        this.url = url;
-        this.collection = collection + "/" + id;
-    }
-
-    public int getResponseCode()
-    {
-        return this.responseCode;
+        super(url, collection + "/" + id);
     }
 
     public String httpRequest(String urlString, String collection)
@@ -36,7 +26,7 @@ public class HttpDeleteRequest extends AsyncTask<Void, Void, String> {
             urlConnection.setRequestMethod("DELETE");
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
-            this.responseCode = urlConnection.getResponseCode();
+            this.setResponseCode(urlConnection.getResponseCode());
             text = new Scanner(in).useDelimiter("\\A").next();
         } catch (Exception e)
         {
@@ -49,7 +39,7 @@ public class HttpDeleteRequest extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... params)
     {
         try {
-            return this.httpRequest(this.url, this.collection);
+            return this.httpRequest(this.getUrl(), this.getCollection());
         } catch (Exception e)
         {
             return e.toString();
