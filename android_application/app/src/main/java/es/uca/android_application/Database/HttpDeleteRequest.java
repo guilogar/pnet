@@ -1,7 +1,5 @@
 package es.uca.android_application.Database;
 
-import android.os.AsyncTask;
-
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
