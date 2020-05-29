@@ -12,7 +12,9 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="101dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:gravity="center"
+        android:textSize="18sp"/>
 
     <fragment
         android:id="@+id/map"

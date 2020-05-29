@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import es.uca.android_application.ImportantDates.Timetable;
 import es.uca.android_application.R;
@@ -31,11 +32,8 @@ public class Localization extends AppCompatActivity implements OnMapReadyCallbac
     {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.localization);
-
         TextView tv = (TextView) this.findViewById(R.id.description);
-        tv.setText("Mapa del mundo");
-        tv.setGravity(Gravity.CENTER);
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
+        tv.setText("Calle Plocia, s/n, 11006 Cádiz");
 
         try
         {
@@ -54,6 +52,9 @@ public class Localization extends AppCompatActivity implements OnMapReadyCallbac
             mapFragment.getMapAsync(this);
         } catch(Exception e)
         {
+            SupportMapFragment mapFragment = (SupportMapFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);
             this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -68,14 +69,21 @@ public class Localization extends AppCompatActivity implements OnMapReadyCallbac
             double x = localization.getDouble("x");
             double y = localization.getDouble("y");
 
-            LatLng sydney = new LatLng(x, y);
+            LatLng cadiz = new LatLng(x, y);
 
-            googleMap.addMarker(new MarkerOptions().position(sydney).title(street));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            googleMap.addMarker(new MarkerOptions().position(cadiz).title(street));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(cadiz));
             googleMap.animateCamera(CameraUpdateFactory.zoomTo( 12.0f ) );
         } catch (Exception e)
         {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            //Entra cuando no hay notificación.
+
+            double x = 36.53;
+            double y = -6.29;
+            LatLng cadiz = new LatLng(x, y);
+            googleMap.addMarker(new MarkerOptions().position(cadiz).title("Calle Plocia, s/n, 11006 Cádiz"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(cadiz));
+            googleMap.animateCamera(CameraUpdateFactory.zoomTo( 12.0f ) );
         }
     }
 
